@@ -1,3 +1,5 @@
+##Version 1.0 of pywhatkit
+
 import time
 import webbrowser as web
 import pyautogui as pg
