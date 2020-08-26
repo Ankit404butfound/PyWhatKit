@@ -1,4 +1,4 @@
-# pywhatkit
+# PyWhatKit
 Send WhatsApp message at certain time and many other things.
 Usage :
 
