@@ -266,7 +266,7 @@ def send_file(phone_no, path_to_file, time_hour, time_min, print_messages=True):
     if print_messages:
         print("Message sent\nIf it is a big file, it might take longer time to be delivered\nClose console only after message gets delivered.")
 
-def sendwhatmsg(phone_no, message, time_hour, time_min, print_waitTime=True):
+def sendwhatmsg(phone_no, message, time_hour, time_min, delay=60, print_waitTime=True):
     '''Sends whatsapp message to a particulal number at given time
 Phone number should be in string format not int
 ***This function will not work if the browser's window is minimised,
@@ -305,14 +305,15 @@ first check it by calling 'check_window()' function'''
     file.close()
     sleeptm = lefttm-60
     if print_waitTime :
-        print(f"In {prnt_sleeptm()} seconds web.whatsapp.com will open and after 60 seconds message will be delivered")
+        print(f"In {prnt_sleeptm()} seconds web.whatsapp.com will open and after {delay} seconds message will be delivered")
     time.sleep(sleeptm)
     web.open('https://web.whatsapp.com/send?phone='+phone_no+'&text='+message)
     time.sleep(2)
     width,height = pg.size()
     pg.click(width/2,height/2)
-    time.sleep(58)
+    time.sleep(delay)
     pg.press('enter')
+    print("Your message has been delivered.")
     
 def info(topic,lines=3):
     '''Gives information on the topic'''
