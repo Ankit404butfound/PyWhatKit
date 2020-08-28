@@ -2,7 +2,7 @@
 
 ## Project description
 
-**PyWhatKit is a Python library for Sending whatsapp message at certain time, it has several other features too.**
+PyWhatKit is a Python library for Sending whatsapp message at certain time, it has several other features too.
 
 ## Installation
 ```
