@@ -1,4 +1,4 @@
-# PyWhatKit
+![alt text](http://img.dafont.com/preview.php?text=PyWhatKit&ttf=samarkan0&ext=1&size=41&psize=l&y=52)
 
 ## Project description
 
