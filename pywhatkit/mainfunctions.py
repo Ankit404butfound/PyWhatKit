@@ -37,7 +37,7 @@ def watch_tutorial_in_English():
     web.open("https://youtu.be/nAjbapi4Qk8")
 
 def developer_contact():
-    """Contach information of developer for feedbacks"""
+    """Contact information of developer for feedbacks"""
     print("Message me on Telegram, username - Tag_kiya_kya\nOr email me at ankitrajjitendra816@gmail.com.")
 
 def showHistory():
