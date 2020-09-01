@@ -5,7 +5,7 @@
 PyWhatKit is a Python library for Sending whatsapp message at certain time, it has several other features too.
 ## Download Count
 
-[![Downloads](https://pepy.tech/badge/pywhatkit/week)](https://pepy.tech/project/pywhatkit/week)
+[![Downloads](https://pepy.tech/badge/pywhatkit/month)](https://pepy.tech/project/pywhatkit/month)
 
 The download count is not very accurate, it has over 100k downloads in total. 
 
