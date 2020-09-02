@@ -200,6 +200,25 @@ def image_to_ascii_art(imgpath,output_file="pywhatkit_asciiart.txt"):
         f.write(ascii_image)
     return ascii_image
 
+'''  function to send message using email to any person   
+        my_mail = mail id of sender
+        my_pass = password of sender
+        mail_to = reciver's mail id
+        content = message that you want to send
+        ''' 
+try:
+    def sendMail(my_mail, my_pass, mail_to, content):
+        print(my_mail,my_pass,mail_to,content)
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.ehlo()
+        server.starttls()
+        server.login(my_mail, my_pass) # eneter your email and password but you have to enable <less secure app> in your email privacy setting
+        server.sendmail(my_mail, mail_to, content) # eneter your email, reciver email, content to send
+        server.close()
+except Exception as e:
+    print("e")
+
+
 def search(topic):
     '''Searches about the topic on Google'''
     link = 'https://www.google.com/search?q={}'.format(topic)
