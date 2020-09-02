@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 import platform
 import os
 from PIL import Image
+import smtplib
 
 last = time.time()
 pg.FAILSAFE = False
@@ -208,7 +209,6 @@ def image_to_ascii_art(imgpath,output_file="pywhatkit_asciiart.txt"):
         ''' 
 try:
     def sendMail(my_mail, my_pass, mail_to, content):
-        print(my_mail,my_pass,mail_to,content)
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.ehlo()
         server.starttls()
