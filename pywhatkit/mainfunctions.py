@@ -201,7 +201,8 @@ def image_to_ascii_art(imgpath,output_file="pywhatkit_asciiart.txt"):
         f.write(ascii_image)
     return ascii_image
 
-'''  function to send message using email to any person   
+'''  function to send message using email to any person  
+      before using this function you have to enable less secure app in your email's privacy setting 
         my_mail = mail id of sender
         my_pass = password of sender
         mail_to = reciver's mail id
