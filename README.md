@@ -8,15 +8,15 @@ PyWhatKit is a Python library for Sending whatsapp message at certain time, it h
 [![Downloads](https://pepy.tech/badge/pywhatkit/month)](https://pepy.tech/project/pywhatkit/month)
 
 ## Installation
-```
-pip install pywhatkit
-````
+
+`pip install pywhatkit`
+
 ## Usage
 
 Import the library using the following command.
-```
-import pywhatkit
-```
+
+`import pywhatkit`
+
 ### This will open web.whatsapp.com at 14:59:40 and message will be sent at exactly 15:00:00
 
 `pywhatkit.sendwhatmsg("+919876543210","This is a message",15,00)`
