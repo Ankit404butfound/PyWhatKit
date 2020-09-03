@@ -74,7 +74,7 @@ For Windows and Linux only"""
 def cancelShutdown():
     """Will cancel the scheduled shutdown"""
     if "window" in osname.lower():
-        cont = "shutdown/a"
+        cont = "shutdown /a"
         os.system(cont)
 
     elif "linux" in osname.lower():
