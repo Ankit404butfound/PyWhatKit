@@ -81,6 +81,10 @@ def cancelShutdown():
         cont = "shutdown -c"
         os.system(cont) 
 
+    elif "darwin" in osname.lower():
+        cont = "killall shutdown"
+        os.system(cont)
+
     else:
         raise Warning("This function is for Windows and Linux only, can't execute on: %s"%osname)
 
