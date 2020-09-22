@@ -23,7 +23,7 @@ Import the library using the following command.
 
 #### This will give wikipedia summary about the topic using the Wikipedia API
 
-`pywhatkit.info("Python",lines=3,speak=None)`
+`pywhatkit.info("Python",lines=3)`
 
 #### This will convert any given image to ASCII art, see my profile picture
 
