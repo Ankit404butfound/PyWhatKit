@@ -38,6 +38,8 @@ pywhatkit.cancelShutdown()#Will cancel the scheduled shutdown
 pywhatkit.watch_tutorial_in_english/hindi()#Will open a tutorial on how to use this library on YouTube in respective language
 
 pywhatkit.help() #For more information
+
+ def sendMail(my_mail, my_pass, mail_to, content):  #to send a mail to anybody. 
 ```
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
