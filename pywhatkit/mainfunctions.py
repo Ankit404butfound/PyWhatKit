@@ -8,6 +8,7 @@ import platform
 import os
 from PIL import Image
 import smtplib
+from urllib.parse import quote
 
 last = time.time()
 pg.FAILSAFE = False
@@ -139,7 +140,8 @@ first check it by calling 'check_window()' function'''
     if print_waitTime :
         print(f"In {prnt_sleeptm()} seconds web.whatsapp.com will open and after {wait_time} seconds message will be delivered")
     time.sleep(sleeptm)
-    web.open('https://web.whatsapp.com/send?phone='+phone_no+'&text='+message)
+    parsedMessage = quote(message)
+    web.open('https://web.whatsapp.com/send?phone='+phone_no+'&text='+parsedMessage)
     time.sleep(2)
     width,height = pg.size()
     pg.click(width/2,height/2)
