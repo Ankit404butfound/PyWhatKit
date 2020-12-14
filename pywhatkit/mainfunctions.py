@@ -1,13 +1,8 @@
-import time
+import time, re, os
 import webbrowser as web
 import pyautogui as pg
-import wikipedia
-import requests
-from bs4 import BeautifulSoup
-import platform
-import os
+import requests, platform, wikipedia, smtplib
 from PIL import Image
-import smtplib
 from urllib.parse import quote
 
 last = time.time()
@@ -44,9 +39,9 @@ def developer_contact():
 
 def showHistory():
     """Prints the information of all last sent messages using this program"""
-    file = open("pywhatkit_dbs.txt","r")
-    content = file.read()
-    file.close()
+    with open("pywhatkit_dbs.txt","r") as f:
+        content = f.read()
+
     if content == "--------------------":
         content = None
     print(content)
@@ -70,7 +65,7 @@ For Windows and Linux only"""
         os.system(cont)
 
     else:
-        raise Warning("This function is for Windows, Mac and Linux users only, can't execute on %s"%osname)
+        raise Warning(f"This function is for Windows, Mac and Linux users only, can't execute on {osname}")
 
 def cancelShutdown():
     """Will cancel the scheduled shutdown"""
@@ -87,7 +82,7 @@ def cancelShutdown():
         os.system(cont)
 
     else:
-        raise Warning("This function is for Windows and Linux only, can't execute on: %s"%osname)
+        raise Warning(f"This function is for Windows, Mac and Linux users only, can't execute on {osname}")
 
 def prnt_sleeptm():
     return sleeptm
@@ -102,7 +97,9 @@ Phone number should be in string format not int
 ***This function will not work if the browser's window is minimised,
 first check it by calling 'check_window()' function'''
     global sleeptm
-    if "+" not in phone_no:
+    valid_phone_no = re.compile(r"[+]\d{12}")
+    numbers = re.findall(valid_phone_no, phone_no)
+    if len(numbers) == 0:
         raise CountryCodeException("Country code missing from phone_no")
     timehr = time_hour
 
@@ -130,15 +127,16 @@ first check it by calling 'check_window()' function'''
     if lefttm < wait_time:
         raise CallTimeException("Call time must be greater than wait_time as web.whatsapp.com takes some time to load")
     
-    date = "%s:%s:%s"%(curr.tm_mday,curr.tm_mon,curr.tm_year)
-    time_write = "%s:%s"%(timehr,time_min)
-    file = open("pywhatkit_dbs.txt","a")
-    file.write("Date: %s\nTime: %s\nPhone number: %s\nMessage: %s"%(date,time_write,phone_no,message))
-    file.write("\n--------------------\n")
-    file.close()
-    sleeptm = lefttm-wait_time
+    date = f"{curr.tm_mday}:{curr.tm_mon}:{curr.tm_year}"
+    time_write = f"{timehr}:{time_min}"
+    with open("pywhatkit_dbs.txt","a") as file:
+        file.write(f"Date: {date}\nTime: {time_write}\nPhone number: {phone_no}\nMessage: {message}")
+        file.write("\n--------------------\n")
+
+    sleeptm = lefttm - wait_time
     if print_waitTime :
         print(f"In {prnt_sleeptm()} seconds web.whatsapp.com will open and after {wait_time} seconds message will be delivered")
+
     time.sleep(sleeptm)
     parsedMessage = quote(message)
     web.open('https://web.whatsapp.com/send?phone='+phone_no+'&text='+parsedMessage)
@@ -149,7 +147,7 @@ first check it by calling 'check_window()' function'''
     pg.press('enter')
     
 def info(topic,lines=3):
-    '''Gives information on the topic'''
+    '''Gives information on a topic from wikipedia.'''
     spe = wikipedia.summary(topic, sentences = lines)
     print(spe)
     
@@ -158,8 +156,7 @@ def playonyt(topic):
     url = 'https://www.youtube.com/results?q=' + topic
     count = 0
     cont = requests.get(url)
-    data = cont.content
-    data = str(data)
+    data = str(cont.content)
     lst = data.split('"')
     for i in lst:
         count+=1
@@ -173,7 +170,7 @@ def playonyt(topic):
     return "https://www.youtube.com"+lst[count-5]
 
 def image_to_ascii_art(imgpath,output_file="pywhatkit_asciiart.txt"):
-    """Converts the given image to ascii art and save it to uotput_file"""
+    """Converts the given image to ascii art and save it to output_file"""
     # pass the image as command line argument
     image_path = imgpath
     img = Image.open(image_path)
@@ -207,23 +204,29 @@ def image_to_ascii_art(imgpath,output_file="pywhatkit_asciiart.txt"):
         f.write(ascii_image)
     return ascii_image
 
-'''  function to send message using email to any person  
-      before using this function you have to enable less secure app in your email's privacy setting 
-        my_mail = mail id of sender
-        my_pass = password of sender
-        mail_to = reciver's mail id
-        content = message that you want to send
-        ''' 
-try:
-    def sendMail(my_mail, my_pass, mail_to, content):
+
+def sendMail(my_mail, my_pass, mail_to, subject, content):
+    """
+    Sends mail to a person using SMTP. 
+    *Before using this function you have to enable less secure app in your email's privacy settings.*
+
+    @params
+    my_mail = Your email ID.
+    my_pass = Your email password.
+    mail_to = Reciver's email ID.
+    subject = Subject of the email.
+    content = Body of the email.
+    """
+    try:
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.ehlo()
         server.starttls()
-        server.login(my_mail, my_pass) # eneter your email and password but you have to enable <less secure app> in your email privacy setting
-        server.sendmail(my_mail, mail_to, content) # eneter your email, reciver email, content to send
-        server.close()
-except Exception as e:
-    print("e")
+        server.login(my_mail, my_pass) # enter your email and password but you have to enable <less secure app> in your email privacy setting
+        server.sendmail(my_mail, mail_to, f"{subject}\n\n{content}") # enter your email, reciver email, subject and content to send
+        server.quit()
+    
+    except Exception as e:
+        print(e)
 
 
 def search(topic):
@@ -260,16 +263,19 @@ try :
     file.close()
 
 except:
-    file = open("pywhatkit_dbs.txt","w")
     print("""Hello from the creator of pywhatkit, Ankit Raj Mahapatra.\nKindly do report bugs if any
 What's new:
 1. Removed selenium dependent functions
 2. Added pywhatkit.text_to_handwriting() which will convert text to handwritten characters.
 3. Added pywhatkit.image_to_ascii_art() which will convert image to ascii art.""")
-    file.write("--------------------\n")
-    file.close()
+    with open("pywhatkit_dbs.txt","w") as file:
+        file.write("--------------------\n")
+
     file = None
+
     #Useless part, it increments a counter when someone downloads this library. 
 ##    num = int(requests.get("http://rajma.000webhostapp.com/manager1.php?action=read").text.split("-")[0])
 ##    nothing = requests.get(f"http://rajma.000webhostapp.com/manager1.php?action=write&data={num+1}-")
 #end
+if __name__ == "__main__":
+    sendMail("scholar.aditiasati@gmail.com", "@0quantum0@", "delunator.one@yahoo.com", "Test mail", "test")
