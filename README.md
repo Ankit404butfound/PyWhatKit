@@ -48,7 +48,7 @@ Something like this
 `pywhatkit.search("Python")`
 
 ### Some other functions
-```
+```python
 pywhatkit.showHistory()#Will show information of all the messages sent using this library
 
 pywhatkit.shutdown(time=100)#Will shutdown the system in 100 seconds
