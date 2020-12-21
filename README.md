@@ -1,4 +1,4 @@
-![alt text](http://img.dafont.com/preview.php?text=PyWhatKit&ttf=samarkan0&ext=1&size=41&psize=l&y=52)
+![alt text](https://github.com/Ankit404butfound/PyWhatKit/blob/master/Images/logo.png?raw=true)
 
 ## Project description
 
