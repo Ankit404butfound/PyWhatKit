@@ -61,7 +61,7 @@ For Windows, Linux and Mac only"""
         os.system(cont)
 
     elif "darwin" in osname.lower():
-        cont = "shutdown -h -t %s"%time
+        cont = "sudo shutdown -h -t %s"%time
         os.system(cont)
 
     else:
@@ -78,7 +78,7 @@ def cancelShutdown():
         os.system(cont) 
 
     elif "darwin" in osname.lower():
-        cont = "killall shutdown"
+        cont = "sudo killall shutdown"
         os.system(cont)
 
     else:
