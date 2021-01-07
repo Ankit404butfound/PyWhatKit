@@ -49,7 +49,7 @@ def showHistory():
 
 def shutdown(time = 20):
     """Will shutdown the computer in given seconds
-For Windows and Linux only"""
+For Windows, Linux and Mac only"""
     global osname
     osname = platform.system()
     if "window" in osname.lower():
