@@ -14,6 +14,7 @@ PyWhatKit is a Python library for Sending whatsapp message at certain time, it h
 ## Note
 
 Now you can schedule WhatsApp message and turn off the computer, the message will be automatically delivered at the scheduled time.
+Other typos will be fixed soon.
 ```python
 from pywhatkit import headless_pwk as pwk
 pwk.sendwhatmsg("+919876543210","Hi",15,25) #You will need to scan the QR code, please do read the comments in the file
