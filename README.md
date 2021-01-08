@@ -28,7 +28,7 @@ pwk.sendwhatmsg("+919876543210","Hi",15,25) #You will need to scan the QR code, 
 
 Import the library using the following command.
 
-`import pywhatkit`
+`python import pywhatkit`
 
 #### This will open web.whatsapp.com at 14:59:40 and message will be sent at exactly 15:00:00
 
