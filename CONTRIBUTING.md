@@ -1,4 +1,4 @@
-## Contribution Guidelines
+# Contribution Guidelines
 
 Thank you so much for your interest in contributing!. All types of contributions are encouraged and valued. 📝
 
@@ -29,12 +29,14 @@ We like code commits a lot! They're super handy, and they keep the project going
 Code contributions of just about any size are acceptable!
 
 Setting up a development environment:
+
 1. Fork the repository and then clone it to your local computer.
 2. OPTIONAL BUT RECOMMENDED: Create a new virtual environment using `virtualenv`.
 3. Activate the virtual environment and install the project dependencies using `pip3 install -r requirements.txt`.
 4. Congrats 🎉, you are now ready to contribute.
 
 To contribute the code:
+
 1. Set up the development environment.
 2. Make any necessary changes to the source code.
 3. If possible, make sure to include comments describing what your code does.
