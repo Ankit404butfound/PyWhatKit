@@ -277,5 +277,3 @@ What's new:
 ##    num = int(requests.get("http://rajma.000webhostapp.com/manager1.php?action=read").text.split("-")[0])
 ##    nothing = requests.get(f"http://rajma.000webhostapp.com/manager1.php?action=write&data={num+1}-")
 #end
-if __name__ == "__main__":
-    sendMail("scholar.aditiasati@gmail.com", "@0quantum0@", "delunator.one@yahoo.com", "Test mail", "test")
