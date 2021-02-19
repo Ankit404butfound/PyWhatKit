@@ -3,6 +3,7 @@
 ## Project description
 
 PyWhatKit is a Python library for Sending whatsapp message at certain time, it has several other features too.
+It is one of the safest way of scheduling WhatsApp messages.
 
 ### Read detailed description here - https://pywhatkit.herokuapp.com/
 ### Request new feature here - https://pywhatkit.herokuapp.com/request-feature
