@@ -48,8 +48,8 @@ def showHistory():
 
 
 def shutdown(time = 20):
-    """Will shutdown Mac, Windows and Linux Computers
-    For Widnows System, time is given as Seconds and for Mac and Linux Computers
+    """Will shutdown Mac, Windows and Linux Computers.
+    For Windows System, time is given as Seconds and for Mac and Linux Computers
     Time is given as mintues"""
     global osname
     osname = platform.system()
