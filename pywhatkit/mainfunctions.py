@@ -241,7 +241,7 @@ def help():
 SOME COMMON ERRORS and HOW TO FIX THEM:
 
 1. CountryCodeException("Country code missing from phone_no")
--> To Fix this issue you need to add country code to the phone number, it satrts with "+".
+-> To Fix this issue you need to add country code to the phone number, it starts with "+".
 
 2. CallTimeException("Call time must be greater than wait time as web.whatsapp.com takes some time to load")
 -> Make sure the there is a difference of at least <wait time> seconds between current time and time you want to send message at.
