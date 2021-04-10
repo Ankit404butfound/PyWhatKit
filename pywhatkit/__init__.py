@@ -1,5 +1,10 @@
-"""This piece of software was last updated on 26-August-2020 at 18:52 IST.
+"""This piece of software was last updated on 10-April-2021 at 15-22 IST.
 Pull requests are always welcomed"""
 
-from pywhatkit.mainfunctions import watch_tutorial_in_English, watch_tutorial_in_Hindi, developer_contact, showHistory, shutdown, cancelShutdown, prnt_sleeptm, check_window, sendwhatmsg, info, playonyt, image_to_ascii_art, search,sendMail, help 
-from pywhatkit.chr_to_handwriting import download, text_to_handwriting
+from pywhatkit.ascii_art import image_to_ascii_art
+from pywhatkit.chr_to_handwriting import text_to_handwriting
+import pywhatkit.help
+from pywhatkit.main import prnt_sleeptm, check_window, sendwhatmsg, sendwhatmsg_to_group, info, playonyt, sendMail, search
+from pywhatkit.sc import shutdown, cancelShutdown
+from pywhatkit.wwd import watch_tutorial_in_Hindi, watch_tutorial_in_English, developer_contact
+from pywhatkit.history import showHistory
