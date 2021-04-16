@@ -9,7 +9,7 @@ It is one of the safest tools for scheduling WhatsApp messages.
 
 ### Read detailed description here - https://pywhatkit.herokuapp.com/
 ### Request new feature here - https://pywhatkit.herokuapp.com/request-feature
-### Have some query or suggestions, join our discord server - [Discord invite link](https://discord.com/channels/@me/830257036478119946/830370312653766727)
+### Have some query or suggestions, join our discord server - [Discord invite link](https://discord.gg/uwznv4jKgk)
 
 ## Download
 
