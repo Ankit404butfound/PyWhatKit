@@ -27,6 +27,8 @@ Import the library using the following command.
 
 `import pywhatkit`
 
+<br>
+
 - This will open web.whatsapp.com at 14:59:40 and message will be sent at exactly 15:00:00
 
     `pywhatkit.sendwhatmsg("+919876543210","This is a message",15,00)`
@@ -45,7 +47,7 @@ Import the library using the following command.
 
 <br>
 
-![alt text](https://qphs.fs.quoracdn.net/main-qimg-6cb9c5263774b71a7905741ece958cc9)
+![character to handwriting](https://qphs.fs.quoracdn.net/main-qimg-6cb9c5263774b71a7905741ece958cc9)
 
 - This will play the first video that appears upon searching "Python" on YouTube
 
@@ -62,7 +64,7 @@ Import the library using the following command.
 ```python
 pywhatkit.showHistory() # Will show information of all the messages sent using this library
 
-pywhatkit.shutdown(time=100) # Will shutdown the system in 100 seconds
+pywhatkit.shutdown(time=100) # Will shutdown the system
 
 pywhatkit.cancelShutdown() # Will cancel the scheduled shutdown
 
@@ -77,6 +79,7 @@ pywhatkit.help() # For more information
 ## *Contributing*
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+For more detailed information see [this](https://github.com/Ankit404butfound/PyWhatKit/blob/master/CONTRIBUTING.mdhttps://github.com/Ankit404butfound/PyWhatKit/blob/master/CONTRIBUTING.md)
 
 ## *License*
 
