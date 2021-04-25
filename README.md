@@ -26,8 +26,7 @@ It is one of the safest tools for scheduling WhatsApp messages.
 Import the library using the following command.
 
 `import pywhatkit`
-
-<br>
+>
 
 - This will open web.whatsapp.com at 14:59:40 and message will be sent at exactly 15:00:00
 
@@ -56,8 +55,6 @@ Import the library using the following command.
 - This will perform a Google search about Python
 
     `pywhatkit.search("Python")`
-
-<br>
 
 ### Some other functions
 
