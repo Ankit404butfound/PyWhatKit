@@ -24,7 +24,24 @@ def check_window() -> None:
     pg.alert("If the browser's window is not maximised,\nMaximise and then close it if you want,\nor sendwhatmsg() "
              "function will not work", "Pywhatkit")
 
-
+def weatherinfo(city=None,all =True,temprature=False,humidity=False,Condition=False,min_temprature=False,max_temp=False,min_temp=False,wind_speed=False,pressure=False):
+    # work in progress
+    api_key = '3db6ed97b28ed688cfa27af00138f304'
+    json_data = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}").json()
+    temp = int(json_data['main']['temp'] - 273.15)
+    condition = json_data['weather'][0]['main']
+    min_temp = int(json_data['main']['temp_min'] - 273.15)
+    max_temp = int(json_data['main']['temp_max'] - 273.15)
+    pressure = json_data['main']['pressure']
+    humidity = json_data['main']['humidity']
+    wind = json_data['wind']['speed']
+    sunrise = time.strftime('%I:%M:%S', time.gmtime(json_data['sys']['sunrise'] - 21600))
+    sunset = time.strftime('%I:%M:%S', time.gmtime(json_data['sys']['sunset'] - 21600))
+    class cityexeption(Exception):
+        pass
+    all_dict = {'temprature':f'{temp}','condition':f'{condition}'}
+    if all:
+        return all_dict
 def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait_time: int = 20,
                 print_wait_time: bool = True, browser: str = None) -> None:
     # Sends a message at a specific time
