@@ -1,11 +1,11 @@
 ![logo](https://github.com/Ankit404butfound/PyWhatKit/blob/master/Images/logo.png?raw=true)
 
-## *Project Description*
+## Project Description
 
 PyWhatKit is a Python library for Sending WhatsApp message at certain time, it has several other features too.
 It is one of the safest tools for scheduling WhatsApp messages.
 
-## *Useful Links*
+## Useful Links
 
 ### Read detailed description here - https://pywhatkit.herokuapp.com/
 
@@ -13,20 +13,20 @@ It is one of the safest tools for scheduling WhatsApp messages.
 
 ### Have some query or suggestions, join our discord server - [here](https://discord.com/channels/@me/830257036478119946/830370312653766727)
 
-## *Downloads*
+## Downloads
 
 [![Downloads](https://pepy.tech/badge/pywhatkit/month)](https://pepy.tech/project/pywhatkit/month)
 
-## *Installation*
+## Installation
 
 `pip3 install pywhatkit`
 
-## *Usage*
+## Usage
 
 Import the library using the following command.
 
 `import pywhatkit`
->
+
 
 - This will open web.whatsapp.com at 14:59:40 and message will be sent at exactly 15:00:00
 
@@ -65,7 +65,7 @@ pywhatkit.shutdown(time=100) # Will shutdown the system
 
 pywhatkit.cancelShutdown() # Will cancel the scheduled shutdown
 
-pywhatkit.watch_tutorial_in_english/hindi() # Will open a tutorial on how to use this library on YouTube in respective language
+pywhatkit.tutorial_hindi/english() # Will open a tutorial on how to use this library on YouTube in respective language
 
 pywhatkit.sendMail(my_mail, my_pass, mail_to, content) # To send a mail to anybody.
 
@@ -73,11 +73,11 @@ pywhatkit.help() # For more information
 
 ```
 
-## *Contributing*
+## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 For more detailed information see [this](https://github.com/Ankit404butfound/PyWhatKit/blob/master/CONTRIBUTING.mdhttps://github.com/Ankit404butfound/PyWhatKit/blob/master/CONTRIBUTING.md)
 
-## *License*
+## License
 
 MIT

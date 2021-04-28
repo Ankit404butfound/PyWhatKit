@@ -12,7 +12,7 @@ Please make sure to read the documentation before making your contribution! It w
 
 NOTE: Please close your issue once it gets resolved.
 
-Once its filed someone from the maintainers will response as soon as possible to your issue. Please be patient.
+Once its filed, someone from the maintainers will respond as soon as possible to your issue. Please be patient.
 
 ### Request a Feature
 
@@ -41,7 +41,7 @@ To contribute the code:
 2. Make any necessary changes to the source code.
 3. If possible, make sure to include comments describing what your code does.
 4. Write clear, concise commit message(s).
-5. Push changes to your forked repository and when your are ready to get your changes reviewed, create a new PR from your forked repository.
+5. Push changes to your forked repository and when you are ready to get your changes reviewed, create a new PR from your forked repository.
 6. If your PR is connected to an open issue, add a line in your PR's description that says `Fixes: #123`, where `#123` is the number of the issue you're fixing.
 7. Someone from the maintainers will review your PR and will take the further steps.
 
