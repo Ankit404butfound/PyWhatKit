@@ -1,62 +1,124 @@
-![logo](https://github.com/Ankit404butfound/PyWhatKit/blob/master/Images/logo.png?raw=true)
 
-## Project Description
-
-PyWhatKit is a Python library for Sending WhatsApp message at certain time, it has several other features too.
-It is one of the safest tools for scheduling WhatsApp messages.
-
-## Useful Links
-
-### Read detailed description here - https://pywhatkit.herokuapp.com/
-
-### Request new feature here - https://pywhatkit.herokuapp.com/request-feature
-
-### Have some query or suggestions, join our discord server - [here](https://discord.com/channels/@me/830257036478119946/830370312653766727)
-
-## Downloads
-
-[![Downloads](https://pepy.tech/badge/pywhatkit/month)](https://pepy.tech/project/pywhatkit/month)
-
-## Installation
-
-`pip3 install pywhatkit`
-
-## Usage
-
-Import the library using the following command.
-
-`import pywhatkit`
+![logo](https://github.com/Ankit404butfound/PyWhatKit/raw/master/Images/logo.png?raw=true)
 
 
-- This will open web.whatsapp.com at 14:59:40 and message will be sent at exactly 15:00:00
+  
+[PyWhatKit](https://pypi.org/project/pywhatkit/) is a Python library with various helpful features. It is an easy to use library which does not requires you to do some additional setup. Currently it has about 100k+ downloads and counting and we regularly update and fix any bug.
 
-    `pywhatkit.sendwhatmsg("+919876543210","This is a message",15,00)`
+# Links
+- ### Official website - https://pywhatkit.herokuapp.com/
+- ### Request new feature here - https://pywhatkit.herokuapp.com/request-feature
+- ### Have some query or suggestions or want to become a beta tester, join our discord server - [Discord invite link](https://discord.gg/uwznv4jKgk)
 
-- This will give wikipedia summary about the topic using the Wikipedia API
+# Installation
 
-    `pywhatkit.info("Python",lines=3)`
+This library can be installed by the pip command, open you command prompt and type in the following command...
 
-- This will convert any given image to ASCII art, see my profile picture
+`pip install pywhatkit`
 
-    `pywhatkit.image_to_ascii_art(path_to_image,output_file)`
+# Functions of this library
 
-- This will convert that text to handwritten font with color combination 0,0,0 in RGB form
+First import the library using the command `import pywhatkit as kit` and then proceed to call the functions
 
-    `pywhatkit.text_to_handwriting(text,rgb=[0,0,0])`
+## kit.sendwhatmsg()
 
-<br>
+This function can be used to send WhatsApp message at certain time  
+  
+![](https://raw.githubusercontent.com/Ankit404butfound/PyWhatKit/master/Images/sendwhatmsg.png)  
 
-![character to handwriting](https://qphs.fs.quoracdn.net/main-qimg-6cb9c5263774b71a7905741ece958cc9)
+### The parameters are
 
-- This will play the first video that appears upon searching "Python" on YouTube
+**phone\_num** (required) - Phone number of target with country code  
+**message** (required) - Message that you want to sendwhatmsg  
+**time\_hour** (required) - Hours at which you want to send message in 24 hour format  
+**time\_min** (required) - Minutes at which you want to send message  
+**wait\_time** (optional, val=20) - Seconds after which the message will be sent after opening the web  
+**print\_waitTime** (optional, val=True) - Will print the remaining time if set to true  
 
-    `pywhatkit.playonyt("Python")`
+### Some common errors
 
-- This will perform a Google search about Python
+**CountryCodeException** - Check if the phone number passed into the parameter has [country code](https://en.wikipedia.org/wiki/List_of_country_calling_codes)  
+**Message not getting delivered** - Check internet speed and increase wait\_time to 30 or above
+**CallTimeException** - The web takes some time to load so some delay is required, make sure the seconds left is greater than the wait\_time  
+**SyntaxError** - Make sure the first two parameters are string and the rest are int
 
-    `pywhatkit.search("Python")`
+  
 
-### Some other functions
+## kit.playonyt()
+
+This function can be used to search and play a particular video on YouTube by using just the keyword, like "Shape of You song"  
+  
+![](https://raw.githubusercontent.com/Ankit404butfound/PyWhatKit/master/Images/playonyt.png)  
+
+### The parameters are
+
+**topic** (required) - Topic or title that is related to the video
+
+#### Some common errors
+
+**Video not opening** - Make sure the topic exists or you have provided proper spelling
+
+  
+
+## kit.search()
+
+This function can be used to make a google search for any term  
+  
+![](https://raw.githubusercontent.com/Ankit404butfound/PyWhatKit/master/Images/search.PNG)
+
+### The parameters are
+
+**topic** (required) - Topic or title that you want to search
+
+  
+
+## kit.info()
+
+This function can be used to fetch information about any topic  
+  
+![](https://raw.githubusercontent.com/Ankit404butfound/PyWhatKit/master/Images/info.PNG)
+
+### The parameters are
+
+**topic** (required) - Topic or title that you want to get information about  
+**lines** (optional, val=3) - Number of lines that you want to print about it
+
+#### Some common errors
+
+**Not returning paragraph** - Make sure the topic exists and you are providing specific title
+
+  
+
+## kit.image\_to\_ascii\_art()
+
+This function can be used to convert any image to ASCII art  
+  
+![](https://raw.githubusercontent.com/Ankit404butfound/PyWhatKit/master/Images/asciiart.PNG)
+
+### The parameters are
+
+**imgpath** (required) - Path to the image that you want to convert  
+**output\_file** (optional, val=pywhatkit\_asciiart.txt") - File where you want to save the output characters
+
+#### Some common errors
+
+**File not found** - Make sure that the path of the image is valid
+
+  
+
+## kit.text\_to\_handwriting()
+
+This function can be used to convert text to hand written characters, the character sets has been written by me  
+  
+![](https://raw.githubusercontent.com/Ankit404butfound/PyWhatKit/master/Images/text_to_handwriting.PNG)
+
+### The parameters are
+
+**string** (required) - String that you want to convert to handwritten text  
+**save\_to** (optional, val = "pywhatkit.png") - Path where the image will be saved  
+**rgb** (optional, val = \[0,0,138\]) - Color of the handwritten character in rgb format
+
+## Some other functions
 
 ```python
 pywhatkit.showHistory() # Will show information of all the messages sent using this library
@@ -69,10 +131,9 @@ pywhatkit.tutorial_hindi/english() # Will open a tutorial on how to use this lib
 
 pywhatkit.sendMail(my_mail, my_pass, mail_to, content) # To send a mail to anybody.
 
-pywhatkit.help() # For more information
+pywhatkit.help.<function>() # For more information
 
 ```
-
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
