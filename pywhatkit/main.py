@@ -26,6 +26,7 @@ def check_window() -> None:
 
 def weatherinfo(city=None,all =True,temprature=False,humidity=False,Condition=False,min_temprature=False,max_temp=False,min_temp=False,wind_speed=False,pressure=False):
     # work in progress
+    #################################################
     api_key = '3db6ed97b28ed688cfa27af00138f304'
     json_data = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}").json()
     temp = int(json_data['main']['temp'] - 273.15)
