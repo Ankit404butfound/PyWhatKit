@@ -15,6 +15,21 @@ sleep_time = "None, You can use this function to print the remaining time in sec
 path = ""
 current_path = os.getcwd()
 
+class print_execution_time:
+    """it returns the execution time of your code.example:-
+    timer = print_execution_time()
+    timer.start()
+    #your code
+    timer.end_timer()
+    print(timer.return_exe_time())"""
+    def start_timer(self):
+        global start
+        start = time.time()
+    def end_timer(self):
+        global end
+        end = time.time()
+    def return_exe_time(self):
+        return end - start
 
 def print_sleep_time() -> str:
     return sleep_time
