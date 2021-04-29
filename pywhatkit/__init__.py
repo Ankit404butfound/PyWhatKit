@@ -8,3 +8,4 @@ from pywhatkit.main import print_sleep_time, check_window, sendwhatmsg, sendwhat
 from pywhatkit.sc import shutdown, cancelShutdown
 from pywhatkit.wwd import tutorial_english, tutorial_hindi, developer_contact
 from pywhatkit.history import showHistory
+from pywhatkit.audio_book import create_audiobook
