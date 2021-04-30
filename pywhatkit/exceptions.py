@@ -12,7 +12,3 @@ class InternetException(Exception):
 
 class InvalidBrowserName(Exception):
     pass
-
-
-class InvalidEmailService(Exception):
-    pass

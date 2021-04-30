@@ -1,19 +1,13 @@
 import smtplib
-from .exceptions import InvalidEmailService
 from email.message import EmailMessage
 
 
 def send_mail(email_sender: str, password: str, subject: str,
-              message: str, email_receiver: str, service: str = 'gmail') -> None:
-    """Supported service names are gmail, aol, outlook, yahoo"""
+              message: str, email_receiver: str, hostname: str = 'smtp.gmail.com') -> None:
 
-    if service.lower() not in ["gmail", "aol", "outlook", "yahoo"]:
-        raise InvalidEmailService("Service not supported")
+    """You can find the SMTP hostname of your service by searching on Google"""
 
-    hostnames = {"gmail": "smtp.gmail.com", "yahoo": "smtp.mail.yahoo.com",
-                 "outlook": "smtp.live.com", "aol": "smtp.aol.com"}
-
-    with smtplib.SMTP_SSL(hostnames[service], 465) as smtp:
+    with smtplib.SMTP_SSL(hostname, 465) as smtp:
         smtp.login(email_sender, password)
 
         msg = EmailMessage()
