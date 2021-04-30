@@ -9,6 +9,7 @@
 - ### Official website - https://pywhatkit.herokuapp.com/
 - ### Request new feature here - https://pywhatkit.herokuapp.com/request-feature
 - ### Have some query or suggestions or want to become a beta tester, join our discord server - [Discord invite link](https://discord.gg/uwznv4jKgk)
+- ### Help us test an upcoming feature - https://pywhatkit.herokuapp.com/remote-kit
 
 # Installation
 
