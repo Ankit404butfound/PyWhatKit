@@ -32,7 +32,7 @@ def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait
     # If the browser Window is not maximized this function won't work
     # Use check_window to check this
 
-    if browser.lower() not in ["chrome", "firefox", "brave", "opera"]:
+    if browser and browser.lower() not in ["chrome", "firefox", "brave", "opera"]:
         raise InvalidBrowserName("Browser name can be firefox, chrome, brave, opera")
 
     global sleep_time
