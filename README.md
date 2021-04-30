@@ -3,7 +3,7 @@
 
 
   
-[PyWhatKit](https://pypi.org/project/pywhatkit/) is a Python library with various helpful features. It is an easy to use library which does not requires you to do some additional setup. Currently it has about 100k+ downloads and counting and we regularly update and fix any bug.
+[PyWhatKit](https://pypi.org/project/pywhatkit/) is a Python library with various helpful features. It is an easy-to-use library which does not require you to do some additional setup. Currently, it has about 100k+ downloads and counting, and new updates are released frequently with various bug fixes.
 
 # Links
 - ### Official website - https://pywhatkit.herokuapp.com/
@@ -57,13 +57,13 @@ This function can be used to search and play a particular video on YouTube by us
 
 #### Some common errors
 
-**Video not opening** - Make sure the topic exists or you have provided proper spelling
+**Video not opening** - Make sure the topic exists, or you have provided proper spelling
 
   
 
 ## kit.search()
 
-This function can be used to make a google search for any term  
+This function can be used to make a Google search for any term  
   
 ![](https://raw.githubusercontent.com/Ankit404butfound/PyWhatKit/master/Images/search.PNG)
 
@@ -86,7 +86,7 @@ This function can be used to fetch information about any topic
 
 #### Some common errors
 
-**Not returning paragraph** - Make sure the topic exists and you are providing specific title
+**Not returning paragraph** - Make sure the topic exists, and you are providing specific title
 
   
 
@@ -109,7 +109,7 @@ This function can be used to convert any image to ASCII art
 
 ## kit.text\_to\_handwriting()
 
-This function can be used to convert text to hand written characters, the character sets has been written by me  
+This function can be used to convert text to handwritten characters, the character sets has been written by me  
   
 ![](https://raw.githubusercontent.com/Ankit404butfound/PyWhatKit/master/Images/text_to_handwriting.PNG)
 
@@ -129,8 +129,6 @@ pywhatkit.shutdown(time=100) # Will shutdown the system
 pywhatkit.cancelShutdown() # Will cancel the scheduled shutdown
 
 pywhatkit.tutorial_hindi/english() # Will open a tutorial on how to use this library on YouTube in respective language
-
-pywhatkit.sendMail(my_mail, my_pass, mail_to, content) # To send a mail to anybody.
 
 pywhatkit.help.<function>() # For more information
 
