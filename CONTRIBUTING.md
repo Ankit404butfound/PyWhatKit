@@ -22,6 +22,14 @@ If the project doesn't do something you need or want it to do:
 * Provide as much context as you can about what you're running into.
 * If you want to contribute that feature yourself, please open a new draft PR [here](https://github.com/Ankit404butfound/PyWhatKit/pulls).
 
+### Code Formatting
+
+Please make sure that your code follows the PEP8 standards and that you provide proper type hinting for the functions and parameters.
+We will soon be adding a new workflow to format the code according to PEP8 but till the time you can use the autopep8 library to do so.
+1. Install autopep8 using `pip3 install autopep8`.
+2. Run `autopep8 -i filename`, replace the filename with the name of the file you want to format.
+3. Save and commit your changes.
+
 ### Contribute Code
 
 We like code commits a lot! They're super handy, and they keep the project going and doing the work it needs to do to be useful to others.

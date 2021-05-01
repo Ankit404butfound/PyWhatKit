@@ -16,3 +16,9 @@ def tutorial_english() -> None:
 def developer_contact() -> None:
     """Contact information of developer for feedbacks"""
     print("Message me on Telegram, username - Tag_kiya_kya\nOr email me at ankitrajjitendra816@gmail.com.")
+
+
+def join_discord() -> None:
+    """Opens the invite link for the discord server"""
+    web.open("https://discord.gg/NSdZknvDdH")
+
