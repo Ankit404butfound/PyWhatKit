@@ -9,3 +9,4 @@ from pywhatkit.sc import shutdown, cancelShutdown
 from pywhatkit.wwd import tutorial_english, tutorial_hindi, developer_contact
 from pywhatkit.history import showHistory
 from pywhatkit.audiobook import create_audiobook
+from pywhatkit.mail import send_mail
