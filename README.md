@@ -6,8 +6,7 @@
 [PyWhatKit](https://pypi.org/project/pywhatkit/) is a Python library with various helpful features. It is an easy-to-use library which does not require you to do some additional setup. Currently, it has about 100k+ downloads and counting, and new updates are released frequently with various bug fixes.
 
 # Links
-- ### Official website - https://pywhatkit.herokuapp.com/
-- ### Request new feature here - https://pywhatkit.herokuapp.com/request-feature
+
 - ### Have some query or suggestions or want to become a beta tester, join our discord server - [Discord invite link](https://discord.gg/uwznv4jKgk)
 - ### Help us test an upcoming feature - https://pywhatkit.herokuapp.com/remote-kit
 
