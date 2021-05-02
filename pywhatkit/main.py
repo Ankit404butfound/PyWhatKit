@@ -4,7 +4,6 @@ import pyautogui as pg
 import wikipedia
 import requests
 import os
-import smtplib
 from urllib.parse import quote
 from .exceptions import *
 
