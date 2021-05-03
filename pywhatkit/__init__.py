@@ -1,4 +1,4 @@
-"""This piece of software was last updated on 01-May-2021 at 01:30 IST.
+"""This piece of software was last updated on 03-May-2021 at 16:30 IST.
 Pull requests are always welcomed"""
 
 from pywhatkit.ascii_art import image_to_ascii_art
