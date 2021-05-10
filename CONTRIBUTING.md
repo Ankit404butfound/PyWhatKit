@@ -25,8 +25,8 @@ If the project doesn't do something you need or want it to do:
 ### Code Formatting
 
 Please make sure that your code follows the PEP8 standards and that you provide proper type hinting for the functions and parameters.
-We will soon be adding a new workflow to format the code according to PEP8 but till the time you can use the autopep8 library to do so.
-1. Install autopep8 using `pip3 install autopep8`.
+We will soon be adding a new workflow to format the code according to PEP8 but till the time you can use the `autopep8` library to do so.
+1. Install `autopep8` using `pip3 install autopep8`.
 2. Run `autopep8 -i filename`, replace the filename with the name of the file you want to format.
 3. Save and commit your changes.
 
@@ -54,6 +54,10 @@ To contribute the code:
 7. Someone from the maintainers will review your PR and will take the further steps.
 
 NOTE: To contribute to the Documentation, follow the same steps as above.
+
+### Adding New Features
+
+If you want to add new features to the library, please open an issue first to discuss it. Thanks
 
 ### Provide Support on Issues
 
