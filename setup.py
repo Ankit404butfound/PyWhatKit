@@ -24,7 +24,8 @@ setup(
         'wikipedia',
         'requests',
         'Pillow',
-
+        'gTTS',
+        'PYPDF2'
     ],
     include_package_data=True,
     long_description=readme(),
