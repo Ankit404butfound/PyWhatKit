@@ -23,9 +23,7 @@ setup(
         'pyautogui',
         'wikipedia',
         'requests',
-        'Pillow',
-        'gTTS',
-        'PYPDF2'
+        'Pillow'
     ],
     include_package_data=True,
     long_description=readme(),

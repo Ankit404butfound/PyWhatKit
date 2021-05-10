@@ -4,7 +4,6 @@ import pyautogui as pg
 import wikipedia
 import requests
 import os
-import smtplib
 from urllib.parse import quote
 from .exceptions import *
 from PIL import ImageGrab
@@ -16,31 +15,12 @@ path = ""
 current_path = os.getcwd()
 
 
-class print_execution_time:
-    """it returns the execution time of your code.example:-
-    timer = print_execution_time()
-    timer.start()
-    #your code
-    timer.end_timer()
-    print(timer.return_exe_time())"""
-
-    def start_timer(self):
-        global start
-        start = time.time()
-
-    def end_timer(self):
-        global end
-        end = time.time()
-
-    def return_exe_time(self):
-        return end - start
-
-
 def print_sleep_time() -> str:
     return sleep_time
 
 
-def takescreenshot(file_name='pywhatkit_screenshot'):
+def take_screenshot(file_name: str = 'pywhatkit_screenshot') -> None:
+    """You can change the filename as per your wish"""
     screen = ImageGrab.grab()
     screen.show()
     screen.save(f'{file_name}.png')
@@ -48,7 +28,7 @@ def takescreenshot(file_name='pywhatkit_screenshot'):
 
 def check_window() -> None:
     web.open("https://www.google.com")
-    pg.alert("If the browser's window is not maximised,\nMaximise and then close it if you want,\nor sendwhatmsg() "
+    pg.alert("If the browser's window is not maximized,\nMaximise and then close it if you want,\nor sendwhatmsg() "
              "function will not work", "Pywhatkit")
 
 
