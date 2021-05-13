@@ -8,7 +8,6 @@ from typing import Union
 
 def send_mail(email_sender: str, password: str, subject: str,
               message: Union[str, MIMEText], email_receiver: str) -> None:
-
     """Please make sure the credentials are correct"""
 
     domain = re.search("(?<=@)[^.]+(?=\\.)", email_sender)
@@ -36,11 +35,11 @@ def send_mail(email_sender: str, password: str, subject: str,
 
         smtp.send_message(msg)
         print('Email sent Successfully!')
-        
-        
-def send_hmail(email_sender: str, password: str, subject: str,
-              html_code: str, email_receiver: str) -> None:
 
+
+def send_hmail(email_sender: str, password: str, subject: str,
+               html_code: str, email_receiver: str) -> None:
+    """Send a mail with html code"""
 
     message = MIMEText(html_code, "html")
-    send_mail(email_sender,password,subject,message,email_receiver)
+    send_mail(email_sender, password, subject, message, email_receiver)
