@@ -24,7 +24,7 @@ def shutdown(time: int = 20) -> None:
         raise Warning("This function is for Windows, Mac and Linux users only, can't execute on %s" % osname)
 
 
-def cancelShutdown() -> None:
+def cancel_shutdown() -> None:
     """Will cancel the scheduled shutdown"""
     if "window" in osname.lower():
         cont = "shutdown /a"

@@ -4,13 +4,13 @@ Thank you so much for your interest in contributing!. All types of contributions
 
 Please make sure to read the documentation before making your contribution! It will make it a lot easier for us maintainers to make the most of it and smooth out the experience for all involved. 💚
 
-## If you have a question about this project, how to use it, or just need clarification about something:
+### If you have a question about this project, how to use it, or just need clarification about something:
 
 * Open an Issue [here](https://github.com/Ankit404butfound/PyWhatKit/issues)
 * Provide as much context as you can about what you're running into.
 * Provide project and platform versions (python, pip etc), depending on what seems relevant. If not, please be ready to provide that information if maintainers ask for it.
 
-## **Request a Feature**
+### Request a Feature
 
 If the project doesn't do something you need or want it to do:
 
@@ -18,7 +18,24 @@ If the project doesn't do something you need or want it to do:
 * Provide as much context as you can about what you're looking for.
 * If you want to contribute that feature yourself, please open a new draft PR [here](https://github.com/Ankit404butfound/PyWhatKit/pulls).
 
-## **Contributing** 📝
+### Code Formatting
+
+Please make sure that your code follows the PEP8 standards and that you provide proper type hinting for the functions and parameters.
+We will soon be adding a new workflow to format the code according to PEP8 but till the time you can use the `autopep8` library to do so.
+1. Install `autopep8` using `pip3 install autopep8`.
+2. Run `autopep8 -i filename`, replace the filename with the name of the file you want to format.
+3. Save and commit your changes.
+
+### Contributing Code
+
+Code contributions of just about any size are acceptable!
+
+Setting up a development environment:
+
+1. Fork the repository and then clone it to your local computer.
+2. OPTIONAL BUT RECOMMENDED: Create a new virtual environment using `virtualenv`.
+3. Activate the virtual environment and install the project dependencies using `pip3 install -r requirements.txt`.
+4. Congrats 🎉, you are now ready to contribute.
 
 To contribute the code:
 
@@ -31,30 +48,6 @@ To contribute the code:
 7. Someone from the maintainers will review your PR and will take the further steps.
 
 NOTE: To contribute to the Documentation, follow the same steps as above.
-
-## Code Formatting
-
-Please make sure that your code follows the PEP8 standards and that you provide proper type hinting for the functions and parameters.
-Before committing your changes to the repository, run `pipenv run lint`.
-This will highlight all the errors that it found so that you can fix them.
-After fixing all the errors, commit your changes and then open a PR.
-
-## **Setting up the Environment:** 💻
-
-### Please ensure that you have Python version 3.8
-### This guides you through the setting up the Environment for working with the project.
-
-<br>
-
-1. *Fork the repository.*
-2. *Clone it to your local machine to work with the Project.*
-3. *Install pipenv if you haven't using `pip3 install pipenv`.*  
-4. *Create a Virtual Environment with pipenv using `pipenv shell`.*
-5. *Install the project dependencies using `pipenv install --dev`.*  
-6. *Open the Project in the Editor of your choice.*
-7. *Congratulations, you are now ready to Contribute.* 🎉
-
-> NOTE: You can use virtualenv to create the environment but when running the pre-commit command, it will highlight the errors in the packages too, so we don't recommend using it.
 
 ### Adding New Features
 
