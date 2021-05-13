@@ -1,5 +1,6 @@
 import smtplib
 from email.message import EmailMessage
+from email.mime.text import MIMEText
 import re
 from .exceptions import UnsupportedEmailProvider
 
@@ -34,3 +35,11 @@ def send_mail(email_sender: str, password: str, subject: str,
 
         smtp.send_message(msg)
         print('Email sent Successfully!')
+        
+        
+def send_hmail(email_sender: str, password: str, subject: str,
+              html_code: str, email_receiver: str) -> None:
+
+
+    message = MIMEText(html_code, "html")
+    send_mail(email_sender,password,subject,message,email_receiver)
