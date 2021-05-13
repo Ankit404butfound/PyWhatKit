@@ -21,4 +21,3 @@ def developer_contact() -> None:
 def join_discord() -> None:
     """Opens the invite link for the discord server"""
     web.open("https://discord.gg/NSdZknvDdH")
-

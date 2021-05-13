@@ -10,16 +10,12 @@ Please make sure to read the documentation before making your contribution! It w
 * Provide as much context as you can about what you're running into.
 * Provide project and platform versions (python, pip etc), depending on what seems relevant. If not, please be ready to provide that information if maintainers ask for it.
 
-NOTE: Please close your issue once it gets resolved.
-
-Once its filed, someone from the maintainers will respond as soon as possible to your issue. Please be patient.
-
 ### Request a Feature
 
 If the project doesn't do something you need or want it to do:
 
 * Head over to [this page](https://pywhatkit.herokuapp.com/request-feature)
-* Provide as much context as you can about what you're running into.
+* Provide as much context as you can about what you're looking for.
 * If you want to contribute that feature yourself, please open a new draft PR [here](https://github.com/Ankit404butfound/PyWhatKit/pulls).
 
 ### Code Formatting
@@ -30,9 +26,7 @@ We will soon be adding a new workflow to format the code according to PEP8 but t
 2. Run `autopep8 -i filename`, replace the filename with the name of the file you want to format.
 3. Save and commit your changes.
 
-### Contribute Code
-
-We like code commits a lot! They're super handy, and they keep the project going and doing the work it needs to do to be useful to others.
+### Contributing Code
 
 Code contributions of just about any size are acceptable!
 
