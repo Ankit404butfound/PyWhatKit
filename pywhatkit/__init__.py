@@ -1,5 +1,4 @@
-"""This piece of software was last updated on 10-May-2021 at 22:50 IST.
-Pull requests are always welcomed"""
+"""Pull requests are always welcomed"""
 
 from pywhatkit.ascii_art import image_to_ascii_art
 from pywhatkit.chr_to_handwriting import text_to_handwriting
