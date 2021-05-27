@@ -7,7 +7,8 @@ osname = platform.system()
 def shutdown(time: int = 20) -> None:
     # For Windows, time should be given in seconds
     # For MacOS and Linux based distributions, time should be given in minutes
-
+    global osname
+    osname = platform.system()
     if "window" in osname.lower():
         cont = "shutdown -s -t %s" % time
         os.system(cont)
@@ -26,6 +27,8 @@ def shutdown(time: int = 20) -> None:
 
 def cancel_shutdown() -> None:
     """Will cancel the scheduled shutdown"""
+    global osname
+    osname = platform.system()
     if "window" in osname.lower():
         cont = "shutdown /a"
         os.system(cont)
