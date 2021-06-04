@@ -152,10 +152,11 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
     pg.typewrite(message + "\n")
 
 
-def info(topic: str, lines: int = 3) -> None:
+def info(topic: str, lines: int = 3) -> str:
     # Gives information on the topic
     spe = wikipedia.summary(topic, sentences=lines)
     print(spe)
+    return spe
 
 
 def playonyt(topic: str, use_api: bool = False) -> str:
