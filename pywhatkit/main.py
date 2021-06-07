@@ -41,7 +41,7 @@ def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait
 
     if browser.lower() not in ["chrome", "firefox", "brave", "opera"]:
         raise InvalidBrowserName(
-          "Browser name can be firefox, chrome, brave, opera")
+            "Browser name can be firefox, chrome, brave, opera")
     global sleep_time
     if "+" not in phone_no:
         raise CountryCodeException("Country code missing from phone_no")
