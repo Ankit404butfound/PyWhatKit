@@ -186,6 +186,16 @@ def playonyt(topic: str, use_api: bool = False) -> str:
         return "https://www.youtube.com" + lst[count - 5]
 
 
+def open_web() -> bool:
+    """Opens WhatsApp Web"""
+    try:
+        web.open("https://web.whatsapp.com")
+    except Exception:
+        return False
+    else:
+        return True
+
+
 def search(topic: str) -> None:
     """Searches about the topic on Google"""
     link = 'https://www.google.com/search?q={}'.format(topic)
