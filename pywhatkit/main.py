@@ -41,7 +41,7 @@ def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait
 
     if browser.lower() not in ["chrome", "firefox", "brave", "opera"]:
         raise InvalidBrowserName(
-          "Browser name can be firefox, chrome, brave, opera")
+            "Browser name can be firefox, chrome, brave, opera")
     global sleep_time
     if "+" not in phone_no:
         raise CountryCodeException("Country code missing from phone_no")
@@ -184,6 +184,16 @@ def playonyt(topic: str, use_api: bool = False) -> str:
         # print("Videos found, opening most recent video")
         web.open("https://www.youtube.com" + lst[count - 5])
         return "https://www.youtube.com" + lst[count - 5]
+
+
+def open_web() -> bool:
+    """Opens WhatsApp Web"""
+    try:
+        web.open("https://web.whatsapp.com")
+    except Exception:
+        return False
+    else:
+        return True
 
 
 def search(topic: str) -> None:
