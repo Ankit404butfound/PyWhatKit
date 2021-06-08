@@ -21,7 +21,8 @@ def shutdown(time: int = 20) -> None:
         os.system(cont)
 
     else:
-        raise Warning("This function is for Windows, Mac and Linux users only, can't execute on %s" % osname)
+        raise Warning(
+            "This function is for Windows, Mac and Linux users only, can't execute on %s" % osname)
 
 
 def cancel_shutdown() -> None:
@@ -42,4 +43,5 @@ def cancel_shutdown() -> None:
         print("Shutdown has been Cancelled!")
 
     else:
-        raise Warning("This function is for Windows and Linux only, can't execute on: %s" % osname)
+        raise Warning(
+            "This function is for Windows and Linux only, can't execute on: %s" % osname)
