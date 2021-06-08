@@ -22,7 +22,8 @@ def send_mail(email_sender: str, password: str, subject: str,
             break
 
     if hostname is None:
-        raise UnsupportedEmailProvider(f"{domain.group()} is not supported currently!")
+        raise UnsupportedEmailProvider(
+            f"{domain.group()} is not supported currently!")
 
     with smtplib.SMTP_SSL(hostname, 465) as smtp:
         smtp.login(email_sender, password)
