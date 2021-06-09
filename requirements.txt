@@ -3,4 +3,4 @@ opencv_python==4.5.1.48
 wikipedia==1.4.0
 PyAutoGUI==0.9.52
 numpy==1.19.5
-Pillow==8.1.1
+Pillow==8.2.0
