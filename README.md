@@ -1,5 +1,7 @@
+![image](https://user-images.githubusercontent.com/54436840/121497964-980d9a00-c9f9-11eb-9d7f-c3072d8f09d2.png)
 
-![logo](https://github.com/Ankit404butfound/PyWhatKit/raw/master/Images/logo.png?raw=true)
+
+<!-- ![logo](https://github.com/Ankit404butfound/PyWhatKit/raw/master/Images/logo.png?raw=true) -->
 
 
 
