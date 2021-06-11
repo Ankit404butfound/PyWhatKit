@@ -195,8 +195,9 @@ def info(topic: str, lines: int = 3, return_value: bool = False) -> Optional[str
         return spe
 
 
-def close_tab() -> NoReturn:
+def close_tab(wait_time: int = 2) -> NoReturn:
     """Closes the Currently Opened Browser Tab"""
+    time.sleep(wait_time)
     pg.hotkey("ctrl", "w")
     pg.press("enter")
 
