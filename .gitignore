@@ -109,3 +109,6 @@ venv.bak/
 
 # Test Files
 Test.py
+
+# DBS File
+*_dbs.txt
