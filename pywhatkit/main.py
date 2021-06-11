@@ -27,7 +27,7 @@ def take_screenshot(file_name: str = 'pywhatkit_screenshot') -> NoReturn:
     screen.save(f'{file_name}.png')
 
 
-def check_window() -> None:
+def check_window() -> NoReturn:
     """Check if the browser Window is maximized or not"""
     web.open("https://www.google.com")
     pg.alert("If the browser's window is not maximized,\nMaximise and then close it if you want,\nor sendwhatmsg() "
