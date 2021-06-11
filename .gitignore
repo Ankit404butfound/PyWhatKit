@@ -106,3 +106,9 @@ venv.bak/
 # Editor config folders
 .vscode
 .idea
+
+# Test Files
+Test.py
+
+# DBS File
+*_dbs.txt

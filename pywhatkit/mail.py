@@ -3,12 +3,12 @@ from email.message import EmailMessage
 from email.mime.text import MIMEText
 import re
 from .exceptions import UnsupportedEmailProvider
-from typing import Union
+from typing import Union, NoReturn
 
 
 def send_mail(email_sender: str, password: str, subject: str,
-              message: Union[str, MIMEText], email_receiver: str) -> None:
-    """Please make sure the credentials are correct"""
+              message: Union[str, MIMEText], email_receiver: str) -> NoReturn:
+    """Send an Email"""
 
     domain = re.search("(?<=@)[^.]+(?=\\.)", email_sender)
 
@@ -39,8 +39,8 @@ def send_mail(email_sender: str, password: str, subject: str,
 
 
 def send_hmail(email_sender: str, password: str, subject: str,
-               html_code: str, email_receiver: str) -> None:
-    """Send a mail with html code"""
+               html_code: str, email_receiver: str) -> NoReturn:
+    """Send an Email with HTML code"""
 
     message = MIMEText(html_code, "html")
     send_mail(email_sender, password, subject, message, email_receiver)

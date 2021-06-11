@@ -1,10 +1,12 @@
 import platform
 import os
+from typing import NoReturn
 
 osname = platform.system()
 
 
-def shutdown(time: int = 20) -> None:
+def shutdown(time: int = 20) -> NoReturn:
+    """Shutdowns the machine in a given time"""
     # For Windows, time should be given in seconds
     # For MacOS and Linux based distributions, time should be given in minutes
 
@@ -25,7 +27,7 @@ def shutdown(time: int = 20) -> None:
             "This function is for Windows, Mac and Linux users only, can't execute on %s" % osname)
 
 
-def cancel_shutdown() -> None:
+def cancel_shutdown() -> NoReturn:
     """Will cancel the scheduled shutdown"""
     if "window" in osname.lower():
         cont = "shutdown /a"
