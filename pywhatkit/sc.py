@@ -5,6 +5,7 @@ osname = platform.system()
 
 
 def shutdown(time: int = 20) -> None:
+    """Shutdowns the machine in a given time"""
     # For Windows, time should be given in seconds
     # For MacOS and Linux based distributions, time should be given in minutes
 
