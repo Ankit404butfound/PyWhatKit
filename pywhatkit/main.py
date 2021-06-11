@@ -21,21 +21,47 @@ def print_sleep_time() -> str:
 
 
 def take_screenshot(file_name: str = 'pywhatkit_screenshot') -> NoReturn:
-    """You can change the filename as per your wish"""
+    """Take Screenshot, you can change the filename as per your Wish"""
     screen = ImageGrab.grab()
     screen.show()
     screen.save(f'{file_name}.png')
 
 
 def check_window() -> None:
+    """Check if the browser Window is maximized or not"""
     web.open("https://www.google.com")
     pg.alert("If the browser's window is not maximized,\nMaximise and then close it if you want,\nor sendwhatmsg() "
              "function will not work", "Pywhatkit")
 
 
+def sendwhatmsg_instantly(phone_no: str, message: str, wait_time: int = 20,
+                          browser: str = None, tab_close: bool = False) -> NoReturn:
+    """Send WhatsApp Message Instantly"""
+
+    if browser and browser.lower() not in ["chrome", "firefox", "brave", "opera"]:
+        raise InvalidBrowserName("Browser name can be firefox, chrome, brave, opera")
+
+    if "+" not in phone_no:
+        raise CountryCodeException("Country code missing from phone_no")
+
+    parsed_message = quote(message)
+    web.open('https://web.whatsapp.com/send?phone=' + phone_no + '&text=' + parsed_message)
+    time.sleep(2)
+    width, height = pg.size()
+    if browser:
+        whats = pg.getWindowsWithTitle(browser)[0]
+        whats.maximize()
+        whats.activate()
+    pg.click(width / 2, height / 2)
+    time.sleep(wait_time - 2)
+    pg.press('enter')
+    if tab_close:
+        close_tab()
+
+
 def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait_time: int = 20,
-                print_wait_time: bool = True, browser: str = None) -> NoReturn:
-    # Sends a message at a specific time
+                print_wait_time: bool = True, browser: str = None, tab_close: bool = False) -> NoReturn:
+    """Sends a WhatsApp Message"""
     # Phone number should be given as a string
     # If the browser Window is not maximized this function won't work
     # Use check_window to check this
@@ -100,10 +126,13 @@ def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait
     pg.click(width / 2, height / 2)
     time.sleep(wait_time - 2)
     pg.press('enter')
+    if tab_close:
+        close_tab()
 
 
 def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: int, wait_time: int = 20,
-                         print_wait_time: bool = True) -> NoReturn:
+                         print_wait_time: bool = True, tab_close: bool = False) -> NoReturn:
+    """Send WhatsApp Message to a Group"""
     # Group ID is in the group's invite link
     # https://chat.whatsapp.com/AB123CDEFGHijklmn, here AB123CDEFGHijklmn is group ID
     if time_hour not in range(0, 25) or time_min not in range(0, 60):
@@ -154,19 +183,28 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
     time.sleep(wait_time - 2)
     pg.click(width / 2, height - height / 10)
     pg.typewrite(message + "\n")
+    if tab_close:
+        close_tab()
 
 
 def info(topic: str, lines: int = 3, return_value: bool = False) -> Optional[str]:
-    # Gives information on the topic
+    """Gives information on the topic"""
     spe = wikipedia.summary(topic, sentences=lines)
     print(spe)
     if return_value:
         return spe
 
 
+def close_tab() -> NoReturn:
+    """Closes the Currently Opened Browser Tab"""
+    pg.hotkey("ctrl", "w")
+    pg.press("enter")
+
+
 def playonyt(topic: str, use_api: bool = False) -> str:
+    """Play a YouTube Video"""
     # use_api uses the pywhatkit playonyt API to get the url for the video
-    # Only to be used if the function is not working properly on its own
+    # use the api only if the function is not working properly on its own
 
     if use_api is True:
         response = requests.get(
