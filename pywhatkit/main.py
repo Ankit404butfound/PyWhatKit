@@ -209,7 +209,7 @@ def playonyt(topic: str, use_api: bool = False) -> str:
 
     if use_api is True:
         response = requests.get(
-            f"https://mypywhatkit.herokuapp.com/playonyt?topic={topic}")
+            f"https://pywhatkit.herokuapp.com/playonyt?topic={topic}")
         web.open(response.content.decode('ascii'))
     else:
         url = 'https://www.youtube.com/results?q=' + topic
