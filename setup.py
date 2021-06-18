@@ -11,7 +11,7 @@ def readme() -> str:
 setup(
     name='pywhatkit',
     packages=setuptools.find_packages(),
-    version='4.7',
+    version='4.8',
     license='MIT',
     description='PyWhatKit is a Python library for Sending whatsapp message at certain time, it has several other features too.',
     author='Ankit Raj Mahapatra',

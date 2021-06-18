@@ -1,16 +1,15 @@
 ![image](https://user-images.githubusercontent.com/54436840/121497964-980d9a00-c9f9-11eb-9d7f-c3072d8f09d2.png)
 
-
 <!-- ![logo](https://github.com/Ankit404butfound/PyWhatKit/raw/master/Images/logo.png?raw=true) -->
-
-
 
 [PyWhatKit](https://pypi.org/project/pywhatkit/) is a Python library with various helpful features. It is an easy-to-use library which does not require you to do some additional setup. Currently, it has about 100k+ downloads and counting, and new updates are released frequently with various bug fixes.
 
 # Links
 
 - ### Have some query or suggestions or want to become a beta tester, join our discord server - [Discord invite link](https://discord.gg/uwznv4jKgk)
+
 - ### Help us test an upcoming feature - [here](https://pywhatkit.herokuapp.com/remote-kit)
+
 - ### Documentation - [Wiki](https://github.com/Ankit404butfound/PyWhatKit/wiki)
 
 ## Contributing
