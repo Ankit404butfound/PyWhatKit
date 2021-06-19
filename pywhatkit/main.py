@@ -7,7 +7,18 @@ import os
 from urllib.parse import quote
 from .exceptions import *
 from typing import NoReturn, Optional
-from PIL import ImageGrab
+from platform import system
+
+if system().lower() in ("windows", "darwin"):
+    from PIL import ImageGrab
+
+    def take_screenshot(file_name: str = 'pywhatkit_screenshot') -> NoReturn:
+        """Take Screenshot, you can change the filename as per your Wish"""
+        screen = ImageGrab.grab()
+        screen.show()
+        screen.save(f'{file_name}.png')
+else:
+    pass
 
 last = time.time()
 pg.FAILSAFE = False
@@ -18,13 +29,6 @@ current_path = os.getcwd()
 
 def print_sleep_time() -> str:
     return sleep_time
-
-
-def take_screenshot(file_name: str = 'pywhatkit_screenshot') -> NoReturn:
-    """Take Screenshot, you can change the filename as per your Wish"""
-    screen = ImageGrab.grab()
-    screen.show()
-    screen.save(f'{file_name}.png')
 
 
 def check_window() -> NoReturn:
@@ -39,13 +43,15 @@ def sendwhatmsg_instantly(phone_no: str, message: str, wait_time: int = 20,
     """Send WhatsApp Message Instantly"""
 
     if browser and browser.lower() not in ["chrome", "firefox", "brave", "opera"]:
-        raise InvalidBrowserName("Browser name can be firefox, chrome, brave, opera")
+        raise InvalidBrowserName(
+            "Browser name can be firefox, chrome, brave, opera")
 
     if "+" not in phone_no:
         raise CountryCodeException("Country code missing from phone_no")
 
     parsed_message = quote(message)
-    web.open('https://web.whatsapp.com/send?phone=' + phone_no + '&text=' + parsed_message)
+    web.open('https://web.whatsapp.com/send?phone=' +
+             phone_no + '&text=' + parsed_message)
     time.sleep(2)
     width, height = pg.size()
     if browser:
