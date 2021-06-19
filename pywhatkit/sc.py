@@ -14,7 +14,8 @@ def shutdown(time: int = 20) -> NoReturn:
     """
     # For Windows, time should be given in seconds
     # For MacOS and Linux based distributions, time should be given in minutes
-
+    global osname
+    osname = platform.system()
     if "window" in osname.lower():
         cont = f"shutdown -s -t {time}"
         ErrorCode = os.system(cont)
@@ -41,6 +42,8 @@ def cancel_shutdown() -> NoReturn:
     """
     Will cancel the scheduled shutdown
     """
+    global osname
+    osname = platform.system()
     if "window" in osname.lower():
         cont = "shutdown /a"
         ErrorCode = os.system(cont)
