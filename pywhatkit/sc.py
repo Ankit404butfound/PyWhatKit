@@ -4,7 +4,6 @@ from typing import NoReturn
 import winerror
 osname = platform.system()
 
-
 def shutdown(time: int = 20) -> NoReturn:
     """
     Gives a shutdown request to the system with the specified time
@@ -21,7 +20,6 @@ def shutdown(time: int = 20) -> NoReturn:
         ErrorCode = os.system(cont)
         if ErrorCode == winerror.ERROR_SHUTDOWN_IN_PROGRESS or ErrorCode == 1115:# Here 1115 is the error code of scheduled shutdown.
             print("A shutdown process has already been scheduled...\nIgnoring this process")
-
         else:
             print(f"Your System will shutdown in {time} seconds")
 
