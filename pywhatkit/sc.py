@@ -1,7 +1,7 @@
 import platform
 import os
 from typing import NoReturn
-import winerror 
+import winerror
 osname = platform.system()
 
 
