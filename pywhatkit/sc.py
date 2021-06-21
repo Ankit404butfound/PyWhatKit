@@ -1,7 +1,10 @@
 import platform
 import os
 from typing import NoReturn
-import winerror
+try:
+    import winerror
+except Exception:
+    pass
 osname = platform.system()
 
 def shutdown(time: int = 20) -> NoReturn:
