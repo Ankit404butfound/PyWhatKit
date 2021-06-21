@@ -3,7 +3,7 @@ import os
 from typing import NoReturn
 try:
     import winerror
-except Exception:
+except ImportError or ModuleNotFoundError:
     pass
 osname = platform.system()
 
