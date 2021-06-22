@@ -6,13 +6,13 @@ import requests
 import os
 from urllib.parse import quote
 from .exceptions import *
-from typing import NoReturn, Optional
+from typing import Union, Optional
 from platform import system
 
 if system().lower() in ("windows", "darwin"):
     from PIL import ImageGrab
 
-    def take_screenshot(file_name: str = 'pywhatkit_screenshot') -> NoReturn:
+    def take_screenshot(file_name: str = 'pywhatkit_screenshot') -> None:
         """Take Screenshot, you can change the filename as per your Wish"""
         screen = ImageGrab.grab()
         screen.show()
@@ -27,11 +27,11 @@ path = ""
 current_path = os.getcwd()
 
 
-def print_sleep_time() -> str:
+def print_sleep_time() -> Union[str, int]:
     return sleep_time
 
 
-def check_window() -> NoReturn:
+def check_window() -> None:
     """Check if the browser Window is maximized or not"""
     web.open("https://www.google.com")
     pg.alert("If the browser's window is not maximized,\nMaximise and then close it if you want,\nor sendwhatmsg() "
@@ -39,12 +39,8 @@ def check_window() -> NoReturn:
 
 
 def sendwhatmsg_instantly(phone_no: str, message: str, wait_time: int = 20,
-                          browser: str = None, tab_close: bool = False) -> NoReturn:
+                          tab_close: bool = False) -> None:
     """Send WhatsApp Message Instantly"""
-
-    if browser and browser.lower() not in ["chrome", "firefox", "brave", "opera"]:
-        raise InvalidBrowserName(
-            "Browser name can be firefox, chrome, brave, opera")
 
     if "+" not in phone_no:
         raise CountryCodeException("Country code missing from phone_no")
@@ -54,10 +50,6 @@ def sendwhatmsg_instantly(phone_no: str, message: str, wait_time: int = 20,
              phone_no + '&text=' + parsed_message)
     time.sleep(2)
     width, height = pg.size()
-    if browser:
-        whats = pg.getWindowsWithTitle(browser)[0]
-        whats.maximize()
-        whats.activate()
     pg.click(width / 2, height / 2)
     time.sleep(wait_time - 2)
     pg.press('enter')
@@ -66,18 +58,11 @@ def sendwhatmsg_instantly(phone_no: str, message: str, wait_time: int = 20,
 
 
 def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait_time: int = 20,
-                print_wait_time: bool = True, browser: str = None, tab_close: bool = False) -> NoReturn:
+                print_wait_time: bool = True, tab_close: bool = False) -> None:
     """Sends a WhatsApp Message"""
     # Phone number should be given as a string
     # If the browser Window is not maximized this function won't work
     # Use check_window to check this
-
-    if browser is None:
-        pass
-    elif browser.lower() not in ["chrome", "firefox", "brave", "opera"]:
-        raise InvalidBrowserName(
-            "Browser name can be firefox, chrome, brave, opera")
-
     global sleep_time
     if "+" not in phone_no:
         raise CountryCodeException("Country code missing from phone_no")
@@ -125,10 +110,6 @@ def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait
              phone_no + '&text=' + parsed_message)
     time.sleep(2)
     width, height = pg.size()
-    if browser:
-        whats = pg.getWindowsWithTitle(browser)[0]
-        whats.maximize()
-        whats.activate()
     pg.click(width / 2, height / 2)
     time.sleep(wait_time - 2)
     pg.press('enter')
@@ -137,7 +118,7 @@ def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait
 
 
 def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: int, wait_time: int = 20,
-                         print_wait_time: bool = True, tab_close: bool = False) -> NoReturn:
+                         print_wait_time: bool = True, tab_close: bool = False) -> None:
     """Send WhatsApp Message to a Group"""
     # Group ID is in the group's invite link
     # https://chat.whatsapp.com/AB123CDEFGHijklmn, here AB123CDEFGHijklmn is group ID
@@ -183,9 +164,6 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
     web.open('https://web.whatsapp.com/accept?code=' + group_id)
     time.sleep(2)
     width, height = pg.size()
-    whats = pg.getWindowsWithTitle("WhatsApp")[0]
-    whats.maximize()
-    whats.activate()
     time.sleep(wait_time - 2)
     pg.click(width / 2, height - height / 10)
     pg.typewrite(message + "\n")
@@ -201,14 +179,14 @@ def info(topic: str, lines: int = 3, return_value: bool = False) -> Optional[str
         return spe
 
 
-def close_tab(wait_time: int = 2) -> NoReturn:
+def close_tab(wait_time: int = 2) -> None:
     """Closes the Currently Opened Browser Tab"""
     time.sleep(wait_time)
     pg.hotkey("ctrl", "w")
     pg.press("enter")
 
 
-def playonyt(topic: str, use_api: bool = False) -> str:
+def playonyt(topic: str, use_api: bool = False) -> Union[str, None]:
     """Play a YouTube Video"""
     # use_api uses the pywhatkit playonyt API to get the url for the video
     # use the api only if the function is not working properly on its own
@@ -246,7 +224,7 @@ def open_web() -> bool:
         return True
 
 
-def search(topic: str) -> NoReturn:
+def search(topic: str) -> None:
     """Searches about the topic on Google"""
     link = 'https://www.google.com/search?q={}'.format(topic)
     web.open(link)
