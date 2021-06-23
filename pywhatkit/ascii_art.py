@@ -1,7 +1,7 @@
 from PIL import Image
 
 
-def image_to_ascii_art(imgpath: str, output_file: str = "pywhatkit_asciiart.txt") -> str:
+def image_to_ascii_art(imgpath: str, output_file: str = "pywhatkit_asciiart") -> str:
     """Converts the given image to ascii art and save it to output_file"""
     # pass the image as command line argument
     image_path = imgpath
@@ -33,6 +33,6 @@ def image_to_ascii_art(imgpath: str, output_file: str = "pywhatkit_asciiart.txt"
     ascii_image = "\n".join(ascii_image)
 
     # write to a text file.
-    with open(output_file, "w") as f:
+    with open(f"{output_file}.txt", "w") as f:
         f.write(ascii_image)
     return ascii_image

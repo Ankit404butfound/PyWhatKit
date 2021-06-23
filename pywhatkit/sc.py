@@ -1,28 +1,25 @@
 import platform
 import os
-from typing import NoReturn
 try:
     import winerror
 except ImportError or ModuleNotFoundError:
     pass
-osname = platform.system()
 
-def shutdown(time: int = 20) -> NoReturn:
+
+def shutdown(time: int = 20) -> None:
     """
     Gives a shutdown request to the system with the specified time
-
-    Args:
-    `time`: Governs the time for shutdown. Taken as `int` in unit `seconds`. `Specified default value is 20`
     """
     # For Windows, time should be given in seconds
     # For MacOS and Linux based distributions, time should be given in minutes
-    global osname
     osname = platform.system()
     if "window" in osname.lower():
         cont = f"shutdown -s -t {time}"
         ErrorCode = os.system(cont)
-        if ErrorCode == winerror.ERROR_SHUTDOWN_IN_PROGRESS or ErrorCode == 1115:# Here 1115 is the error code of scheduled shutdown.
-            print("A shutdown process has already been scheduled...\nIgnoring this process")
+        # Here 1115 is the error code of scheduled shutdown.
+        if ErrorCode == winerror.ERROR_SHUTDOWN_IN_PROGRESS or ErrorCode == 1115:
+            print(
+                "A shutdown process has already been scheduled...\nIgnoring this process")
         else:
             print(f"Your System will shutdown in {time} seconds")
 
@@ -39,17 +36,17 @@ def shutdown(time: int = 20) -> NoReturn:
             "This function is for Windows, Mac and Linux users only, can't execute on {}".format(osname))
 
 
-def cancel_shutdown() -> NoReturn:
+def cancel_shutdown() -> None:
     """
     Will cancel the scheduled shutdown
     """
-    global osname
     osname = platform.system()
     if "window" in osname.lower():
         cont = "shutdown /a"
         ErrorCode = os.system(cont)
         if ErrorCode == winerror.ERROR_NO_SHUTDOWN_IN_PROGRESS:
-            print("ShutDown cancellation process has been aborted! [NO shutdown scheduled]")
+            print(
+                "ShutDown cancellation process has been aborted! [NO shutdown scheduled]")
         else:
             print("ShutDown has been cancelled")
 
