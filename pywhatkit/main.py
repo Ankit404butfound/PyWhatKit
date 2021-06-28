@@ -12,6 +12,7 @@ from platform import system
 if system().lower() in ("windows", "darwin"):
     from PIL import ImageGrab
 
+
     def take_screenshot(file_name: str = 'pywhatkit_screenshot') -> None:
         """Take Screenshot, you can change the filename as per your Wish"""
         screen = ImageGrab.grab()
@@ -241,7 +242,6 @@ except Exception:
 if tyme >= 5:
     raise Warning(
         "INTERNET IS SLOW, extraction of information might take longer time")
-
 
 try:
     file = open("pywhatkit_dbs.txt", "r", encoding='utf-8')

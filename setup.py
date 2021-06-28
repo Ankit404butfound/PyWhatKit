@@ -17,7 +17,7 @@ setup(
     author='Ankit Raj Mahapatra',
     author_email='ankitrajjitendra816@gmail.com',
     url='https://github.com/Ankit404butfound/PyWhatKit',
-    download_url='https://github.com/Ankit404butfound/awesomepy/archive/1.0.tar.gz',
+    download_url='https://github.com/Ankit404butfound/PyWhatKit/archive/refs/tags/4.9.zip',
     keywords=['sendwhatmsg', 'info', 'playonyt', 'search', 'watch_tutorial'],
     install_requires=[
         'pyautogui',
