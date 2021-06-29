@@ -178,7 +178,7 @@ def sendwhats_image(phone_no: str, img_path: str, wait_time: int = 15):
 
     web.open('https://web.whatsapp.com/send?phone=' + phone_no + '&text=' + ' ')
     time.sleep(5)
-    if os.name == "posix":
+    if system().lower() == "linux":
         if img_path.split("/")[-1].endswith(("PNG", "png")):
             os.system(f"xclip -selection clipboard -target image/png -i {img_path}")
         elif img_path.split("/")[-1].endswith(("jpg", "JPG", "jpeg", "JPEG")):
@@ -187,6 +187,10 @@ def sendwhats_image(phone_no: str, img_path: str, wait_time: int = 15):
         pg.hotkey("ctrl", "v")
         time.sleep(5)
         pg.press('enter')
+    elif system().lower() == "windows":
+        pass
+    else:
+        print(f"{system()} not supported!")
 
 
 def info(topic: str, lines: int = 3, return_value: bool = False) -> Optional[str]:
