@@ -7,4 +7,4 @@ from pywhatkit.main import print_sleep_time, check_window, sendwhatmsg, sendwhat
 from pywhatkit.sc import shutdown, cancel_shutdown
 from pywhatkit.wwd import tutorial_english, tutorial_hindi, developer_contact
 from pywhatkit.history import show_history
-from pywhatkit.mail import send_mail
+from pywhatkit.mail import send_mail, send_hmail
