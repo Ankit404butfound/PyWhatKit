@@ -172,6 +172,23 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
         close_tab()
 
 
+def sendwhats_image(phone_no: str, img_path: str, wait_time: int = 15):
+    if '+' not in phone_no:
+        raise CountryCodeException("Please provide country code!")
+
+    web.open('https://web.whatsapp.com/send?phone=' + phone_no + '&text=' + ' ')
+    time.sleep(5)
+    if os.name == "posix":
+        if img_path.split("/")[-1].endswith(("PNG", "png")):
+            os.system(f"xclip -selection clipboard -target image/png -i {img_path}")
+        elif img_path.split("/")[-1].endswith(("jpg", "JPG", "jpeg", "JPEG")):
+            os.system(f"xclip -selection clipboard -target image/jpg -i {img_path}")
+        time.sleep(wait_time - 2)
+        pg.hotkey("ctrl", "v")
+        time.sleep(5)
+        pg.press('enter')
+
+
 def info(topic: str, lines: int = 3, return_value: bool = False) -> Optional[str]:
     """Gives information on the topic"""
     spe = wikipedia.summary(topic, sentences=lines)
