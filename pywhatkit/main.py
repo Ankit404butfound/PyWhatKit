@@ -208,15 +208,17 @@ def close_tab(wait_time: int = 2) -> None:
     pg.press("enter")
 
 
-def playonyt(topic: str, use_api: bool = False) -> Union[str, None]:
+def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> Union[str, None]:
     """Play a YouTube Video"""
     # use_api uses the pywhatkit playonyt API to get the url for the video
     # use the api only if the function is not working properly on its own
 
-    if use_api is True:
+    if use_api:
         response = requests.get(
             f"https://pywhatkit.herokuapp.com/playonyt?topic={topic}")
-        web.open(response.content.decode('ascii'))
+        if open_video:
+            web.open(response.content.decode('ascii'))
+        return response.content.decode('ascii')
     else:
         url = 'https://www.youtube.com/results?q=' + topic
         count = 0
@@ -232,7 +234,8 @@ def playonyt(topic: str, use_api: bool = False) -> Union[str, None]:
             raise Exception("No video found.")
 
         # print("Videos found, opening most recent video")
-        web.open("https://www.youtube.com" + lst[count - 5])
+        if open_video:
+            web.open("https://www.youtube.com" + lst[count - 5])
         return "https://www.youtube.com" + lst[count - 5]
 
 
