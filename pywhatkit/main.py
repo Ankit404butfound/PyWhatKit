@@ -192,18 +192,15 @@ def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time:
         from io import BytesIO
         from PIL import Image
 
-        def send_to_clipboard(clip_type: int, data: bytes) -> None:
-            win32clipboard.OpenClipboard()
-            win32clipboard.EmptyClipboard()
-            win32clipboard.SetClipboardData(clip_type, data)
-            win32clipboard.CloseClipboard()
-
         image = Image.open(img_path)
         output = BytesIO()
         image.convert('RBG').save(output, "BMP")
         data = output.getvalue()[14:]
         output.close()
-        send_to_clipboard(win32clipboard.CF_DIB, data)
+        win32clipboard.OpenClipboard()
+        win32clipboard.EmptyClipboard()
+        win32clipboard.SetClipboardData(win32clipboard.CF_DIB, data)
+        win32clipboard.CloseClipboard()
         time.sleep(wait_time)
         pg.hotkey("ctrl", "v")
         time.sleep(3)
