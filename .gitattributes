@@ -1,0 +1,10 @@
+# Declare files that will always have LF line endings on checkout
+# This prevents git on Windows from automatically inserting CRLF line endings
+* text=auto eol=lf
+
+# Specifically declare known binary files to avoid problems with Git versions
+# before 2.10, where the 'eol' setting has higher priority than 'text=auto',
+# causing binary files to get normalized and corrupted otherwise.
+# See e.g. https://stackoverflow.com/a/38588882/4464570
+*.png binary
+*.whl binary

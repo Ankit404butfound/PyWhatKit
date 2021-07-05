@@ -17,7 +17,7 @@ def shutdown(time: int = 20) -> None:
         cont = f"shutdown -s -t {time}"
         ErrorCode = os.system(cont)
         # Here 1115 is the error code of scheduled shutdown.
-        if ErrorCode == winerror.ERROR_SHUTDOWN_IN_PROGRESS or ErrorCode == 1115:
+        if ErrorCode in [winerror.ERROR_SHUTDOWN_IN_PROGRESS, 1115]:
             print(
                 "A shutdown process has already been scheduled...\nIgnoring this process")
         else:

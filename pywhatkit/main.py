@@ -12,7 +12,6 @@ from platform import system
 if system().lower() in ("windows", "darwin"):
     from PIL import ImageGrab
 
-
     def take_screenshot(file_name: str = 'pywhatkit_screenshot') -> None:
         """Take Screenshot, you can change the filename as per your Wish"""
         screen = ImageGrab.grab()
@@ -69,7 +68,7 @@ def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait
         raise CountryCodeException("Country code missing from phone_no")
     timehr = time_hour
 
-    if time_hour not in range(0, 25) or time_min not in range(0, 60):
+    if time_hour not in range(25) or time_min not in range(60):
         print("Invalid time format")
 
     if time_hour == 0:
@@ -96,11 +95,10 @@ def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait
 
     date = "%s:%s:%s" % (curr.tm_mday, curr.tm_mon, curr.tm_year)
     time_write = "%s:%s" % (timehr, time_min)
-    file = open("pywhatkit_dbs.txt", "a", encoding='utf-8')
-    file.write("Date: %s\nTime: %s\nPhone number: %s\nMessage: %s" %
-               (date, time_write, phone_no, message))
-    file.write("\n--------------------\n")
-    file.close()
+    with open("pywhatkit_dbs.txt", "a", encoding='utf-8') as file:
+        file.write("Date: %s\nTime: %s\nPhone number: %s\nMessage: %s" %
+                   (date, time_write, phone_no, message))
+        file.write("\n--------------------\n")
     sleep_time = lefttm - wait_time
     if print_wait_time:
         print(
@@ -123,7 +121,7 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
     """Send WhatsApp Message to a Group"""
     # Group ID is in the group's invite link
     # https://chat.whatsapp.com/AB123CDEFGHijklmn, here AB123CDEFGHijklmn is group ID
-    if time_hour not in range(0, 25) or time_min not in range(0, 60):
+    if time_hour not in range(25) or time_min not in range(60):
         print("Invalid time format")
 
     timehr = time_hour
@@ -152,11 +150,10 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
 
     date = "%s:%s:%s" % (curr.tm_mday, curr.tm_mon, curr.tm_year)
     time_write = "%s:%s" % (timehr, time_min)
-    file = open("pywhatkit_dbs.txt", "a", encoding='utf-8')
-    file.write("Date: %s\nTime: %s\nGroup_id: %s\nMessage: %s" %
-               (date, time_write, group_id, message))
-    file.write("\n--------------------\n")
-    file.close()
+    with open("pywhatkit_dbs.txt", "a", encoding='utf-8') as file:
+        file.write("Date: %s\nTime: %s\nGroup_id: %s\nMessage: %s" %
+                   (date, time_write, group_id, message))
+        file.write("\n--------------------\n")
     sleeptm = lefttm - wait_time
     if print_wait_time:
         print(
@@ -170,6 +167,47 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
     pg.typewrite(message + "\n")
     if tab_close:
         close_tab()
+
+
+def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time: int = 15):
+    if '+' not in phone_no:
+        raise CountryCodeException("Please provide country code!")
+
+    web.open('https://web.whatsapp.com/send?phone=' +
+             phone_no + '&text=' + caption)
+    time.sleep(5)
+    if system().lower() == "linux":
+        if img_path.split("/")[-1].endswith(("PNG", "png")):
+            os.system(
+                f"xclip -selection clipboard -target image/png -i {img_path}")
+        elif img_path.split("/")[-1].endswith(("jpg", "JPG", "jpeg", "JPEG")):
+            os.system(
+                f"xclip -selection clipboard -target image/jpg -i {img_path}")
+        time.sleep(wait_time)
+        pg.hotkey("ctrl", "v")
+        time.sleep(5)
+        pg.press('enter')
+    elif system().lower() == "windows":
+        import win32clipboard
+        from io import BytesIO
+        from PIL import Image
+
+        image = Image.open(img_path)
+        output = BytesIO()
+        image.convert('RBG').save(output, "BMP")
+        data = output.getvalue()[14:]
+        output.close()
+        win32clipboard.OpenClipboard()
+        win32clipboard.EmptyClipboard()
+        win32clipboard.SetClipboardData(win32clipboard.CF_DIB, data)
+        win32clipboard.CloseClipboard()
+        time.sleep(wait_time)
+        pg.hotkey("ctrl", "v")
+        time.sleep(3)
+        pg.press("enter")
+
+    else:
+        print(f"{system()} not supported!")
 
 
 def info(topic: str, lines: int = 3, return_value: bool = False) -> Optional[str]:
@@ -237,12 +275,12 @@ def search(topic: str) -> None:
 try:
     requests.get("https://www.google.com")
     current = time.time()
-    tyme = current - last
+    _time = current - last
 except Exception:
     raise InternetException(
         "NO INTERNET - Pywhatkit needs active internet connection")
 
-if tyme >= 5:
+if _time >= 5:
     raise Warning(
         "INTERNET IS SLOW, extraction of information might take longer time")
 
@@ -250,7 +288,6 @@ try:
     file = open("pywhatkit_dbs.txt", "r", encoding='utf-8')
     file.close()
 except FileNotFoundError:
-    file = open("pywhatkit_dbs.txt", "w", encoding='utf-8')
-    file.write("--------------------\n")
-    file.close()
-    file = None
+    with open("pywhatkit_dbs.txt", "w", encoding="utf-8") as file:
+        file.write("--------------------\n")
+        file = None

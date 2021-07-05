@@ -33,7 +33,7 @@ Inside the file add the following lines:
 ```
 
 For others, you can directly use `autopep8 -i filename` in the terminal to format your code.
-Before committing your changes run `pre-commit` in your terminal, this would fix most of the common errors.
+Before committing your changes run `pre-commit run --all-files` in your terminal, this would fix most of the common errors.
 
 ### Contributing Code
 
