@@ -27,7 +27,7 @@ This function can be used to send Image or Gif or videos to anyone
 
 ### The parameters are
 
-**phone\_num** (required) - Phone number of target with country code
+**phone\_no** (required) - Phone number of target with country code
 
 **image\_path** (required) - Path to image or gif or video
 
@@ -35,7 +35,7 @@ This function can be used to send Image or Gif or videos to anyone
 
 **phone\_num** (required) - Phone number of target with country code
 
-**wait\_time** (optional, val = 20) - Seconds after which the message will be sent after opening the web
+**wait\_time** (optional, val = 15) - Seconds after which the message will be sent after opening the web
 
 
 ## **kit.sendwhatmsg(...)**
