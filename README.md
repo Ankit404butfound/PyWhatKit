@@ -20,6 +20,18 @@ This library can be installed by the pip command, open your command prompt and t
 # Functions of this library
 
 First import the library using the command `import pywhatkit as kit` and then proceed to call the functions:
+## **kit.sendwhats_image(...)**
+
+This function can be used to send Image or Gif or videos to anyone
+![image](https://user-images.githubusercontent.com/54436840/124421022-38977580-dd7e-11eb-87cd-df34811d016e.png)
+### The parameters are
+
+**phone\_num** (required) - Phone number of target with country code
+**image\_path** (required) - Path to image or gif or video
+**caption** (required) - The text that should appear below images
+**phone\_num** (required) - Phone number of target with country code
+**wait\_time** (optional, val = 20) - Seconds after which the message will be sent after opening the web
+
 
 ## **kit.sendwhatmsg(...)**
 
