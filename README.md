@@ -29,11 +29,9 @@ This function can be used to send Image or Gif or videos to anyone
 
 **phone\_no** (required) - Phone number of target with country code
 
-**image\_path** (required) - Path to image or gif or video
+**img\_path** (required) - Path to image or gif or video
 
 **caption** (required) - The text that should appear below images
-
-**phone\_num** (required) - Phone number of target with country code
 
 **wait\_time** (optional, val = 15) - Seconds after which the message will be sent after opening the web
 
