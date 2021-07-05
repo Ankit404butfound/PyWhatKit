@@ -169,7 +169,7 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
         close_tab()
 
 
-def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time: int = 15):
+def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time: int = 15) -> None:
     if '+' not in phone_no:
         raise CountryCodeException("Please provide country code!")
 
