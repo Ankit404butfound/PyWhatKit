@@ -15,7 +15,7 @@ if system().lower() in ("windows", "darwin"):
     def take_screenshot(file_name: str = 'pywhatkit_screenshot') -> None:
         """Take Screenshot, you can change the filename as per your Wish"""
         screen = ImageGrab.grab()
-        screen.show()
+        screen.show(title=file_name)
         screen.save(f'{file_name}.png')
 else:
     pass
