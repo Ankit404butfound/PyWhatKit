@@ -15,7 +15,7 @@ if system().lower() in ("windows", "darwin"):
     def take_screenshot(file_name: str = 'pywhatkit_screenshot') -> None:
         """Take Screenshot, you can change the filename as per your Wish"""
         screen = ImageGrab.grab()
-        screen.show()
+        screen.show(title=file_name)
         screen.save(f'{file_name}.png')
 else:
     pass
@@ -169,7 +169,7 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
         close_tab()
 
 
-def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time: int = 15):
+def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time: int = 15) -> None:
     if '+' not in phone_no:
         raise CountryCodeException("Please provide country code!")
 

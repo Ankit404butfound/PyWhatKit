@@ -42,8 +42,7 @@ def cancel_shutdown() -> None:
     """
     osname = platform.system()
     if "window" in osname.lower():
-        cont = "shutdown /a"
-        ErrorCode = os.system(cont)
+        ErrorCode = os.system("shutdown /a")
         if ErrorCode == winerror.ERROR_NO_SHUTDOWN_IN_PROGRESS:
             print(
                 "ShutDown cancellation process has been aborted! [NO shutdown scheduled]")
@@ -51,13 +50,11 @@ def cancel_shutdown() -> None:
             print("ShutDown has been cancelled")
 
     elif "linux" in osname.lower():
-        cont = "shutdown -c"
-        os.system(cont)
+        os.system("shutdown -c")
         print("Shutdown has been Cancelled!")
 
     elif "darwin" in osname.lower():
-        cont = "killall shutdown"
-        os.system(cont)
+        os.system("killall shutdown")
         print("Shutdown has been Cancelled!")
 
     else:
