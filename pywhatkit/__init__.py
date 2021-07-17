@@ -1,4 +1,4 @@
-"""Pull requests are always welcomed"""
+"""Pull Requests are always Welcomed"""
 
 from pywhatkit.ascii_art import image_to_ascii_art
 from pywhatkit.chr_to_handwriting import text_to_handwriting
