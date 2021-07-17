@@ -18,6 +18,7 @@ if system().lower() in ("windows", "darwin"):
 
     def take_screenshot(file_name: str = 'pywhatkit_screenshot') -> None:
         """Take Screenshot, you can change the filename as per your Wish"""
+
         screen = ImageGrab.grab()
         screen.show(title=file_name)
         screen.save(f'{file_name}.png')
@@ -33,11 +34,13 @@ current_path = os.getcwd()
 
 def print_sleep_time() -> Union[str, int]:
     """Prints the sleep time"""
+
     return sleep_time
 
 
 def check_window() -> None:
     """Check if the browser Window is maximized or not"""
+
     web.open("https://www.google.com")
     pg.alert("If the browser's window is not maximized,\nMaximise and then close it if you want,\nor sendwhatmsg() "
              "function will not work", "Pywhatkit")
@@ -68,6 +71,7 @@ def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait
     # Phone number should be given as a string
     # If the browser Window is not maximized this function won't work
     # Use check_window to check this
+
     global sleep_time
     if "+" not in phone_no:
         raise CountryCodeException("Country code missing from phone_no")
@@ -127,6 +131,7 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
     """Send WhatsApp Message to a Group"""
     # Group ID is in the group's invite link
     # https://chat.whatsapp.com/AB123CDEFGHijklmn, here AB123CDEFGHijklmn is group ID
+
     if time_hour not in range(25) or time_min not in range(60):
         print("Invalid time format")
 
@@ -177,6 +182,7 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
 
 def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time: int = 15) -> None:
     """Send Image to a WhatsApp Contact"""
+
     if '+' not in phone_no:
         raise CountryCodeException("Please provide country code!")
 
@@ -232,6 +238,7 @@ def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time:
 
 def info(topic: str, lines: int = 3, return_value: bool = False) -> Optional[str]:
     """Gives information on the topic"""
+
     spe = wikipedia.summary(topic, sentences=lines)
     print(spe)
     if return_value:
@@ -240,6 +247,7 @@ def info(topic: str, lines: int = 3, return_value: bool = False) -> Optional[str
 
 def close_tab(wait_time: int = 2) -> None:
     """Closes the Currently Opened Browser Tab"""
+
     time.sleep(wait_time)
     if system().lower() in ("windows", "linux"):
         pg.hotkey("ctrl", "w")
@@ -283,6 +291,7 @@ def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> Unio
 
 def open_web() -> bool:
     """Opens WhatsApp Web"""
+
     try:
         web.open("https://web.whatsapp.com")
     except web.Error:
@@ -293,6 +302,7 @@ def open_web() -> bool:
 
 def search(topic: str) -> None:
     """Searches about the topic on Google"""
+
     link = 'https://www.google.com/search?q={}'.format(topic)
     web.open(link)
 

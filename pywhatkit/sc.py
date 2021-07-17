@@ -7,17 +7,17 @@ except ImportError or ModuleNotFoundError:
 
 
 def shutdown(time: int = 20) -> None:
-    """
-    Gives a shutdown request to the system with the specified time
-    """
+    """Gives a shutdown request to the system with the specified time"""
+
     # For Windows, time should be given in seconds
     # For MacOS and Linux based distributions, time should be given in minutes
+
     osname = platform.system()
     if "window" in osname.lower():
         cont = f"shutdown -s -t {time}"
-        ErrorCode = os.system(cont)
+        error_code = os.system(cont)
         # Here 1115 is the error code of scheduled shutdown.
-        if ErrorCode in [winerror.ERROR_SHUTDOWN_IN_PROGRESS, 1115]:
+        if error_code in [winerror.ERROR_SHUTDOWN_IN_PROGRESS, 1115]:
             print(
                 "A shutdown process has already been scheduled...\nIgnoring this process")
         else:
@@ -37,13 +37,12 @@ def shutdown(time: int = 20) -> None:
 
 
 def cancel_shutdown() -> None:
-    """
-    Will cancel the scheduled shutdown
-    """
+    """Will cancel the scheduled shutdown"""
+
     osname = platform.system()
     if "window" in osname.lower():
-        ErrorCode = os.system("shutdown /a")
-        if ErrorCode == winerror.ERROR_NO_SHUTDOWN_IN_PROGRESS:
+        error_code = os.system("shutdown /a")
+        if error_code == winerror.ERROR_NO_SHUTDOWN_IN_PROGRESS:
             print(
                 "ShutDown cancellation process has been aborted! [NO shutdown scheduled]")
         else:
