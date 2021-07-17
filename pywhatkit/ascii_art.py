@@ -1,10 +1,10 @@
 from PIL import Image
 
 
-def image_to_ascii_art(imgpath: str, output_file: str = "pywhatkit_asciiart") -> str:
+def image_to_ascii_art(img_path: str, output_file: str = "pywhatkit_asciiart") -> str:
     """Converts the given image to ascii art and save it to output_file"""
     # pass the image as command line argument
-    image_path = imgpath
+    image_path = img_path
     img = Image.open(image_path)
 
     # resize the image
@@ -26,7 +26,7 @@ def image_to_ascii_art(imgpath: str, output_file: str = "pywhatkit_asciiart") ->
     new_pixels = [chars[pixel // 25] for pixel in pixels]
     new_pixels = ''.join(new_pixels)
 
-    # split string of chars into multiple strings of length equal to new width and create a list
+    # split string of chars into multiple strings of length equal to the new width and create a list
     new_pixels_count = len(new_pixels)
     ascii_image = [new_pixels[index:index + new_width]
                    for index in range(0, new_pixels_count, new_width)]
