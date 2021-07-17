@@ -1,13 +1,16 @@
 import time
+import os
+import pathlib
+from urllib.parse import quote
+from typing import Union, Optional
+from platform import system
+
 import webbrowser as web
 import pyautogui as pg
 import wikipedia
 import requests
-import os
-from urllib.parse import quote
+
 from .exceptions import *
-from typing import Union, Optional
-from platform import system
 
 if system().lower() in ("windows", "darwin"):
     from PIL import ImageGrab
@@ -69,40 +72,41 @@ def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait
     timehr = time_hour
 
     if time_hour not in range(25) or time_min not in range(60):
-        print("Invalid time format")
+        raise Warning("Invalid Time Format")
 
     if time_hour == 0:
         time_hour = 24
-    callsec = (time_hour * 3600) + (time_min * 60)
+    call_sec = (time_hour * 3600) + (time_min * 60)
 
-    curr = time.localtime()
-    currhr = curr.tm_hour
-    currmin = curr.tm_min
-    currsec = curr.tm_sec
+    current_time = time.localtime()
+    current_hour = current_time.tm_hour
+    current_minute = current_time.tm_min
+    current_second = current_time.tm_sec
 
-    if currhr == 0:
-        currhr = 24
+    if current_hour == 0:
+        current_hour = 24
 
-    currtotsec = (currhr * 3600) + (currmin * 60) + (currsec)
-    lefttm = callsec - currtotsec
+    current_to_second = (current_hour * 3600) + (current_minute * 60) + current_second
+    left_time = call_sec - current_to_second
 
-    if lefttm <= 0:
-        lefttm = 86400 + lefttm
+    if left_time <= 0:
+        left_time = 86400 + left_time
 
-    if lefttm < wait_time:
+    if left_time < wait_time:
         raise CallTimeException(
             "Call time must be greater than wait_time as web.whatsapp.com takes some time to load")
 
-    date = "%s:%s:%s" % (curr.tm_mday, curr.tm_mon, curr.tm_year)
+    date = "%s:%s:%s" % (current_time.tm_mday, current_time.tm_mon, current_time.tm_year)
     time_write = "%s:%s" % (timehr, time_min)
     with open("pywhatkit_dbs.txt", "a", encoding='utf-8') as file:
         file.write("Date: %s\nTime: %s\nPhone number: %s\nMessage: %s" %
                    (date, time_write, phone_no, message))
         file.write("\n--------------------\n")
-    sleep_time = lefttm - wait_time
+    sleep_time = left_time - wait_time
     if print_wait_time:
         print(
-            f"In {print_sleep_time()} seconds web.whatsapp.com will open and after {wait_time} seconds message will be delivered")
+            f"In {print_sleep_time()} seconds web.whatsapp.com will open and after {wait_time} seconds message will "
+            f"be delivered")
     time.sleep(sleep_time)
     parsed_message = quote(message)
     web.open('https://web.whatsapp.com/send?phone=' +
@@ -128,37 +132,37 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
 
     if time_hour == 0:
         time_hour = 24
-    callsec = (time_hour * 3600) + (time_min * 60)
+    call_second = (time_hour * 3600) + (time_min * 60)
 
-    curr = time.localtime()
-    currhr = curr.tm_hour
-    currmin = curr.tm_min
-    currsec = curr.tm_sec
+    current_time = time.localtime()
+    current_hour = current_time.tm_hour
+    current_minute = current_time.tm_min
+    current_second = current_time.tm_sec
 
-    if currhr == 0:
-        currhr = 24
+    if current_hour == 0:
+        current_hour = 24
 
-    currtotsec = (currhr * 3600) + (currmin * 60) + (currsec)
-    lefttm = callsec - currtotsec
+    current_to_second = (current_hour * 3600) + (current_minute * 60) + (current_second)
+    left_time = call_second - current_to_second
 
-    if lefttm <= 0:
-        lefttm = 86400 + lefttm
+    if left_time <= 0:
+        left_time = 86400 + left_time
 
-    if lefttm < wait_time:
+    if left_time < wait_time:
         raise CallTimeException(
             "Call time must be greater than wait_time as web.whatsapp.com takes some time to load")
 
-    date = "%s:%s:%s" % (curr.tm_mday, curr.tm_mon, curr.tm_year)
+    date = "%s:%s:%s" % (current_time.tm_mday, current_time.tm_mon, current_time.tm_year)
     time_write = "%s:%s" % (timehr, time_min)
     with open("pywhatkit_dbs.txt", "a", encoding='utf-8') as file:
         file.write("Date: %s\nTime: %s\nGroup_id: %s\nMessage: %s" %
                    (date, time_write, group_id, message))
         file.write("\n--------------------\n")
-    sleeptm = lefttm - wait_time
+    sleep_time = left_time - wait_time
     if print_wait_time:
         print(
-            f"In {sleeptm} seconds web.whatsapp.com will open and after {wait_time} seconds message will be delivered")
-    time.sleep(sleeptm)
+            f"In {sleep_time} seconds web.whatsapp.com will open and after {wait_time} seconds message will be delivered")
+    time.sleep(sleep_time)
     web.open('https://web.whatsapp.com/accept?code=' + group_id)
     time.sleep(2)
     width, height = pg.size()
@@ -170,6 +174,7 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
 
 
 def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time: int = 15) -> None:
+    """Send Image to a WhatsApp Contact"""
     if '+' not in phone_no:
         raise CountryCodeException("Please provide country code!")
 
@@ -177,19 +182,22 @@ def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time:
              phone_no + '&text=' + caption)
     time.sleep(5)
     if system().lower() == "linux":
-        if img_path.split("/")[-1].endswith(("PNG", "png")):
+        if pathlib.Path(img_path).suffix in (".PNG", ".png"):
             os.system(
                 f"xclip -selection clipboard -target image/png -i {img_path}")
-        elif img_path.split("/")[-1].endswith(("jpg", "JPG", "jpeg", "JPEG")):
+        elif pathlib.Path(img_path).suffix in (".jpg", ".JPG", ".jpeg", ".JPEG"):
             os.system(
                 f"xclip -selection clipboard -target image/jpg -i {img_path}")
-        time.sleep(wait_time)
+        else:
+            print(f"The file format {pathlib.Path(img_path).suffix} is not supported!")
+        time.sleep(2)
         pg.hotkey("ctrl", "v")
-        time.sleep(5)
+        time.sleep(wait_time)
         pg.press('enter')
     elif system().lower() == "windows":
         import win32clipboard
         from io import BytesIO
+
         from PIL import Image
 
         image = Image.open(img_path)
@@ -201,13 +209,23 @@ def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time:
         win32clipboard.EmptyClipboard()
         win32clipboard.SetClipboardData(win32clipboard.CF_DIB, data)
         win32clipboard.CloseClipboard()
-        time.sleep(wait_time)
+        time.sleep(2)
         pg.hotkey("ctrl", "v")
-        time.sleep(3)
+        time.sleep(wait_time)
         pg.press("enter")
-
+    elif system().lower() == "darwin":
+        if pathlib.Path(img_path).suffix in (".jpg", ".jpeg", ".JPG", ".JPEG"):
+            width, height = pg.size()
+            pg.click(width / 2, height / 2)
+            os.system(f"osascript -e 'set the clipboard to (read (POSIX file \"{img_path}\") as JPEG picture)'")
+            time.sleep(2)
+            pg.hotkey("command", "v")
+            time.sleep(wait_time)
+            pg.press('enter')
+        else:
+            print(f"The file format {pathlib.Path(img_path).suffix} is not supported!")
     else:
-        print(f"{system()} not supported!")
+        print(f"{system().lower()} not supported!")
 
 
 def info(topic: str, lines: int = 3, return_value: bool = False) -> Optional[str]:
