@@ -15,6 +15,7 @@ from .exceptions import *
 if system().lower() in ("windows", "darwin"):
     from PIL import ImageGrab
 
+
     def take_screenshot(file_name: str = 'pywhatkit_screenshot') -> None:
         """Take Screenshot, you can change the filename as per your Wish"""
         screen = ImageGrab.grab()
@@ -239,7 +240,12 @@ def info(topic: str, lines: int = 3, return_value: bool = False) -> Optional[str
 def close_tab(wait_time: int = 2) -> None:
     """Closes the Currently Opened Browser Tab"""
     time.sleep(wait_time)
-    pg.hotkey("ctrl", "w")
+    if system().lower() in ("windows", "linux"):
+        pg.hotkey("ctrl", "w")
+    elif system().lower() in "darwin":
+        pg.hotkey("command", "w")
+    else:
+        raise Warning(f"{system().lower()} not supported!")
     pg.press("enter")
 
 
