@@ -32,6 +32,7 @@ current_path = os.getcwd()
 
 
 def print_sleep_time() -> Union[str, int]:
+    """Prints the sleep time"""
     return sleep_time
 
 
