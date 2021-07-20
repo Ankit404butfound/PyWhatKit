@@ -5,8 +5,7 @@ def image_to_ascii_art(img_path: str, output_file: str = "pywhatkit_asciiart") -
     """Converts the given image to ascii art and save it to output_file"""
 
     # pass the image as command line argument
-    image_path = img_path
-    img = Image.open(image_path)
+    img = Image.open(img_path)
 
     # resize the image
     width, height = img.size

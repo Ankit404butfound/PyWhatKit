@@ -42,8 +42,8 @@ def check_window() -> None:
     """Check if the browser Window is maximized or not"""
 
     web.open("https://www.google.com")
-    pg.alert("If the browser's window is not maximized,\nMaximise and then close it if you want,\nor sendwhatmsg() "
-             "function will not work", "Pywhatkit")
+    pg.alert("If the browser's window is not maximized,\nMaximise and then close it if you want,\nor send message "
+             "functions will not work", "Pywhatkit")
 
 
 def sendwhatmsg_instantly(phone_no: str, message: str, wait_time: int = 20,
@@ -258,7 +258,7 @@ def close_tab(wait_time: int = 2) -> None:
     pg.press("enter")
 
 
-def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> Union[str, None]:
+def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> Union[str]:
     """Play a YouTube Video"""
     # use_api uses the pywhatkit playonyt API to get the url for the video
     # use the api only if the function is not working properly on its own
