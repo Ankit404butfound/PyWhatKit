@@ -1,9 +1,10 @@
 import smtplib
+import re
 from email.message import EmailMessage
 from email.mime.text import MIMEText
-import re
-from .exceptions import UnsupportedEmailProvider
 from typing import Union
+
+from .exceptions import UnsupportedEmailProvider
 
 
 def send_mail(email_sender: str, password: str, subject: str,

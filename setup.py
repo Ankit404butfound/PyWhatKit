@@ -1,5 +1,5 @@
-from distutils.core import setup
 import setuptools
+from distutils.core import setup
 
 
 def readme() -> str:
@@ -11,13 +11,13 @@ def readme() -> str:
 setup(
     name='pywhatkit',
     packages=setuptools.find_packages(),
-    version='5.0',
+    version='5.1',
     license='MIT',
     description='PyWhatKit is a Python library for Sending whatsapp message at certain time, it has several other features too.',
     author='Ankit Raj Mahapatra',
     author_email='ankitrajjitendra816@gmail.com',
     url='https://github.com/Ankit404butfound/PyWhatKit',
-    download_url='https://github.com/Ankit404butfound/PyWhatKit/archive/refs/tags/4.9.zip',
+    download_url='https://github.com/Ankit404butfound/PyWhatKit/archive/refs/tags/5.0.zip',
     keywords=['sendwhatmsg', 'info', 'playonyt', 'search', 'watch_tutorial'],
     install_requires=[
         'pyautogui',
