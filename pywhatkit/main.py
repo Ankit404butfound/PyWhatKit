@@ -149,7 +149,7 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
     if current_hour == 0:
         current_hour = 24
 
-    current_to_second = (current_hour * 3600) + (current_minute * 60) + (current_second)
+    current_to_second = (current_hour * 3600) + (current_minute * 60) + current_second
     left_time = call_second - current_to_second
 
     if left_time <= 0:
