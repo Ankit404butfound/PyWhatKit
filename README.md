@@ -27,4 +27,4 @@ For more detailed information see [this](https://github.com/Ankit404butfound/PyW
 
 ## License
 
-MIT,for more information see [this](https://github.com/Ankit404butfound/PyWhatKit/blob/master/licence)
+MIT,for more information see [this](https://github.com/Ankit404butfound/PyWhatKit/blob/master/LICENSE)
