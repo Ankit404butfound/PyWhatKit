@@ -47,7 +47,7 @@ def check_window() -> None:
 
 
 def sendwhatmsg_instantly(phone_no: str, message: str, wait_time: int = 20,
-                          tab_close: bool = False) -> None:
+                          tab_close: bool = False, close_time: int = 3) -> None:
     """Send WhatsApp Message Instantly"""
 
     if "+" not in phone_no:
@@ -62,11 +62,11 @@ def sendwhatmsg_instantly(phone_no: str, message: str, wait_time: int = 20,
     time.sleep(wait_time - 2)
     pg.press('enter')
     if tab_close:
-        close_tab()
+        close_tab(wait_time=close_time)
 
 
 def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait_time: int = 20,
-                print_wait_time: bool = True, tab_close: bool = False) -> None:
+                tab_close: bool = False, close_time: int = 3) -> None:
     """Sends a WhatsApp Message"""
     # Phone number should be given as a string
     # If the browser Window is not maximized this function won't work
@@ -109,10 +109,9 @@ def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait
                    (date, time_write, phone_no, message))
         file.write("\n--------------------\n")
     sleep_time = left_time - wait_time
-    if print_wait_time:
-        print(
-            f"In {print_sleep_time()} seconds web.whatsapp.com will open and after {wait_time} seconds message will "
-            f"be delivered")
+    print(
+        f"In {print_sleep_time()} seconds web.whatsapp.com will open and after {wait_time} seconds message will "
+        f"be delivered")
     time.sleep(sleep_time)
     parsed_message = quote(message)
     web.open('https://web.whatsapp.com/send?phone=' +
@@ -123,11 +122,11 @@ def sendwhatmsg(phone_no: str, message: str, time_hour: int, time_min: int, wait
     time.sleep(wait_time - 2)
     pg.press('enter')
     if tab_close:
-        close_tab()
+        close_tab(wait_time=close_time)
 
 
 def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: int, wait_time: int = 20,
-                         print_wait_time: bool = True, tab_close: bool = False) -> None:
+                         tab_close: bool = False, close_time: int = 3) -> None:
     """Send WhatsApp Message to a Group"""
     # Group ID is in the group's invite link
     # https://chat.whatsapp.com/AB123CDEFGHijklmn, here AB123CDEFGHijklmn is group ID
@@ -166,9 +165,7 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
                    (date, time_write, group_id, message))
         file.write("\n--------------------\n")
     sleep_time = left_time - wait_time
-    if print_wait_time:
-        print(
-            f"In {sleep_time} seconds web.whatsapp.com will open and after {wait_time} seconds message will be delivered")
+    print(f"In {sleep_time} seconds web.whatsapp.com will open and after {wait_time} seconds message will be delivered")
     time.sleep(sleep_time)
     web.open('https://web.whatsapp.com/accept?code=' + group_id)
     time.sleep(2)
@@ -177,10 +174,11 @@ def sendwhatmsg_to_group(group_id: str, message: str, time_hour: int, time_min: 
     pg.click(width / 2, height - height / 10)
     pg.typewrite(message + "\n")
     if tab_close:
-        close_tab()
+        close_tab(wait_time=close_time)
 
 
-def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time: int = 15) -> None:
+def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time: int = 15,
+                    tab_close: bool = False, close_time: int = 3) -> None:
     """Send Image to a WhatsApp Contact"""
 
     if '+' not in phone_no:
@@ -198,10 +196,9 @@ def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time:
                 f"xclip -selection clipboard -target image/jpg -i {img_path}")
         else:
             print(f"The file format {pathlib.Path(img_path).suffix} is not supported!")
+            return
         time.sleep(2)
         pg.hotkey("ctrl", "v")
-        time.sleep(wait_time)
-        pg.press('enter')
     elif system().lower() == "windows":
         import win32clipboard
         from io import BytesIO
@@ -210,7 +207,7 @@ def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time:
 
         image = Image.open(img_path)
         output = BytesIO()
-        image.convert('RBG').save(output, "BMP")
+        image.convert('RBG').save(output, "RBG")
         data = output.getvalue()[14:]
         output.close()
         win32clipboard.OpenClipboard()
@@ -219,21 +216,23 @@ def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time:
         win32clipboard.CloseClipboard()
         time.sleep(2)
         pg.hotkey("ctrl", "v")
-        time.sleep(wait_time)
-        pg.press("enter")
     elif system().lower() == "darwin":
         if pathlib.Path(img_path).suffix in (".jpg", ".jpeg", ".JPG", ".JPEG"):
             width, height = pg.size()
             pg.click(width / 2, height / 2)
             os.system(f"osascript -e 'set the clipboard to (read (POSIX file \"{img_path}\") as JPEG picture)'")
-            time.sleep(2)
-            pg.hotkey("command", "v")
-            time.sleep(wait_time)
-            pg.press('enter')
         else:
             print(f"The file format {pathlib.Path(img_path).suffix} is not supported!")
+            return
+        time.sleep(2)
+        pg.hotkey("command", "v")
     else:
         print(f"{system().lower()} not supported!")
+        return
+    time.sleep(wait_time)
+    pg.press('enter')
+    if tab_close:
+        close_tab(wait_time=close_time)
 
 
 def info(topic: str, lines: int = 3, return_value: bool = False) -> Optional[str]:
