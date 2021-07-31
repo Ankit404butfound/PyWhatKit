@@ -9,6 +9,7 @@
 ![image](https://flat.badgen.net/github/license/Ankit404butfound/Pywhatkit)
 ![image](https://flat.badgen.net/github/contributors/Ankit404butfound/Pywhatkit)
 ![image](https://flat.badgen.net/github/release/Ankit404butfound/Pywhatkit)
+
 [PyWhatKit](https://pypi.org/project/pywhatkit/) is a Python library with various helpful features. It is an easy to use library which does not requires you to do some additional setup.
 
 # Links
