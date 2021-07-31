@@ -207,7 +207,7 @@ def sendwhats_image(phone_no: str, img_path: str, caption: str = " ", wait_time:
 
         image = Image.open(img_path)
         output = BytesIO()
-        image.convert('RGB').save(output, "RGB")
+        image.convert('RGB').save(output, "BMP")
         data = output.getvalue()[14:]
         output.close()
         win32clipboard.OpenClipboard()
