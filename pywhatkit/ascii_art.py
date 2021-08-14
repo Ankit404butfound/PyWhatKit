@@ -1,38 +1,43 @@
+from typing import Optional
+
 from PIL import Image
 
 
-def image_to_ascii_art(img_path: str, output_file: str = "pywhatkit_asciiart") -> str:
-    """Converts the given image to ascii art and save it to output_file"""
+def image_to_ascii_art(img_path: str, output_file: Optional[str] = "pywhatkit_asciiart") -> str:
+    """Converts an Image to ASCII Art
 
-    # pass the image as command line argument
-    img = Image.open(img_path)
+    Parameters
+    ----------
+    img_path : str
+        Path to the Image that has to be converted
+    output_file : str, optional
+        Name of the Output file, by default "pywhatkit_asciiart"
 
-    # resize the image
+    Returns
+    -------
+    str
+        The ASCII Art characters
+    """
+
+    img = Image.open(img_path).convert("L")
+
     width, height = img.size
     aspect_ratio = height / width
     new_width = 80
     new_height = aspect_ratio * new_width * 0.55
     img = img.resize((new_width, int(new_height)))
-    # new size of image
-    # print(img.size)
-
-    # convert image to greyscale format
-    img = img.convert('L')
 
     pixels = img.getdata()
 
-    # replace each pixel with a character from array
     chars = ["*", "S", "#", "&", "@", "$", "%", "*", "!", ":", "."]
     new_pixels = [chars[pixel // 25] for pixel in pixels]
     new_pixels = ''.join(new_pixels)
 
-    # split string of chars into multiple strings of length equal to the new width and create a list
     new_pixels_count = len(new_pixels)
     ascii_image = [new_pixels[index:index + new_width]
                    for index in range(0, new_pixels_count, new_width)]
     ascii_image = "\n".join(ascii_image)
 
-    # write to a text file.
     with open(f"{output_file}.txt", "w") as f:
         f.write(ascii_image)
     return ascii_image
