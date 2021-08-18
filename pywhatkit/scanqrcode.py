@@ -10,7 +10,7 @@ def scan():
 		 if data:
 		 	 a=data
 		 	 break
-		 cv2.imshow("QRCODEscanner", img)  
+		 cv2.imshow("Pywhatkit QRCODE scanner", img)  
 		 if cv2.waitKey(1) == ord("q"):
 		 	break
 	b=webbrowser.open(str(a))
