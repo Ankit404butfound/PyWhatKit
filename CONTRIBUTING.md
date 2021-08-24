@@ -43,7 +43,7 @@ Setting up a development environment:
 
 1. Fork the repository and then clone it to your local computer.
 2. OPTIONAL BUT RECOMMENDED: Create a new virtual environment with `virtualenv` using `python3 -m venv venv`.
-3. Activate the virtual environment and install the project dependencies using `pip3 install -r requirements.txt`.
+3. Activate the virtual environment and install the project dependencies using `pip3 install -r requirements-dev.txt`.
 4. Congrats 🎉, you are now ready to contribute.
 
 To contribute the code:
