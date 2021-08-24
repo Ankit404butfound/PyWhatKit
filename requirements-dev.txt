@@ -1,6 +1,6 @@
-pyautogui
-wikipedia
-requests
-Pillow
 black
+Pillow
 pre-commit
+pyautogui
+requests
+wikipedia

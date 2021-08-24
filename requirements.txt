@@ -1,4 +1,4 @@
-pyautogui
-wikipedia
-requests
 Pillow
+pyautogui
+requests
+wikipedia
