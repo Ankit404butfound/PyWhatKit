@@ -27,12 +27,12 @@ Inside the file add the following lines:
 
 ```json
 {
-    "python.formatting.provider": "autopep8",
+    "python.formatting.provider": "black",
     "editor.formatOnSave": true
 }
 ```
 
-For others, you can directly use `autopep8 -i filename` in the terminal to format your code.
+For others, you can directly use `black filename` in the terminal to format your code.
 Before committing your changes run `pre-commit run --all-files` in your terminal, this would fix most of the common errors.
 
 ### Contributing Code
