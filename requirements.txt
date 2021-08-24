@@ -2,4 +2,3 @@ pyautogui
 wikipedia
 requests
 Pillow
-black
