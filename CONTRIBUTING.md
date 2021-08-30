@@ -60,7 +60,11 @@ NOTE: To contribute to the Documentation, follow the same steps as above.
 
 ### Adding New Features
 
-If you want to add new features to the library, please open an issue first to discuss it. Thanks
+Here are some few things to keep in mind before working on a new feature:
+
+* We really want this library to be lightweight so please don't add features with heavy dependencies
+* Keep the features relevant to the library
+* Before adding a new feature, open up an Issue to discuss it
 
 ### Provide Support on Issues
 
