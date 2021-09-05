@@ -3,21 +3,10 @@ from typing import Optional
 from PIL import Image
 
 
-def image_to_ascii_art(img_path: str, output_file: Optional[str] = "pywhatkit_asciiart") -> str:
-    """Converts an Image to ASCII Art
-
-    Parameters
-    ----------
-    img_path : str
-        Path to the Image that has to be converted
-    output_file : str, optional
-        Name of the Output file, by default "pywhatkit_asciiart"
-
-    Returns
-    -------
-    str
-        The ASCII Art characters
-    """
+def image_to_ascii_art(
+    img_path: str, output_file: Optional[str] = "pywhatkit_asciiart"
+) -> str:
+    """Converts an Image to ASCII Art"""
 
     img = Image.open(img_path).convert("L")
 
@@ -31,11 +20,13 @@ def image_to_ascii_art(img_path: str, output_file: Optional[str] = "pywhatkit_as
 
     chars = ["*", "S", "#", "&", "@", "$", "%", "*", "!", ":", "."]
     new_pixels = [chars[pixel // 25] for pixel in pixels]
-    new_pixels = ''.join(new_pixels)
+    new_pixels = "".join(new_pixels)
 
     new_pixels_count = len(new_pixels)
-    ascii_image = [new_pixels[index:index + new_width]
-                   for index in range(0, new_pixels_count, new_width)]
+    ascii_image = [
+        new_pixels[index : index + new_width]
+        for index in range(0, new_pixels_count, new_width)
+    ]
     ascii_image = "\n".join(ascii_image)
 
     with open(f"{output_file}.txt", "w") as f:
