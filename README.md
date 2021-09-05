@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/54436840/121497964-980d9a00-c9f9-11eb-9d7f-c3072d8f09d2.png)
+![image](https://media.discordapp.net/attachments/842794167134453820/882227960613048350/unknown.png?width=1440&height=420)
 
 ![image](https://flat.badgen.net/github/stars/Ankit404butfound/Pywhatkit)
 ![image](https://flat.badgen.net/github/forks/Ankit404butfound/Pywhatkit)
