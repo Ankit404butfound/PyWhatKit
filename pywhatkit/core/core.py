@@ -63,10 +63,7 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
     else:
         open("https://web.whatsapp.com/accept?code=" + receiver)
 
-    time.sleep(2)
-    width, height = size()
-    click(width / 2, height / 2)
-    time.sleep(wait_time - 2)
     if not check_number(receiver):
         typewrite(message)
+    time.sleep(wait_time)
     press("enter")
