@@ -33,6 +33,7 @@ def sendwhatmsg_instantly(
     )
     time.sleep(wait_time)
     pg.press("enter")
+    log.log_message(_time=time.localtime(), receiver=phone_no, message=message)
     if tab_close:
         core.close_tab(wait_time=close_time)
 
@@ -56,8 +57,11 @@ def sendwhatmsg(
 
     current_time = time.localtime()
     left_time = datetime.strptime(
-        f"{time_hour}:{time_min}", "%H:%M"
-    ) - datetime.strptime(f"{current_time.tm_hour}:{current_time.tm_min}", "%H:%M")
+        f"{time_hour}:{time_min}:0", "%H:%M:%S"
+    ) - datetime.strptime(
+        f"{current_time.tm_hour}:{current_time.tm_min}:{current_time.tm_sec}",
+        "%H:%M:%S",
+    )
 
     if left_time.seconds < wait_time:
         raise exceptions.CallTimeException(
@@ -67,7 +71,7 @@ def sendwhatmsg(
     sleep_time = left_time.seconds - wait_time
     print(
         f"In {sleep_time} seconds web.whatsapp.com will open and after {wait_time} seconds message will "
-        f"be delivered"
+        f"be delivered!"
     )
     time.sleep(sleep_time)
     core.send_message(message=message, receiver=phone_no, wait_time=wait_time)
@@ -92,8 +96,11 @@ def sendwhatmsg_to_group(
 
     current_time = time.localtime()
     left_time = datetime.strptime(
-        f"{time_hour}:{time_min}", "%H:%M"
-    ) - datetime.strptime(f"{current_time.tm_hour}:{current_time.tm_min}", "%H:%M")
+        f"{time_hour}:{time_min}:0", "%H:%M:%S"
+    ) - datetime.strptime(
+        f"{current_time.tm_hour}:{current_time.tm_min}:{current_time.tm_sec}",
+        "%H:%M:%S",
+    )
 
     if left_time.total_seconds() < wait_time:
         raise exceptions.CallTimeException(
