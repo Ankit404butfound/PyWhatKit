@@ -108,7 +108,7 @@ venv.bak/
 .idea
 
 # Test Files
-Test.py
+*est.py
 
 # DBS File
 *_dbs.txt
