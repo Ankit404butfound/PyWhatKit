@@ -4,7 +4,7 @@ from webbrowser import open
 from urllib.parse import quote
 
 import requests
-from pyautogui import hotkey, alert, typewrite, press, size, click
+from pyautogui import hotkey, alert, typewrite, press, click, size
 
 from pywhatkit.core.exceptions import InternetException
 
@@ -66,4 +66,6 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
     if not check_number(receiver):
         typewrite(message)
     time.sleep(wait_time)
+    width, height = size()
+    click(width / 2, height / 2)
     press("enter")
