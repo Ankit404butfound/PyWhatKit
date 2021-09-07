@@ -4,3 +4,4 @@ pre-commit
 pyautogui
 requests
 wikipedia
+pyperclip
