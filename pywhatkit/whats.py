@@ -102,12 +102,12 @@ def sendwhatmsg_to_group(
         "%H:%M:%S",
     )
 
-    if left_time.total_seconds() < wait_time:
+    if left_time.seconds < wait_time:
         raise exceptions.CallTimeException(
             "Call time must be greater than wait_time as web.whatsapp.com takes some time to load"
         )
 
-    sleep_time = left_time.total_seconds() - wait_time
+    sleep_time = left_time.seconds - wait_time
     print(
         f"In {sleep_time} seconds web.whatsapp.com will open and after {wait_time} seconds message will be delivered"
     )
