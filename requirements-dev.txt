@@ -2,6 +2,6 @@ black
 Pillow
 pre-commit
 pyautogui
+pyperclip
 requests
 wikipedia
-pyperclip
