@@ -2,7 +2,7 @@ import time
 from platform import system
 from webbrowser import open
 from urllib.parse import quote
-import pyperclip 
+import pyperclip
 """
 import pyperclip pyperclip is an in-built module in python for copying text
 we will use it for issue #111 as they are saying that accent and pyautugui only
