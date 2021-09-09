@@ -2,6 +2,7 @@
 # Status: Stable
 # Documentation: https://github.com/Ankit404butfound/PyWhatKit/wiki
 # Report Bugs and Feature Requests here: https://github.com/Ankit404butfound/PyWhatKit/issues
+# For further Information, Join our Discord: https://discord.gg/62Yf5mushu
 
 import pywhatkit.help
 from pywhatkit.ascii_art import image_to_ascii_art
@@ -15,3 +16,9 @@ from pywhatkit.whats import (
     open_web,
 )
 from pywhatkit.sc import shutdown, cancel_shutdown
+from pywhatkit.misc import show_history, playonyt, info, search
+
+from platform import system
+
+if system().lower() in ("darwin", "windows"):
+    from pywhatkit.misc import take_screenshot
