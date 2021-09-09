@@ -1,15 +1,11 @@
 import time
+import pyperclip
 from platform import system
 from webbrowser import open
 from urllib.parse import quote
-import pyperclip
-"""
-import pyperclip pyperclip is an in-built module in python for copying text
-we will use it for issue #111 as they are saying that accent and pyautugui only
-supports english https://github.com/Ankit404butfound/PyWhatKit/issues/111 this is the full link
-"""
+
 import requests
-from pyautogui import hotkey, alert, typewrite, press, click, size
+from pyautogui import hotkey, alert, press, click, size
 
 from pywhatkit.core.exceptions import InternetException
 
@@ -26,7 +22,7 @@ def close_tab(wait_time: int = 2) -> None:
     time.sleep(wait_time)
     if system().lower() in ("windows", "linux"):
         hotkey("ctrl", "w")
-    elif system().lower() in "darwin":
+    elif system().lower() == "darwin":
         hotkey("command", "w")
     else:
         raise Warning(f"{system().lower()} not supported!")
@@ -69,11 +65,12 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
         open("https://web.whatsapp.com/accept?code=" + receiver)
 
     if not check_number(receiver):
-        # typewrite(message) I removed this line because we do not need this anymore
-        pyperclip.copy(message) # copy the message
-        hotkey("ctrl", 'v') # paste the message with accent
-        # and done
-    time.sleep(wait_time)
+        pyperclip.copy(message)
     width, height = size()
+    time.sleep(wait_time)
     click(width / 2, height / 2)
+    if system().lower() == "darwin":
+        hotkey("command", "v")
+    else:
+        hotkey("ctrl", "v")
     press("enter")
