@@ -78,9 +78,9 @@ def copy_image(path: str) -> None:
 
     if system().lower() == "linux":
         if pathlib.Path(path).suffix in (".PNG", ".png"):
-            os.system(f"xclip -selection clipboard -target image/png -i {path}")
+            os.system(f"copyq copy image/png - < {path}")
         elif pathlib.Path(path).suffix in (".jpg", ".JPG", ".jpeg", ".JPEG"):
-            os.system(f"xclip -selection clipboard -target image/jpg -i {path}")
+            os.system(f"copyq copy image/jpeg - < {path}")
         else:
             raise Exception(
                 f"File Format {pathlib.Path(path).suffix} is not Supported!"
