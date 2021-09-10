@@ -41,3 +41,28 @@ def log_message(_time: time.struct_time, receiver: str, message: str) -> None:
             )
         file.write("\n--------------------\n")
         file.close()
+
+
+def log_image(_time: time.struct_time, path: str, receiver: str, caption: str) -> None:
+    """Logs the Information About the Sent Image"""
+
+    if not os.path.exists("PyWhatKit_DB.txt"):
+        file = open("PyWhatKit_DB.txt", "w+")
+        file.close()
+
+    caption = format_message(caption)
+
+    with open("PyWhatKit_DB.txt", "a", encoding="utf-8") as file:
+        if receiver.isalpha():
+            file.write(
+                f"Date: {_time.tm_mday}:{_time.tm_mon}:{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\n"
+                f"Group ID: {receiver}\nImage: {path}\nCaption: {caption}"
+            )
+
+        else:
+            file.write(
+                f"Date: {_time.tm_mday}:{_time.tm_mon}:{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\n"
+                f"Phone Number: {receiver}\nImage: {path}\nCaption: {caption}"
+            )
+        file.write("\n--------------------\n")
+        file.close()
