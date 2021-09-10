@@ -1,9 +1,6 @@
 import time
-import os
-import pathlib
 from datetime import datetime
 from urllib.parse import quote
-from platform import system
 from typing import Optional
 
 import webbrowser as web
@@ -119,7 +116,7 @@ def sendwhatmsg_to_group(
 
 
 def sendwhats_image(
-    phone_no: str,
+    receiver: str,
     img_path: str,
     caption: str = " ",
     wait_time: int = 15,
@@ -128,55 +125,14 @@ def sendwhats_image(
 ) -> None:
     """Send Image to a WhatsApp Contact"""
 
-    if not core.check_number(number=phone_no):
+    if not receiver.isalpha() and not core.check_number(number=receiver):
         raise exceptions.CountryCodeException("Country Code missing from Phone Number!")
 
-    web.open("https://web.whatsapp.com/send?phone=" + phone_no + "&text=" + caption)
-    time.sleep(5)
-    if system().lower() == "linux":
-        if pathlib.Path(img_path).suffix in (".PNG", ".png"):
-            os.system(f"xclip -selection clipboard -target image/png -i {img_path}")
-        elif pathlib.Path(img_path).suffix in (".jpg", ".JPG", ".jpeg", ".JPEG"):
-            os.system(f"xclip -selection clipboard -target image/jpg -i {img_path}")
-        else:
-            print(f"The file format {pathlib.Path(img_path).suffix} is not supported!")
-            return
-        time.sleep(2)
-        pg.hotkey("ctrl", "v")
-    elif system().lower() == "windows":
-        import win32clipboard
-        from io import BytesIO
-
-        from PIL import Image
-
-        image = Image.open(img_path)
-        output = BytesIO()
-        image.convert("RGB").save(output, "BMP")
-        data = output.getvalue()[14:]
-        output.close()
-        win32clipboard.OpenClipboard()
-        win32clipboard.EmptyClipboard()
-        win32clipboard.SetClipboardData(win32clipboard.CF_DIB, data)
-        win32clipboard.CloseClipboard()
-        time.sleep(2)
-        pg.hotkey("ctrl", "v")
-    elif system().lower() == "darwin":
-        if pathlib.Path(img_path).suffix in (".jpg", ".jpeg", ".JPG", ".JPEG"):
-            width, height = pg.size()
-            pg.click(width / 2, height / 2)
-            os.system(
-                f"osascript -e 'set the clipboard to (read (POSIX file \"{img_path}\") as JPEG picture)'"
-            )
-        else:
-            print(f"The file format {pathlib.Path(img_path).suffix} is not supported!")
-            return
-        time.sleep(2)
-        pg.hotkey("command", "v")
-    else:
-        print(f"{system().lower()} not supported!")
-        return
-    time.sleep(wait_time)
-    pg.press("enter")
+    current_time = time.localtime()
+    core.send_image(
+        path=img_path, caption=caption, receiver=receiver, wait_time=wait_time
+    )
+    log.log_image(_time=current_time, path=img_path, receiver=receiver, caption=caption)
     if tab_close:
         core.close_tab(wait_time=close_time)
 
