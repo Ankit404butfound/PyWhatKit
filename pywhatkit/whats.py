@@ -29,6 +29,7 @@ def sendwhatmsg_instantly(
         "https://web.whatsapp.com/send?phone=" + phone_no + "&text=" + quote(message)
     )
     time.sleep(wait_time)
+    pg.click(core.WIDTH / 2, core.HEIGHT / 2)
     pg.press("enter")
     log.log_message(_time=time.localtime(), receiver=phone_no, message=message)
     if tab_close:
