@@ -125,7 +125,11 @@ def sendwhats_image(
 ) -> None:
     """Send Image to a WhatsApp Contact"""
 
-    if not receiver.isalpha() and not core.check_number(number=receiver):
+    if (
+        not receiver.isalpha()
+        and not receiver.isalnum()
+        and not core.check_number(number=receiver)
+    ):
         raise exceptions.CountryCodeException("Country Code missing from Phone Number!")
 
     current_time = time.localtime()
