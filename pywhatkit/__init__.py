@@ -4,7 +4,6 @@
 # Report Bugs and Feature Requests here: https://github.com/Ankit404butfound/PyWhatKit/issues
 # For further Information, Join our Discord: https://discord.gg/62Yf5mushu
 
-import pywhatkit.help
 from pywhatkit.ascii_art import image_to_ascii_art
 from pywhatkit.handwriting import text_to_handwriting
 from pywhatkit.mail import send_mail, send_hmail
