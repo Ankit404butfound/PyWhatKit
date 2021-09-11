@@ -31,12 +31,12 @@ def log_message(_time: time.struct_time, receiver: str, message: str) -> None:
     with open("PyWhatKit_DB.txt", "a", encoding="utf-8") as file:
         if check_number(receiver):
             file.write(
-                f"Date: {_time.tm_mday}:{_time.tm_mon}:{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\nPhone "
+                f"Date: {_time.tm_mday}/{_time.tm_mon}/{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\nPhone "
                 f"Phone Number: {receiver}\nMessage: {message}"
             )
         else:
             file.write(
-                f"Date: {_time.tm_mday}:{_time.tm_mon}:{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\n"
+                f"Date: {_time.tm_mday}/{_time.tm_mon}/{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\n"
                 f"Group ID: {receiver}\nMessage: {message}"
             )
         file.write("\n--------------------\n")
@@ -55,13 +55,13 @@ def log_image(_time: time.struct_time, path: str, receiver: str, caption: str) -
     with open("PyWhatKit_DB.txt", "a", encoding="utf-8") as file:
         if check_number(number=receiver):
             file.write(
-                f"Date: {_time.tm_mday}:{_time.tm_mon}:{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\n"
+                f"Date: {_time.tm_mday}/{_time.tm_mon}/{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\n"
                 f"Phone Number: {receiver}\nImage: {path}\nCaption: {caption}"
             )
 
         else:
             file.write(
-                f"Date: {_time.tm_mday}:{_time.tm_mon}:{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\n"
+                f"Date: {_time.tm_mday}/{_time.tm_mon}/{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\n"
                 f"Group ID: {receiver}\nImage: {path}\nCaption: {caption}"
             )
         file.write("\n--------------------\n")
