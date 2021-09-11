@@ -116,16 +116,16 @@ def copy_image(path: str) -> None:
 def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
     """Sends the Image to a Contact or a Group based on the Receiver"""
 
-    copy_image(path=path)
     _web(message=caption, receiver=receiver)
 
     time.sleep(wait_time)
     click(WIDTH / 2, HEIGHT / 2)
+    copy_image(path=path)
     if system().lower() == "darwin":
         hotkey("command", "v")
     else:
         hotkey("ctrl", "v")
-
+    time.sleep(1)
     if not check_number(number=receiver):
         pyperclip.copy(caption)
         hotkey("ctrl", "v")
