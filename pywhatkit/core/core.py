@@ -64,11 +64,13 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
     _web(receiver=receiver, message=message)
     if not check_number(number=receiver):
         pyperclip.copy(message)
-    time.sleep(wait_time)
+    time.sleep(4)
     click(WIDTH / 2, HEIGHT / 2)
+    time.sleep(wait_time-4)
     if system().lower() == "darwin":
         hotkey("command", "v")
     else:
+        pyperclip.copy("")
         hotkey("ctrl", "v")
     press("enter")
 
@@ -118,8 +120,9 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
 
     _web(message=caption, receiver=receiver)
 
-    time.sleep(wait_time)
+    time.sleep(4)
     click(WIDTH / 2, HEIGHT / 2)
+    time.sleep(wait_time-4)
     copy_image(path=path)
     if system().lower() == "darwin":
         hotkey("command", "v")
