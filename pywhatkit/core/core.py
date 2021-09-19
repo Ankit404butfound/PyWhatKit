@@ -66,7 +66,7 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
         pyperclip.copy(message)
     time.sleep(4)
     click(WIDTH / 2, HEIGHT / 2)
-    time.sleep(wait_time-4)
+    time.sleep(wait_time - 4)
     if system().lower() == "darwin":
         hotkey("command", "v")
     else:
@@ -122,7 +122,7 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
 
     time.sleep(4)
     click(WIDTH / 2, HEIGHT / 2)
-    time.sleep(wait_time-4)
+    time.sleep(wait_time - 4)
     copy_image(path=path)
     if system().lower() == "darwin":
         hotkey("command", "v")
