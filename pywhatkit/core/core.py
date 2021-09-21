@@ -16,7 +16,7 @@ WIDTH, HEIGHT = size()
 
 
 def check_number(number: str) -> bool:
-    """Checks the Number to see if contains the Country Code"""
+    """Checks the Number to see if it contains the Country Code"""
 
     return "+" in number or "_" in number
 
@@ -30,7 +30,7 @@ def close_tab(wait_time: int = 2) -> None:
     elif system().lower() == "darwin":
         hotkey("command", "w")
     else:
-        raise Warning(f"{system().lower()} not supported!")
+        raise Warning(f"{system()} not Supported!")
     press("enter")
 
 
@@ -40,9 +40,7 @@ def check_connection() -> None:
     try:
         requests.get("https://google.com")
     except requests.RequestException:
-        raise InternetException(
-            f"Error while connecting to the Internet. Make sure you are connected to the Internet!"
-        )
+        raise InternetException(f"Error while Connecting to the Internet!")
 
 
 def _web(receiver: str, message: str) -> None:
@@ -62,16 +60,17 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
     """Parses and Sends the Message"""
 
     _web(receiver=receiver, message=message)
-    if not check_number(number=receiver):
-        pyperclip.copy(message)
     time.sleep(4)
     click(WIDTH / 2, HEIGHT / 2)
     time.sleep(wait_time - 4)
-    if system().lower() == "darwin":
-        hotkey("command", "v")
-    else:
+    if not check_number(number=receiver):
         pyperclip.copy("")
-        hotkey("ctrl", "v")
+        pyperclip.copy(message)
+        click(WIDTH / 2, HEIGHT / 2)
+        if system().lower() == "darwin":
+            hotkey("command", "v")
+        else:
+            hotkey("ctrl", "v")
     press("enter")
 
 
@@ -112,7 +111,7 @@ def copy_image(path: str) -> None:
                 f"File Format {pathlib.Path(path).suffix} is not Supported!"
             )
     else:
-        raise Exception(f"Unsupported System: {system().lower()}")
+        raise Exception(f"Unsupported System: {system()}")
 
 
 def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
@@ -124,12 +123,14 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
     click(WIDTH / 2, HEIGHT / 2)
     time.sleep(wait_time - 4)
     copy_image(path=path)
+    click(WIDTH / 2, HEIGHT / 2)
     if system().lower() == "darwin":
         hotkey("command", "v")
     else:
         hotkey("ctrl", "v")
     time.sleep(1)
     if not check_number(number=receiver):
+        pyperclip.copy("")
         pyperclip.copy(caption)
         hotkey("ctrl", "v")
     press("enter")
