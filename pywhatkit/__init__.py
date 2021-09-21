@@ -9,6 +9,8 @@ __VERSION__ = "Version 5.2 (Stable)"
 from pywhatkit.ascii_art import image_to_ascii_art
 from pywhatkit.handwriting import text_to_handwriting
 from pywhatkit.mail import send_mail, send_hmail
+from pywhatkit.misc import show_history, playonyt, info, search
+from pywhatkit.sc import shutdown, cancel_shutdown
 from pywhatkit.whats import (
     sendwhatmsg,
     sendwhatmsg_to_group,
@@ -16,8 +18,6 @@ from pywhatkit.whats import (
     sendwhats_image,
     open_web,
 )
-from pywhatkit.sc import shutdown, cancel_shutdown
-from pywhatkit.misc import show_history, playonyt, info, search
 
 from platform import system
 
