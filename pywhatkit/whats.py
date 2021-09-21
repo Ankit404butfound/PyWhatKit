@@ -1,3 +1,4 @@
+from curses.ascii import isalnum
 import time
 from datetime import datetime
 from urllib.parse import quote
@@ -127,7 +128,7 @@ def sendwhats_image(
 ) -> None:
     """Send Image to a WhatsApp Contact at a Certain Time"""
 
-    if (not receiver.isalpha()) and (not core.check_number(number=receiver)):
+    if (not receiver.isalnum()) and (not core.check_number(number=receiver)):
         raise exceptions.CountryCodeException("Country Code missing from Phone Number!")
 
     current_time = time.localtime()
