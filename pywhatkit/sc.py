@@ -10,7 +10,7 @@ osname = platform.system()
 
 
 def shutdown(time: int = 20) -> None:
-    """Schedules a Shutdown after the specified time"""
+    """Schedules a Shutdown after the Specified Time"""
 
     if "window" in osname.lower():
         cont = f"shutdown -s -t {time}"
@@ -18,10 +18,10 @@ def shutdown(time: int = 20) -> None:
         # Here 1115 is the error code of scheduled shutdown.
         if error_code in [winerror.ERROR_SHUTDOWN_IN_PROGRESS, 1115]:
             print(
-                "A shutdown process has already been scheduled...\nIgnoring this process"
+                "A Shutdown Process has already been Scheduled...\nIgnoring this Process!"
             )
         else:
-            print(f"Your System will shutdown in {time} seconds")
+            print(f"Your System will Shutdown in {time} Seconds")
 
     elif "linux" in osname.lower():
         cont = f"shutdown -h {time}"
@@ -33,23 +33,21 @@ def shutdown(time: int = 20) -> None:
 
     else:
         raise Warning(
-            "This function is for Windows, Mac and Linux users only, can't execute on {}".format(
-                osname
-            )
+            f"Available on Windows, Mac and Linux only, can't Execute on {osname}"
         )
 
 
 def cancel_shutdown() -> None:
-    """Cancels the scheduled Shutdown"""
+    """Cancels the Scheduled Shutdown"""
 
     if "window" in osname.lower():
         error_code = os.system("shutdown /a")
         if error_code == winerror.ERROR_NO_SHUTDOWN_IN_PROGRESS:
             print(
-                "ShutDown cancellation process has been aborted! [NO shutdown scheduled]"
+                "Shutdown Cancellation process has been Aborted! [NO Shutdown Scheduled]"
             )
         else:
-            print("ShutDown has been cancelled")
+            print("Shutdown has been Cancelled")
 
     elif "linux" in osname.lower():
         os.system("shutdown -c")
@@ -61,5 +59,5 @@ def cancel_shutdown() -> None:
 
     else:
         raise Warning(
-            f"This function is for Windows and Linux only, can't execute on: {osname}"
+            f"Available on Windows, Mac and Linux only, can't Execute on {osname}"
         )
