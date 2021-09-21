@@ -46,7 +46,7 @@ def sendwhatmsg(
     tab_close: bool = False,
     close_time: int = 3,
 ) -> None:
-    """Sends a WhatsApp Message"""
+    """Send a WhatsApp Message at a Certain Time"""
 
     if not core.check_number(number=phone_no):
         raise exceptions.CountryCodeException("Country code missing from Phone Number!")
@@ -64,7 +64,7 @@ def sendwhatmsg(
 
     if left_time.seconds < wait_time:
         raise exceptions.CallTimeException(
-            "Call time must be greater than wait_time as web.whatsapp.com takes some time to load"
+            "Call Time must be Greater than Wait Time as WhatsApp Web takes some Time to Load!"
         )
 
     sleep_time = left_time.seconds - wait_time
@@ -88,10 +88,10 @@ def sendwhatmsg_to_group(
     tab_close: bool = False,
     close_time: int = 3,
 ) -> None:
-    """Send WhatsApp Message to a Group"""
+    """Send WhatsApp Message to a Group at a Certain Time"""
 
     if time_hour not in range(25) or time_min not in range(60):
-        raise Warning("Invalid time format")
+        raise Warning("Invalid Time Format")
 
     current_time = time.localtime()
     left_time = datetime.strptime(
@@ -103,7 +103,7 @@ def sendwhatmsg_to_group(
 
     if left_time.seconds < wait_time:
         raise exceptions.CallTimeException(
-            "Call time must be greater than wait_time as web.whatsapp.com takes some time to load"
+            "Call Time must be Greater than Wait Time as WhatsApp Web takes some Time to Load!"
         )
 
     sleep_time = left_time.seconds - wait_time
@@ -125,7 +125,7 @@ def sendwhats_image(
     tab_close: bool = False,
     close_time: int = 3,
 ) -> None:
-    """Send Image to a WhatsApp Contact"""
+    """Send Image to a WhatsApp Contact at a Certain Time"""
 
     if (not receiver.isalpha()) and (not core.check_number(number=receiver)):
         raise exceptions.CountryCodeException("Country Code missing from Phone Number!")
