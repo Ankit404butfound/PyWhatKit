@@ -30,7 +30,7 @@ def sendwhatmsg_instantly(
     )
     time.sleep(4)
     pg.click(core.WIDTH / 2, core.HEIGHT / 2)
-    time.sleep(wait_time-4)
+    time.sleep(wait_time - 4)
     pg.press("enter")
     log.log_message(_time=time.localtime(), receiver=phone_no, message=message)
     if tab_close:
@@ -127,11 +127,7 @@ def sendwhats_image(
 ) -> None:
     """Send Image to a WhatsApp Contact"""
 
-    if (
-        not receiver.isalpha()
-        and not receiver.isalnum()
-        and not core.check_number(number=receiver)
-    ):
+    if (not receiver.isalpha()) and (not core.check_number(number=receiver)):
         raise exceptions.CountryCodeException("Country Code missing from Phone Number!")
 
     current_time = time.localtime()
