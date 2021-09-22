@@ -40,7 +40,7 @@ def check_connection() -> None:
     try:
         requests.get("https://google.com")
     except requests.RequestException:
-        raise InternetException(f"Error while Connecting to the Internet!")
+        raise InternetException('Error while Connecting to the Internet!')
 
 
 def _web(receiver: str, message: str) -> None:
