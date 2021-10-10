@@ -17,8 +17,8 @@ from pywhatkit.whats import (
     open_web,
 )
 from pywhatkit.sc import shutdown, cancel_shutdown
-from pywhatkit.misc import show_history, playonyt, info, search, web_ss
-
+from pywhatkit.misc import show_history, playonyt, info, search
+from pywhatkit.webss import web_ss
 
 from platform import system
 
