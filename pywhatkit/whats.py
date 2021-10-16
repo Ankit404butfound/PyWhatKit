@@ -13,26 +13,28 @@ pg.FAILSAFE = False
 core.check_connection()
 
 T = TypeVar("T")
+
+
 def input_to_list(value_input: Union[T, List[T]]) -> List[T]:
     if type(value_input) is list:
         return value_input
-    return list(value_input) 
+    return list(value_input)
+
 
 def _log_message_sent(*, message: str, receiver: str) -> None:
     log.log_message(_time=time.localtime(), receiver=receiver, message=message)
 
-def _do_send_message(
-    *,
-    phone_no: str,
-    message: str,
-    wait_time: int) -> None:
+
+def _do_send_message(*, phone_no: str, message: str, wait_time: int) -> None:
     core.send_message(message, phone_no, wait_time)
     pg.press("enter")
     _log_message_sent(receiver=phone_no, message=message)
 
+
 # Custom message type in case we want to create a new format later, like images that need a path and a caption
 Message = str
 MessageInput = Union[Message, List[Message]]
+
 
 def sendwhatmsg_instantly(
     phone_no: str,
@@ -52,12 +54,9 @@ def sendwhatmsg_instantly(
         _do_send_message(message=message, phone_no=phone_no, wait_time=wait_time)
         if tab_close:
             core.close_tab(wait_time=close_time)
-            
-def _wait_until_time(
-    *,
-    target_time: Tuple[int, int],
-    wait_time: int
-):
+
+
+def _wait_until_time(*, target_time: Tuple[int, int], wait_time: int):
     "Waits until the given hour"
     time_hour, time_min = target_time
     if time_hour not in range(25) or time_min not in range(60):
@@ -82,6 +81,7 @@ def _wait_until_time(
         f"be delivered!"
     )
     time.sleep(sleep_time)
+
 
 def sendwhatmsg(
     phone_no: str,
@@ -117,7 +117,7 @@ def sendwhatmsg_to_group(
     close_time: int = 3,
 ) -> None:
     """Send one or more WhatsApp Messages to a Group.
-    
+
     If an time is defined, this will wait for the correct time before sending the messages.
     """
     messages = input_to_list(messages)
@@ -125,7 +125,9 @@ def sendwhatmsg_to_group(
     if time_hour is not None and time_min is not None:
         _wait_until_time(target_time=(time_hour, time_min), wait_time=wait_time)
     elif (time_hour is None) != (time_min is None):
-        raise Exception(f"Invalid time: some elements are not defined {time_hour}h{time_min}")
+        raise Exception(
+            f"Invalid time: some elements are not defined {time_hour}h{time_min}"
+        )
 
     for message in messages:
         core.send_message(message=message, receiver=group_id, wait_time=wait_time)
@@ -144,8 +146,10 @@ def sendwhats_image(
 ) -> None:
     sendwhats_image(receiver, [(img_path, caption)], wait_time, tab_close, close_time)
 
+
 Image = Tuple[str, str]
 ImageInput = Union[Image, List[Image]]
+
 
 def sendwhats_images(
     receiver: str,
@@ -169,7 +173,9 @@ def sendwhats_images(
         core.send_image(
             path=img_path, caption=caption, receiver=receiver, wait_time=wait_time
         )
-        log.log_image(_time=current_time, path=img_path, receiver=receiver, caption=caption)
+        log.log_image(
+            _time=current_time, path=img_path, receiver=receiver, caption=caption
+        )
         if tab_close:
             core.close_tab(wait_time=close_time)
 
