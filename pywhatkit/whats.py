@@ -18,6 +18,12 @@ T = TypeVar("T")
 def input_to_list(value_input: Union[T, List[T]]) -> List[T]:
     if type(value_input) is list:
         return value_input
+    if type(value_input) is tuple:
+        return [value_input]
+    if type(value_input) is str:
+        # Make sure that we don't convert it into a list of chars
+        return [value_input]
+    # For numbers, sets, etc, convert to a list
     return list(value_input)
 
 
