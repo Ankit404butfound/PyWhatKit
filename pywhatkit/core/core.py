@@ -8,6 +8,7 @@ from urllib.parse import quote
 
 import requests
 from pyautogui import hotkey, press, click, size
+from typing import List
 
 from pywhatkit.core.exceptions import InternetException
 
@@ -45,15 +46,14 @@ def check_connection() -> None:
         )
 
 
+def _create_url(*, receiver: str, message: str):
+    return f"https://web.whatsapp.com/send?phone={receiver}&text={quote(message)}"
+
+
 def _web(receiver: str, message: str) -> None:
     """Opens WhatsApp Web based on the Receiver"""
     if check_number(number=receiver):
-        open(
-            "https://web.whatsapp.com/send?phone="
-            + receiver
-            + "&text="
-            + quote(message)
-        )
+        open(_create_url(message=message, receiver=receiver))
     else:
         open("https://web.whatsapp.com/accept?code=" + receiver)
 
@@ -72,6 +72,27 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
     else:
         pyperclip.copy("")
         hotkey("ctrl", "v")
+    press("enter")
+
+
+def _type_next_message(*, receiver: str, message: str):
+    # We have to be clever here, it is not simple to type the message with pyautogui as
+    # as the output depends on the keyboard language.
+    # Instead, we edit the URL in the browser, pasting the new content
+    hotkey("ctrl", "l")  # Edit the URL
+    time.sleep(1)
+    new_url = _create_url(receiver=receiver, message=message)
+    pyperclip.copy(new_url)
+    hotkey("ctrl", "v")  # Paste the prepared url
+    press("enter")  # go to the page
+
+
+def send_another_message(*, message: str, receiver: str, wait_time: int) -> None:
+    """Sends a message from an existing Whatsapp tab"""
+    _type_next_message(message=message, receiver=receiver)
+    time.sleep(4)
+    click(WIDTH / 2, HEIGHT / 2)
+    time.sleep(wait_time - 4)
     press("enter")
 
 

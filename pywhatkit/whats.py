@@ -31,10 +31,15 @@ def _log_message_sent(*, message: str, receiver: str) -> None:
     log.log_message(_time=time.localtime(), receiver=receiver, message=message)
 
 
-def _do_send_message(*, phone_no: str, message: str, wait_time: int) -> None:
-    core.send_message(message, phone_no, wait_time)
-    pg.press("enter")
-    _log_message_sent(receiver=phone_no, message=message)
+def send_many_messages(*, messages: List[str], receiver: str, wait_time: int) -> None:
+    for i, message in enumerate(messages):
+        if i == 0:
+            core.send_message(message, receiver, wait_time)
+        else:
+            core.send_another_message(
+                message=message, receiver=receiver, wait_time=wait_time
+            )
+        _log_message_sent(receiver=receiver, message=message)
 
 
 # Custom message type in case we want to create a new format later, like images that need a path and a caption
@@ -56,10 +61,9 @@ def sendwhatmsg_instantly(
     if not core.check_number(number=phone_no):
         raise exceptions.CountryCodeException("Country code missing from phone_no")
 
-    for message in messages:
-        _do_send_message(message=message, phone_no=phone_no, wait_time=wait_time)
-        if tab_close:
-            core.close_tab(wait_time=close_time)
+    send_many_messages(messages=messages, receiver=phone_no, wait_time=wait_time)
+    if tab_close:
+        core.close_tab(wait_time=close_time)
 
 
 def _wait_until_time(*, target_time: Tuple[int, int], wait_time: int):
@@ -106,11 +110,9 @@ def sendwhatmsg(
 
     _wait_until_time(time=(time_hour, time_min), wait_time=wait_time)
 
-    for message in messages:
-        core.send_message(message=message, receiver=phone_no, wait_time=wait_time)
-        _log_message_sent(receiver=phone_no, message=message)
-        if tab_close:
-            core.close_tab(wait_time=close_time)
+    send_many_messages(messages=messages, receiver=phone_no, wait_time=wait_time)
+    if tab_close:
+        core.close_tab(wait_time=close_time)
 
 
 def sendwhatmsg_to_group(
@@ -135,11 +137,9 @@ def sendwhatmsg_to_group(
             f"Invalid time: some elements are not defined {time_hour}h{time_min}"
         )
 
-    for message in messages:
-        core.send_message(message=message, receiver=group_id, wait_time=wait_time)
-        _log_message_sent(receiver=group_id, message=message)
-        if tab_close:
-            core.close_tab(wait_time=close_time)
+    send_many_messages(messages=messages, receiver=group_id, wait_time=wait_time)
+    if tab_close:
+        core.close_tab(wait_time=close_time)
 
 
 def sendwhats_image(
