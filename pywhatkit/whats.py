@@ -1,12 +1,12 @@
 import time
-from datetime import datetime
-from urllib.parse import quote
-from typing import Optional, Union, List, Tuple, TypeVar
-
 import webbrowser as web
+from datetime import datetime
+from typing import List, Optional, Tuple, TypeVar, Union
+from urllib.parse import quote
+
 import pyautogui as pg
 
-from pywhatkit.core import log, core, exceptions
+from pywhatkit.core import core, exceptions, log
 
 pg.FAILSAFE = False
 
