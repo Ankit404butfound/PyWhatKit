@@ -45,7 +45,7 @@ def check_connection() -> None:
         )
 
 
-def _create_url(*, receiver: str, message: str):
+def _create_url(*, receiver: str, message: str) -> str:
     return f"https://web.whatsapp.com/send?phone={receiver}&text={quote(message)}"
 
 
@@ -74,7 +74,7 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
     press("enter")
 
 
-def _type_next_message(*, receiver: str, message: str):
+def _type_next_message(*, receiver: str, message: str) -> None:
     # We have to be clever here, it is not simple to type the message with pyautogui as
     # as the output depends on the keyboard language.
     # Instead, we edit the URL in the browser, pasting the new content

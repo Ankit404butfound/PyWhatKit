@@ -66,7 +66,7 @@ def sendwhatmsg_instantly(
         core.close_tab(wait_time=close_time)
 
 
-def _wait_until_time(*, target_time: Tuple[int, int], wait_time: int):
+def _wait_until_time(*, target_time: Tuple[int, int], wait_time: int) -> None:
     "Waits until the given hour"
     time_hour, time_min = target_time
     if time_hour not in range(25) or time_min not in range(60):
