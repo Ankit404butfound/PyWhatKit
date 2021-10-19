@@ -45,13 +45,11 @@ def info(topic: str, lines: int = 3, return_value: bool = False) -> Optional[str
         return data
 
 
-def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> Union[str]:
+def play_on_yt(topic: str, use_api: bool = False, open_video: bool = True) -> Union[str]:
     """Play a YouTube Video"""
 
     if use_api:
-        response = requests.get(
-            f"https://pywhatkit.herokuapp.com/playonyt?topic={topic}"
-        )
+        response = requests.get(f"https://pywhatkit.herokuapp.com/playonyt?topic={topic}")
         if open_video:
             web.open(response.content.decode("ascii"))
         return response.content.decode("ascii")
