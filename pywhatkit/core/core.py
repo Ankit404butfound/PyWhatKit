@@ -1,16 +1,15 @@
 import os
-import time
 import pathlib
-import pyperclip
+import time
 from platform import system
-from webbrowser import open
 from urllib.parse import quote
+from webbrowser import open
 
+import pyperclip
 import requests
-from pyautogui import hotkey, press, click, size
+from pyautogui import click, hotkey, press, size
 
 from pywhatkit.core.exceptions import InternetException
-
 
 WIDTH, HEIGHT = size()
 
@@ -66,7 +65,7 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
         pyperclip.copy(message)
     time.sleep(4)
     click(WIDTH / 2, HEIGHT / 2)
-    time.sleep(wait_time-4)
+    time.sleep(wait_time - 4)
     if system().lower() == "darwin":
         hotkey("command", "v")
     else:
@@ -88,9 +87,9 @@ def copy_image(path: str) -> None:
                 f"File Format {pathlib.Path(path).suffix} is not Supported!"
             )
     elif system().lower() == "windows":
-        import win32clipboard
         from io import BytesIO
 
+        import win32clipboard
         from PIL import Image
 
         image = Image.open(path)
@@ -122,7 +121,7 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
 
     time.sleep(4)
     click(WIDTH / 2, HEIGHT / 2)
-    time.sleep(wait_time-4)
+    time.sleep(wait_time - 4)
     copy_image(path=path)
     if system().lower() == "darwin":
         hotkey("command", "v")
