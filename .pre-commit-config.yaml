@@ -14,3 +14,11 @@ repos:
     rev: v1.5.1
     hooks:
       - id: python-check-blanket-noqa
+  - repo: https://github.com/psf/black
+    rev: 21.9b0
+    hooks:
+      - id: black
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.9.3
+    hooks:
+      - id: isort
