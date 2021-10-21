@@ -1,7 +1,7 @@
 import time
 import webbrowser as web
 from platform import system
-from typing import Optional, Union
+from typing import Optional, Unin
 from PIL import ImageGrab
 import wikipedia
 from requests import get
