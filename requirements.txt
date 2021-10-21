@@ -3,3 +3,5 @@ pyautogui
 pyperclip
 requests
 wikipedia
+bs4
+spotify2py
