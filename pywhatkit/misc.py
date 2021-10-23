@@ -10,8 +10,7 @@ if system().lower() in ("windows", "darwin"):
     from PIL import ImageGrab
 
     def take_screenshot(
-        file_name: str = "pywhatkit_screenshot", delay: int = 2
-    ) -> None:
+        file_name: str = "pywhatkit_screenshot", delay: int = 2) -> None:
         """Take Screenshot of the Screen"""
 
         time.sleep(delay)
@@ -53,7 +52,7 @@ def play_on_yt(topic: str, use_api: bool = False, open_video: bool = True) -> Un
             web.open(response.content.decode("ascii"))
         return response.content.decode("ascii")
     else:
-        url = "https://www.youtube.com/results?q=" + topic
+        url = f"https://www.youtube.com/results?q={topic}"
         count = 0
         cont = requests.get(url)
         data = cont.content
@@ -67,12 +66,12 @@ def play_on_yt(topic: str, use_api: bool = False, open_video: bool = True) -> Un
             raise Exception("No Video Found for this Topic!")
 
         if open_video:
-            web.open("https://www.youtube.com" + lst[count - 5])
-        return "https://www.youtube.com" + lst[count - 5]
+            web.open(f"https://www.youtube.com{lst[count - 5]}")
+        return f"https://www.youtube.com{lst[count - 5]}"
 
 
 def search(topic: str) -> None:
     """Searches About the Topic on Google"""
 
-    link = "https://www.google.com/search?q={}".format(topic)
+    link = f"https://www.google.com/search?q={topic}"
     web.open(link)
