@@ -3,9 +3,8 @@ import webbrowser as web
 from platform import system
 from typing import Optional, Union
 
-import wikipedia
 import requests
-
+import wikipedia
 
 if system().lower() in ("windows", "darwin"):
     from PIL import ImageGrab

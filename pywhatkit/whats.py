@@ -1,13 +1,13 @@
 from curses.ascii import isalnum
 import time
-from datetime import datetime
-from urllib.parse import quote
-from typing import Optional
-
 import webbrowser as web
+from datetime import datetime
+from typing import Optional
+from urllib.parse import quote
+
 import pyautogui as pg
 
-from pywhatkit.core import log, core, exceptions
+from pywhatkit.core import core, exceptions, log
 
 pg.FAILSAFE = False
 
