@@ -1,5 +1,5 @@
-import smtplib
 import re
+import smtplib
 from email.message import EmailMessage
 from email.mime.text import MIMEText
 from typing import Union
