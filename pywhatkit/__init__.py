@@ -6,20 +6,20 @@
 
 __VERSION__ = "Version 5.2 (Stable)"
 
+from platform import system
+
 from pywhatkit.ascii_art import image_to_ascii_art
 from pywhatkit.handwriting import text_to_handwriting
-from pywhatkit.mail import send_mail, send_hmail
+from pywhatkit.mail import send_hmail, send_mail
+from pywhatkit.misc import info, playonyt, search, show_history
+from pywhatkit.sc import cancel_shutdown, shutdown
 from pywhatkit.whats import (
-    sendwhatmsg,
-    sendwhatmsg_to_group,
-    sendwhatmsg_instantly,
-    sendwhats_image,
     open_web,
+    sendwhatmsg,
+    sendwhatmsg_instantly,
+    sendwhatmsg_to_group,
+    sendwhats_image,
 )
-from pywhatkit.sc import shutdown, cancel_shutdown
-from pywhatkit.misc import show_history, playonyt, info, search
-
-from platform import system
 
 if system().lower() in ("darwin", "windows"):
     from pywhatkit.misc import take_screenshot
