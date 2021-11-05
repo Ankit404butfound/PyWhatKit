@@ -10,7 +10,7 @@
 ![image](https://flat.badgen.net/github/release/Ankit404butfound/Pywhatkit)
 <!-- ![logo](https://github.com/Ankit404butfound/PyWhatKit/raw/master/Images/logo.png?raw=true) -->
 
-[PyWhatKit](https://pypi.org/project/pywhatkit/) is a Python library with various helpful features. It's easy-to-use and does not require you to do any additional setup. Currently, it has about 200k+ downloads and counting. New updates are released frequently with new features and bug fixes.
+[PyWhatKit](https://pypi.org/project/pywhatkit/) is a Python library with various helpful features. It's easy-to-use and does not require you to do any additional setup. Currently, it has about 300k+ downloads and counting. New updates are released frequently with new features and bug fixes.
 
 # Links
 
