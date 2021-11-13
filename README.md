@@ -14,11 +14,9 @@
 
 # Links
 
-- ### Have some query or suggestions or want to become a beta tester, join our discord server - [Discord invite link](https://discord.gg/62Yf5mushu)
-
-- ### Help us test an upcoming feature - [here](https://pywhatkit.herokuapp.com/remote-kit)
-
-- ### Documentation - [Wiki](https://github.com/Ankit404butfound/PyWhatKit/wiki)
+- **Have some query or suggestions or want to become a beta tester, join our discord server - [Discord invite link](https://discord.gg/62Yf5mushu)**
+- **Help us test an upcoming feature - [here](https://pywhatkit.herokuapp.com/remote-kit)**
+- **Documentation - [Wiki](https://github.com/Ankit404butfound/PyWhatKit/wiki)**
 
 ## Contributing
 

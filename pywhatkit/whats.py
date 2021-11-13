@@ -1,8 +1,8 @@
-import time
-import webbrowser as web
 from datetime import datetime
+import time
 from typing import Optional
 from urllib.parse import quote
+import webbrowser as web
 
 import pyautogui as pg
 
@@ -25,9 +25,7 @@ def sendwhatmsg_instantly(
     if not core.check_number(number=phone_no):
         raise exceptions.CountryCodeException("Country code missing from phone_no")
 
-    web.open(
-        "https://web.whatsapp.com/send?phone=" + phone_no + "&text=" + quote(message)
-    )
+    web.open(f"https://web.whatsapp.com/send?phone={phone_no}&text={quote(message)}")
     time.sleep(4)
     pg.click(core.WIDTH / 2, core.HEIGHT / 2)
     time.sleep(wait_time - 4)
@@ -58,9 +56,7 @@ def sendwhatmsg(
     left_time = datetime.strptime(
         f"{time_hour}:{time_min}:0", "%H:%M:%S"
     ) - datetime.strptime(
-        f"{current_time.tm_hour}:{current_time.tm_min}:{current_time.tm_sec}",
-        "%H:%M:%S",
-    )
+        f"{current_time.tm_hour}:{current_time.tm_min}:{current_time.tm_sec}","%H:%M:%S")
 
     if left_time.seconds < wait_time:
         raise exceptions.CallTimeException(
@@ -69,8 +65,7 @@ def sendwhatmsg(
 
     sleep_time = left_time.seconds - wait_time
     print(
-        f"In {sleep_time} seconds web.whatsapp.com will open and after {wait_time} seconds message will "
-        f"be delivered!"
+        f"In {sleep_time} seconds web.whatsapp.com will open and after {wait_time} seconds message will be delivered!"
     )
     time.sleep(sleep_time)
     core.send_message(message=message, receiver=phone_no, wait_time=wait_time)
@@ -97,9 +92,7 @@ def sendwhatmsg_to_group(
     left_time = datetime.strptime(
         f"{time_hour}:{time_min}:0", "%H:%M:%S"
     ) - datetime.strptime(
-        f"{current_time.tm_hour}:{current_time.tm_min}:{current_time.tm_sec}",
-        "%H:%M:%S",
-    )
+        f"{current_time.tm_hour}:{current_time.tm_min}:{current_time.tm_sec}","%H:%M:%S")
 
     if left_time.seconds < wait_time:
         raise exceptions.CallTimeException(

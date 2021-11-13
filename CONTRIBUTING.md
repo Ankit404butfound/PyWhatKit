@@ -4,13 +4,13 @@ Thank you so much for your interest in contributing!. All types of contributions
 
 Please make sure to read the documentation before making your contribution! It will make it a lot easier for us maintainers to make the most of it and smooth out the experience for all involved. 💚
 
-### If you have a question about this project, how to use it, or just need clarification about something
+## If you have a question about this project, how to use it, or just need clarification about something
 
 * Open an Issue [here](https://github.com/Ankit404butfound/PyWhatKit/issues)
 * Provide as much context as you can about what you're running into.
 * Provide project and platform versions (python, pip etc), depending on what seems relevant. If not, please be ready to provide that information if maintainers ask for it.
 
-### Request a Feature
+## Request a Feature
 
 If the project doesn't do something you need or want it to do:
 
@@ -18,7 +18,7 @@ If the project doesn't do something you need or want it to do:
 * Provide as much context as you can about what you're looking for.
 * If you want to contribute that feature yourself, please open a new draft PR [here](https://github.com/Ankit404butfound/PyWhatKit/pulls).
 
-### Code Formatting
+## Code Formatting
 
 Please make sure that your code follows the PEP8 standards and that you provide proper type hinting for the functions and parameters with proper spacing.
 For PyCharm users, you can use the shortcut `Ctrl + Alt + L` to reformat your code.
@@ -35,7 +35,7 @@ Inside the file add the following lines:
 For others, you can directly use `black filename` in the terminal to format your code.
 Before committing your changes run `pre-commit run --all-files` in your terminal, this would fix most of the common errors.
 
-### Contributing Code
+## Contributing Code
 
 Code contributions of just about any size are acceptable!
 
@@ -58,7 +58,7 @@ To contribute the code:
 
 NOTE: To contribute to the Documentation, follow the same steps as above.
 
-### Adding New Features
+## Adding New Features
 
 Here are some few things to keep in mind before working on a new feature:
 
@@ -66,6 +66,6 @@ Here are some few things to keep in mind before working on a new feature:
 * Keep the features relevant to the library
 * Before adding a new feature, open up an Issue to discuss it
 
-### Provide Support on Issues
+## Provide Support on Issues
 
 Helping out other users with their questions is a really awesome way of contributing to any community. If you can help out someone please go ahead for it. 🙂
