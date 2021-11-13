@@ -15,21 +15,20 @@ def shutdown(time: int = 20) -> None:
     if "window" in osname.lower():
         cont = f"shutdown -s -t {time}"
         error_code = os.system(cont)
-        # Here 1115 is the error code of scheduled shutdown.
         if error_code in [winerror.ERROR_SHUTDOWN_IN_PROGRESS, 1115]:
-            print(
-                "A Shutdown Process has already been Scheduled...\nIgnoring this Process!"
-            )
+            print("A Shutdown Process has already been Scheduled!")
         else:
-            print(f"Your System will Shutdown in {time} Seconds")
+            print(f"Your System will Shutdown in {time} Seconds!")
 
     elif "linux" in osname.lower():
         cont = f"shutdown -h {time}"
         os.system(cont)
+        print(f"Your System will Shutdown in {time} Minutes!")
 
     elif "darwin" in osname.lower():
         cont = f"shutdown -h -t {time}"
         os.system(cont)
+        print(f"Your System will Shutdown in {time} Minutes!")
 
     else:
         raise Warning(
@@ -47,7 +46,7 @@ def cancel_shutdown() -> None:
                 "Shutdown Cancellation process has been Aborted! [NO Shutdown Scheduled]"
             )
         else:
-            print("Shutdown has been Cancelled")
+            print("Shutdown has been Cancelled!")
 
     elif "linux" in osname.lower():
         os.system("shutdown -c")
