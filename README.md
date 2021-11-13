@@ -18,6 +18,62 @@
 - **Help us test an upcoming feature - [here](https://pywhatkit.herokuapp.com/remote-kit)**
 - **Documentation - [Wiki](https://github.com/Ankit404butfound/PyWhatKit/wiki)**
 
+## Installation and Supported Versions
+
+PyWhatKit is available on PyPi:
+
+```bash
+python3 -m pip install pywhatkit
+```
+
+```bash
+pip3 install pywhatkit
+```
+
+PyWhatKit officially supports Python 3.8+.
+
+## Cloning the Repository
+
+```bash
+git clone https://github.com/Ankit404butfound/PyWhatKit.git
+```
+
+## Features
+
+- Sending Message to a WhatsApp Group or Contact
+- Sending Image to a WhatsApp Group or Contact
+- Converting an Image to ASCII Art
+- Converting a String to Handwriting
+- Playing YouTube Videos
+- Sending Mails with HTML Code
+- Install and Use
+
+## Usage
+
+```py
+import pywhatkit
+
+# Send a WhatsApp Message to a Contact at 1:30 PM
+pywhatkit.sendwhatmsg("+910123456789", "Hi", 13, 30)
+
+# Same as above but Closes the Tab in 2 Seconds after Sending the Message
+pywhatkit.sendwhatmsg("+910123456789", "Hi", 13, 30, 15, True, 2)
+
+# Send an Image to a Group with the Caption as Hello
+pywhatkit.sendwhats_image("AB123CDEFGHijklmn", "Images/Hello.png", "Hello")
+
+# Send an Image to a Contact with the no Caption
+pywhatkit.sendwhats_image("+910123456789", "Images/Hello.png")
+
+# Send a WhatsApp Message to a Group at 12:00 AM
+pywhatkit.sendwhatmsg_to_group("AB123CDEFGHijklmn", "Hey All!", 0, 0)
+
+# Play a Video on YouTube
+pywhatkit.playonyt("PyWhatKit")
+```
+
+For more Examples and Functions, have a look at the [Wiki](https://github.com/Ankit404butfound/PyWhatKit/wiki)
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
