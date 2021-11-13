@@ -1,8 +1,8 @@
-from datetime import datetime
 import time
+import webbrowser as web
+from datetime import datetime
 from typing import Optional
 from urllib.parse import quote
-import webbrowser as web
 
 import pyautogui as pg
 
@@ -23,7 +23,7 @@ def sendwhatmsg_instantly(
     """Send WhatsApp Message Instantly"""
 
     if not core.check_number(number=phone_no):
-        raise exceptions.CountryCodeException("Country code missing from phone_no")
+        raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
 
     web.open(f"https://web.whatsapp.com/send?phone={phone_no}&text={quote(message)}")
     time.sleep(4)
@@ -47,16 +47,18 @@ def sendwhatmsg(
     """Send a WhatsApp Message at a Certain Time"""
 
     if not core.check_number(number=phone_no):
-        raise exceptions.CountryCodeException("Country code missing from Phone Number!")
+        raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
 
     if time_hour not in range(25) or time_min not in range(60):
-        raise Warning("Invalid Time Format")
+        raise Warning("Invalid Time Format!")
 
     current_time = time.localtime()
     left_time = datetime.strptime(
         f"{time_hour}:{time_min}:0", "%H:%M:%S"
     ) - datetime.strptime(
-        f"{current_time.tm_hour}:{current_time.tm_min}:{current_time.tm_sec}","%H:%M:%S")
+        f"{current_time.tm_hour}:{current_time.tm_min}:{current_time.tm_sec}",
+        "%H:%M:%S",
+    )
 
     if left_time.seconds < wait_time:
         raise exceptions.CallTimeException(
@@ -65,7 +67,7 @@ def sendwhatmsg(
 
     sleep_time = left_time.seconds - wait_time
     print(
-        f"In {sleep_time} seconds web.whatsapp.com will open and after {wait_time} seconds message will be delivered!"
+        f"In {sleep_time} Seconds WhatsApp will open and after {wait_time} Seconds Message will be Delivered!"
     )
     time.sleep(sleep_time)
     core.send_message(message=message, receiver=phone_no, wait_time=wait_time)
@@ -86,13 +88,15 @@ def sendwhatmsg_to_group(
     """Send WhatsApp Message to a Group at a Certain Time"""
 
     if time_hour not in range(25) or time_min not in range(60):
-        raise Warning("Invalid Time Format")
+        raise Warning("Invalid Time Format!")
 
     current_time = time.localtime()
     left_time = datetime.strptime(
         f"{time_hour}:{time_min}:0", "%H:%M:%S"
     ) - datetime.strptime(
-        f"{current_time.tm_hour}:{current_time.tm_min}:{current_time.tm_sec}","%H:%M:%S")
+        f"{current_time.tm_hour}:{current_time.tm_min}:{current_time.tm_sec}",
+        "%H:%M:%S",
+    )
 
     if left_time.seconds < wait_time:
         raise exceptions.CallTimeException(
@@ -101,7 +105,7 @@ def sendwhatmsg_to_group(
 
     sleep_time = left_time.seconds - wait_time
     print(
-        f"In {sleep_time} seconds web.whatsapp.com will open and after {wait_time} seconds message will be delivered"
+        f"In {sleep_time} Seconds WhatsApp will open and after {wait_time} Seconds Message will be Delivered!"
     )
     time.sleep(sleep_time)
     core.send_message(message=message, receiver=group_id, wait_time=wait_time)
@@ -118,10 +122,10 @@ def sendwhats_image(
     tab_close: bool = False,
     close_time: int = 3,
 ) -> None:
-    """Send Image to a WhatsApp Contact at a Certain Time"""
+    """Send Image to a WhatsApp Contact or Group at a Certain Time"""
 
     if (not receiver.isalnum()) and (not core.check_number(number=receiver)):
-        raise exceptions.CountryCodeException("Country Code missing from Phone Number!")
+        raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
 
     current_time = time.localtime()
     core.send_image(
