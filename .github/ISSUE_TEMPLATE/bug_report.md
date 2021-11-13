@@ -7,32 +7,27 @@ assignees: ''
 
 ---
 
-**Describe the Bug**
-A clear and concise description of what the bug is.
+## Description
 
-**To Reproduce**
-Steps to reproduce the behavior:
+A Clear and Concise Description of the Bug
 
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+## To Reproduce
 
-**Expected Behavior**
-A clear and concise description of what you expected to happen.
+Steps to Reproduce the Bug
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## Screenshots
 
-**Desktop (please complete the following information)**
+If applicable, add Screenshots to help explain your Problem
 
-- OS: [e.g. Windows]
-- Browser: [e.g. chrome, safari]
-- Version: [e.g. 22]
+## Version Information
 
-**Python (please complete the following information)**
+- OS: [e.g. Windows 10]
+- Browser: [e.g. Microsoft Edge, Google Chrome]
+- Python: [e.g. 3.10.0]
+- PyWhatKit: [e.g. 5.1]
 
-- Version: [e.g. 3.9.1]
+You can Check the PyWhatKit Version using
 
-**Additional Context**
-Add any other context about the problem here.
+```py
+print(pywhatkit.__VERSION__)
+```
