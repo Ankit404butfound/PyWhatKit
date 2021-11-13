@@ -7,7 +7,7 @@ from webbrowser import open
 
 import pyperclip
 import requests
-from pyautogui import click, hotkey, press, size
+from pyautogui import click, hotkey, press, size, typewrite
 
 from pywhatkit.core.exceptions import InternetException
 
@@ -61,15 +61,15 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
     """Parses and Sends the Message"""
 
     _web(receiver=receiver, message=message)
-    if not check_number(number=receiver):
-        pyperclip.copy(message)
+    time.sleep(6)
     click(WIDTH / 2, HEIGHT / 2)
-    time.sleep(wait_time)
-    if system().lower() == "darwin":
-        hotkey("command", "v")
-    else:
-        pyperclip.copy("")
-        hotkey("ctrl", "v")
+    time.sleep(wait_time - 6)
+    if not check_number(number=receiver):
+        for char in message:
+            if char == "\n":
+                hotkey("shift", "enter")
+            else:
+                typewrite(char)
     press("enter")
 
 
