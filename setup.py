@@ -14,7 +14,7 @@ setup(
     packages=setuptools.find_packages(),
     version="5.2",
     license="MIT",
-    description="PyWhatKit is a Python library for Sending whatsapp message at certain time with other useful features.",
+    description="PyWhatKit is a Simple and Powerful WhatsApp Automation Library with many userful Features",
     author="Ankit Raj Mahapatra",
     author_email="ankitrajjitendra816@gmail.com",
     url="https://github.com/Ankit404butfound/PyWhatKit",
