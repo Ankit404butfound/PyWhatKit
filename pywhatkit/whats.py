@@ -1,4 +1,3 @@
-from curses.ascii import isalnum
 import time
 import webbrowser as web
 from datetime import datetime
