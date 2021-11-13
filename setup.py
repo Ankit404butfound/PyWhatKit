@@ -18,7 +18,7 @@ setup(
     author="Ankit Raj Mahapatra",
     author_email="ankitrajjitendra816@gmail.com",
     url="https://github.com/Ankit404butfound/PyWhatKit",
-    download_url="https://github.com/Ankit404butfound/PyWhatKit/archive/refs/tags/5.1.zip",
+    download_url="https://github.com/Ankit404butfound/PyWhatKit/archive/refs/tags/5.2.zip",
     keywords=["sendwhatmsg", "info", "playonyt", "search", "watch_tutorial"],
     install_requires=["pyautogui", "wikipedia", "requests", "Pillow"],
     include_package_data=True,
