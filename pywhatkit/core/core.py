@@ -40,7 +40,7 @@ def check_connection() -> None:
         requests.get("https://google.com")
     except requests.RequestException:
         raise InternetException(
-            f"Error while connecting to the Internet. Make sure you are connected to the Internet!"
+            "Error while connecting to the Internet. Make sure you are connected to the Internet!"
         )
 
 
@@ -63,9 +63,8 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
     _web(receiver=receiver, message=message)
     if not check_number(number=receiver):
         pyperclip.copy(message)
-    time.sleep(4)
     click(WIDTH / 2, HEIGHT / 2)
-    time.sleep(wait_time - 4)
+    time.sleep(wait_time)
     if system().lower() == "darwin":
         hotkey("command", "v")
     else:
