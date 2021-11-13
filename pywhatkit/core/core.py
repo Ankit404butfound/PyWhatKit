@@ -5,7 +5,6 @@ from platform import system
 from urllib.parse import quote
 from webbrowser import open
 
-import pyperclip
 import requests
 from pyautogui import click, hotkey, press, size, typewrite
 
@@ -118,16 +117,21 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
 
     _web(message=caption, receiver=receiver)
 
-    time.sleep(4)
+    time.sleep(6)
     click(WIDTH / 2, HEIGHT / 2)
-    time.sleep(wait_time - 4)
+    time.sleep(wait_time - 6)
     copy_image(path=path)
+    if not check_number(number=receiver):
+        for char in caption:
+            if char == "\n":
+                hotkey("shift", "enter")
+            else:
+                typewrite(char)
+    else:
+        typewrite(" ")
     if system().lower() == "darwin":
         hotkey("command", "v")
     else:
         hotkey("ctrl", "v")
     time.sleep(1)
-    if not check_number(number=receiver):
-        pyperclip.copy(caption)
-        hotkey("ctrl", "v")
     press("enter")
