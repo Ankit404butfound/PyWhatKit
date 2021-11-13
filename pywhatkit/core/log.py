@@ -44,7 +44,7 @@ def log_message(_time: time.struct_time, receiver: str, message: str) -> None:
 
 
 def log_image(_time: time.struct_time, path: str, receiver: str, caption: str) -> None:
-    """Logs the Information About the Sent Image"""
+    """Logs the Image Information after it is Sent"""
 
     if not os.path.exists("PyWhatKit_DB.txt"):
         file = open("PyWhatKit_DB.txt", "w+")
