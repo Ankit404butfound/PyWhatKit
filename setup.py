@@ -20,7 +20,7 @@ setup(
     url="https://github.com/Ankit404butfound/PyWhatKit",
     download_url="https://github.com/Ankit404butfound/PyWhatKit/archive/refs/tags/5.1.zip",
     keywords=["sendwhatmsg", "info", "playonyt", "search", "watch_tutorial"],
-    install_requires=["pyautogui", "wikipedia", "requests", "Pillow", "pyperclip"],
+    install_requires=["pyautogui", "wikipedia", "requests", "Pillow"],
     include_package_data=True,
     long_description=readme(),
     long_description_content_type="text/markdown",
