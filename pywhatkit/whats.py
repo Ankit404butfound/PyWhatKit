@@ -120,7 +120,7 @@ def sendwhatmsg_to_group(
 def sendwhats_image(
     receiver: str,
     img_path: str,
-    caption: str = " ",
+    caption: str = "",
     wait_time: int = 15,
     tab_close: bool = False,
     close_time: int = 3,
