@@ -60,9 +60,9 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
     """Parses and Sends the Message"""
 
     _web(receiver=receiver, message=message)
-    time.sleep(6)
+    time.sleep(7)
     click(WIDTH / 2, HEIGHT / 2)
-    time.sleep(wait_time - 6)
+    time.sleep(wait_time - 7)
     if not check_number(number=receiver):
         for char in message:
             if char == "\n":
@@ -117,9 +117,9 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
 
     _web(message=caption, receiver=receiver)
 
-    time.sleep(6)
+    time.sleep(7)
     click(WIDTH / 2, HEIGHT / 2)
-    time.sleep(wait_time - 6)
+    time.sleep(wait_time - 7)
     copy_image(path=path)
     if not check_number(number=receiver):
         for char in caption:
