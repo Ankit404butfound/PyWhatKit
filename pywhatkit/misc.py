@@ -1,7 +1,7 @@
 import time
 import webbrowser as web
 from platform import system
-from typing import Optional, Union
+from typing import Optional
 
 import requests
 import wikipedia
@@ -10,7 +10,8 @@ if system().lower() in ("windows", "darwin"):
     from PIL import ImageGrab
 
     def take_screenshot(
-        file_name: str = "pywhatkit_screenshot", delay: int = 2) -> None:
+        file_name: str = "pywhatkit_screenshot", delay: int = 2
+    ) -> None:
         """Take Screenshot of the Screen"""
 
         time.sleep(delay)
@@ -43,11 +44,13 @@ def info(topic: str, lines: int = 3, return_value: bool = False) -> Optional[str
         return data
 
 
-def play_on_yt(topic: str, use_api: bool = False, open_video: bool = True) -> Union[str]:
+def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> str:
     """Play a YouTube Video"""
 
     if use_api:
-        response = requests.get(f"https://pywhatkit.herokuapp.com/playonyt?topic={topic}")
+        response = requests.get(
+            f"https://pywhatkit.herokuapp.com/playonyt?topic={topic}"
+        )
         if open_video:
             web.open(response.content.decode("ascii"))
         return response.content.decode("ascii")

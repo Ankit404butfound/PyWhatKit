@@ -21,8 +21,9 @@
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-For more detailed information see [this](https://github.com/Ankit404butfound/PyWhatKit/blob/master/CONTRIBUTING.md).
+Be sure to read the [Guidelines](https://github.com/Ankit404butfound/PyWhatKit/blob/master/CONTRIBUTING.md) before Contributing.
 
 ## License
 
-MIT. For more information see [this](https://github.com/Ankit404butfound/PyWhatKit/blob/master/LICENSE)
+MIT.
+For more information see [this](https://github.com/Ankit404butfound/PyWhatKit/blob/master/LICENSE)
