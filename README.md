@@ -72,7 +72,7 @@ pywhatkit.sendwhatmsg_to_group("AB123CDEFGHijklmn", "Hey All!", 0, 0)
 pywhatkit.playonyt("PyWhatKit")
 ```
 
-For more Examples and Functions, have a look at the [Wiki](https://github.com/Ankit404butfound/PyWhatKit/wiki)
+For more Examples and Functions, have a look at the [Wiki](https://github.com/Ankit404butfound/PyWhatKit/wiki).
 
 ## Contributing
 
