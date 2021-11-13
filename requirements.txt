@@ -1,5 +1,4 @@
 Pillow
 pyautogui
-pyperclip
 requests
 wikipedia

@@ -1,7 +1,7 @@
 import time
 import webbrowser as web
 from platform import system
-from typing import Optional, Union
+from typing import Optional
 
 import requests
 import wikipedia
@@ -44,7 +44,7 @@ def info(topic: str, lines: int = 3, return_value: bool = False) -> Optional[str
         return data
 
 
-def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> Union[str]:
+def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> str:
     """Play a YouTube Video"""
 
     if use_api:
@@ -55,7 +55,7 @@ def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> Unio
             web.open(response.content.decode("ascii"))
         return response.content.decode("ascii")
     else:
-        url = "https://www.youtube.com/results?q=" + topic
+        url = f"https://www.youtube.com/results?q={topic}"
         count = 0
         cont = requests.get(url)
         data = cont.content
@@ -69,12 +69,12 @@ def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> Unio
             raise Exception("No Video Found for this Topic!")
 
         if open_video:
-            web.open("https://www.youtube.com" + lst[count - 5])
-        return "https://www.youtube.com" + lst[count - 5]
+            web.open(f"https://www.youtube.com{lst[count - 5]}")
+        return f"https://www.youtube.com{lst[count - 5]}"
 
 
 def search(topic: str) -> None:
     """Searches About the Topic on Google"""
 
-    link = "https://www.google.com/search?q={}".format(topic)
+    link = f"https://www.google.com/search?q={topic}"
     web.open(link)

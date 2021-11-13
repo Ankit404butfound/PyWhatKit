@@ -14,17 +14,16 @@
 
 # Links
 
-- ### Have some query or suggestions or want to become a beta tester, join our discord server - [Discord invite link](https://discord.gg/62Yf5mushu)
-
-- ### Help us test an upcoming feature - [here](https://pywhatkit.herokuapp.com/remote-kit)
-
-- ### Documentation - [Wiki](https://github.com/Ankit404butfound/PyWhatKit/wiki)
+- **Have some query or suggestions or want to become a beta tester, join our discord server - [Discord invite link](https://discord.gg/62Yf5mushu)**
+- **Help us test an upcoming feature - [here](https://pywhatkit.herokuapp.com/remote-kit)**
+- **Documentation - [Wiki](https://github.com/Ankit404butfound/PyWhatKit/wiki)**
 
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-For more detailed information see [this](https://github.com/Ankit404butfound/PyWhatKit/blob/master/CONTRIBUTING.md).
+Be sure to read the [Guidelines](https://github.com/Ankit404butfound/PyWhatKit/blob/master/CONTRIBUTING.md) before Contributing.
 
 ## License
 
-MIT. For more information see [this](https://github.com/Ankit404butfound/PyWhatKit/blob/master/LICENSE)
+MIT.
+For more information see [this](https://github.com/Ankit404butfound/PyWhatKit/blob/master/LICENSE)

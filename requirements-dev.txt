@@ -3,6 +3,5 @@ isort
 Pillow
 pre-commit
 pyautogui
-pyperclip
 requests
 wikipedia

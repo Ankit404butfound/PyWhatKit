@@ -32,7 +32,7 @@ def send_mail(
             break
 
     if hostname is None:
-        raise UnsupportedEmailProvider(f"{domain.group()} is not supported currently!")
+        raise UnsupportedEmailProvider(f"{domain.group()} is not Supported Currently!")
 
     with smtplib.SMTP_SSL(hostname, 465) as smtp:
         smtp.login(email_sender, password)
@@ -44,13 +44,13 @@ def send_mail(
         msg.set_content(message)
 
         smtp.send_message(msg)
-        print("Email sent Successfully!")
+        print("Email Sent Successfully!")
 
 
 def send_hmail(
     email_sender: str, password: str, subject: str, html_code: str, email_receiver: str
 ) -> None:
-    """Send an Email with HTML code"""
+    """Send an Email with HTML Code"""
 
     message = MIMEText(html_code, "html")
     send_mail(email_sender, password, subject, message, email_receiver)
