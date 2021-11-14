@@ -25,8 +25,8 @@ def web_screenshot(
     link: str,
     filename: str = "Screenshot.jpg",
     path: str = os.getcwd(),
-    width: int = 1613,
-    height: int = 786,
+    width: int = 1920,
+    height: int = 1080,
 ) -> None:
     """Take Screenshot of Any Website Without Opening it"""
 
