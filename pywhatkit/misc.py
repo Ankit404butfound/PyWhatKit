@@ -18,7 +18,7 @@ if system().lower() in ("windows", "darwin"):
         screen = ImageGrab.grab()
         screen.show(title=file_name)
         screen.save(f"{file_name}.png")
-def web_scr(link):
+def web_scr(link:str):
     BASE = 'https://render-tron.appspot.com/screenshot/'
     url = link
     path = 'ScreenShot.jpg'
