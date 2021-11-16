@@ -26,9 +26,6 @@ def sendwhatmsg_instantly(
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
 
     web.open(f"https://web.whatsapp.com/send?phone={phone_no}&text={quote(message)}")
-    time.sleep(7)
-    pg.click(core.WIDTH / 2, core.HEIGHT / 2)
-    time.sleep(wait_time - 7)
     pg.press("enter")
     log.log_message(_time=time.localtime(), receiver=phone_no, message=message)
     if tab_close:
