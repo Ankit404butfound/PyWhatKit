@@ -145,5 +145,3 @@ def open_web() -> bool:
         return False
     else:
         return True
-
-    
