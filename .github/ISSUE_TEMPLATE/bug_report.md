@@ -24,7 +24,7 @@ If applicable, add Screenshots to help explain your Problem
 - OS: [e.g. Windows 10]
 - Browser: [e.g. Microsoft Edge, Google Chrome]
 - Python: [e.g. 3.10.0]
-- PyWhatKit: [e.g. 5.1]
+- PyWhatKit: [e.g. 5.2]
 
 You can Check the PyWhatKit Version using
 
