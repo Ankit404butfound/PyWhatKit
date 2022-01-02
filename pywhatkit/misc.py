@@ -7,6 +7,8 @@ from typing import Optional
 import requests
 import wikipedia
 
+from pywhatkit.core import exceptions
+
 if system().lower() in ("windows", "darwin"):
     from PIL import ImageGrab
 
@@ -66,9 +68,14 @@ def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> str:
     """Play a YouTube Video"""
 
     if use_api:
-        response = requests.get(
-            f"https://pywhatkit.herokuapp.com/playonyt?topic={topic}"
-        )
+        try:
+            response = requests.get(
+                f"https://pywhatkit.herokuapp.com/playonyt?topic={topic}"
+            )
+        finally:
+            raise exceptions.UnableToAccessApi(
+                "Unable to access pywhatkit api right now"
+            )
         if open_video:
             web.open(response.content.decode("ascii"))
         return response.content.decode("ascii")
