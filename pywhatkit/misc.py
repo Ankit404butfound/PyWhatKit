@@ -12,8 +12,9 @@ from pywhatkit.core import exceptions
 if system().lower() in ("windows", "darwin"):
     from PIL import ImageGrab
 
+
     def take_screenshot(
-        file_name: str = "pywhatkit_screenshot", delay: int = 2, show:bool=True
+            file_name: str = "pywhatkit_screenshot", delay: int = 2, show: bool = True
     ) -> None:
         """Take Screenshot of the Screen"""
 
@@ -25,11 +26,11 @@ if system().lower() in ("windows", "darwin"):
 
 
 def web_screenshot(
-    link: str,
-    filename: str = "Screenshot.jpg",
-    path: str = os.getcwd(),
-    width: int = 1920,
-    height: int = 1080,
+        link: str,
+        filename: str = "Screenshot.jpg",
+        path: str = os.getcwd(),
+        width: int = 1920,
+        height: int = 1080,
 ) -> None:
     """Take Screenshot of Any Website Without Opening it"""
 
@@ -69,17 +70,18 @@ def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> str:
     """Play a YouTube Video"""
 
     if use_api:
-        try:
-            response = requests.get(
-                f"https://pywhatkit.herokuapp.com/playonyt?topic={topic}"
-            )
-        finally:
+        response = requests.get(
+            f"https://pywhatkit.herokuapp.com/playonyt?topic={topic}"
+        )
+        status_code = response.status_code
+        if status_code == 200:
+            if open_video:
+                web.open(response.content.decode("ascii"))
+            return response.content.decode("ascii")
+        elif 400 <= status_code <= 599:
             raise exceptions.UnableToAccessApi(
                 "Unable to access pywhatkit api right now"
             )
-        if open_video:
-            web.open(response.content.decode("ascii"))
-        return response.content.decode("ascii")
     else:
         url = f"https://www.youtube.com/results?q={topic}"
         count = 0
