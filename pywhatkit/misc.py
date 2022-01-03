@@ -12,9 +12,8 @@ from pywhatkit.core import exceptions
 if system().lower() in ("windows", "darwin"):
     from PIL import ImageGrab
 
-
     def take_screenshot(
-            file_name: str = "pywhatkit_screenshot", delay: int = 2, show: bool = True
+        file_name: str = "pywhatkit_screenshot", delay: int = 2, show: bool = True
     ) -> None:
         """Take Screenshot of the Screen"""
 
@@ -26,11 +25,11 @@ if system().lower() in ("windows", "darwin"):
 
 
 def web_screenshot(
-        link: str,
-        filename: str = "Screenshot.jpg",
-        path: str = os.getcwd(),
-        width: int = 1920,
-        height: int = 1080,
+    link: str,
+    filename: str = "Screenshot.jpg",
+    path: str = os.getcwd(),
+    width: int = 1920,
+    height: int = 1080,
 ) -> None:
     """Take Screenshot of Any Website Without Opening it"""
 
