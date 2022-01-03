@@ -28,3 +28,9 @@ class UnsupportedEmailProvider(Exception):
     """
 
     pass
+
+
+class UnableToAccessApi(Exception):
+    """unable to access pywhatkit api"""
+
+    pass

@@ -7,17 +7,20 @@ from typing import Optional
 import requests
 import wikipedia
 
+from pywhatkit.core import exceptions
+
 if system().lower() in ("windows", "darwin"):
     from PIL import ImageGrab
 
     def take_screenshot(
-        file_name: str = "pywhatkit_screenshot", delay: int = 2
+        file_name: str = "pywhatkit_screenshot", delay: int = 2, show: bool = True
     ) -> None:
         """Take Screenshot of the Screen"""
 
         time.sleep(delay)
         screen = ImageGrab.grab()
-        screen.show(title=file_name)
+        if show:
+            screen.show(title=file_name)
         screen.save(f"{file_name}.png")
 
 
@@ -69,9 +72,15 @@ def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> str:
         response = requests.get(
             f"https://pywhatkit.herokuapp.com/playonyt?topic={topic}"
         )
-        if open_video:
-            web.open(response.content.decode("ascii"))
-        return response.content.decode("ascii")
+        status_code = response.status_code
+        if status_code == 200:
+            if open_video:
+                web.open(response.content.decode("ascii"))
+            return response.content.decode("ascii")
+        elif 400 <= status_code <= 599:
+            raise exceptions.UnableToAccessApi(
+                "Unable to access pywhatkit api right now"
+            )
     else:
         url = f"https://www.youtube.com/results?q={topic}"
         count = 0
