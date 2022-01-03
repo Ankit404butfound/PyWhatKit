@@ -68,6 +68,9 @@ pywhatkit.sendwhats_image("+910123456789", "Images/Hello.png")
 # Send a WhatsApp Message to a Group at 12:00 AM
 pywhatkit.sendwhatmsg_to_group("AB123CDEFGHijklmn", "Hey All!", 0, 0)
 
+# Send a WhatsApp Message to a Group instantly
+pywhatkit.sendwhatmsg_to_group_instantly("AB123CDEFGHijklmn", "Hey All!")
+
 # Play a Video on YouTube
 pywhatkit.playonyt("PyWhatKit")
 ```
