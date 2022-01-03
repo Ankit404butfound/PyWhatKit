@@ -131,7 +131,7 @@ def sendwhatmsg_to_group_instantly(
     if tab_close:
         core.close_tab(wait_time=close_time)
 
-        
+
 def sendwhats_image(
     receiver: str,
     img_path: str,
