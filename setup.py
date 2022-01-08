@@ -12,7 +12,7 @@ def readme() -> str:
 setup(
     name="pywhatkit",
     packages=setuptools.find_packages(),
-    version="5.2",
+    version="5.3",
     license="MIT",
     description="PyWhatKit is a Simple and Powerful WhatsApp Automation Library with many useful Features",
     author="Ankit Raj Mahapatra",
