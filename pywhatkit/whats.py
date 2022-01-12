@@ -45,7 +45,6 @@ def sendwhatmsg(
     close_time: int = 3,
 ) -> None:
     """Send a WhatsApp Message at a Certain Time"""
-
     if not core.check_number(number=phone_no):
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
 
