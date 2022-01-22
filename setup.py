@@ -11,6 +11,7 @@ def readme() -> str:
 with open('requirements.txt', 'r') as f:
     reqs = [line.strip() for line in f]
 
+    
 setup(
     name="pywhatkit",
     packages=setuptools.find_packages(),
