@@ -8,10 +8,11 @@ def readme() -> str:
         README = f.read()
     return README
 
-with open('requirements.txt', 'r') as f:
+
+with open("requirements.txt", "r") as f:
     reqs = [line.strip() for line in f]
 
-    
+
 setup(
     name="pywhatkit",
     packages=setuptools.find_packages(),
