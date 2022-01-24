@@ -131,7 +131,6 @@ def sendwhatmsg_to_group_instantly(
 
 
 def sendwhats_image(
-
     receiver: str,
     img_path: str,
     time_hour: int,
