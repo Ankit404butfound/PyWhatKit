@@ -38,7 +38,7 @@ git clone https://github.com/Ankit404butfound/PyWhatKit.git
 ```
 ## What's new in v5.3?
 ```py
-import pywahtkit
+import pywhatkit
 pywhatkit.start_server()
 ```
 ### This method can be used to remotely control your PC using your phone (Windows only)
