@@ -9,6 +9,10 @@ def readme() -> str:
     return README
 
 
+with open("requirements.txt", "r") as f:
+    reqs = [line.strip() for line in f]
+
+
 setup(
     name="pywhatkit",
     packages=setuptools.find_packages(),
@@ -20,7 +24,7 @@ setup(
     url="https://github.com/Ankit404butfound/PyWhatKit",
     download_url="https://github.com/Ankit404butfound/PyWhatKit/archive/refs/tags/5.2.zip",
     keywords=["sendwhatmsg", "info", "playonyt", "search", "watch_tutorial"],
-    install_requires=["pyautogui", "wikipedia", "requests", "Pillow"],
+    install_requires=reqs,
     package_data={"pywhatkit": ["py.typed"]},
     include_package_data=True,
     long_description=readme(),
