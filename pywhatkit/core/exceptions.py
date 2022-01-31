@@ -21,11 +21,12 @@ class InternetException(Exception):
 
     pass
 
+
 class InvalidPhoneNumber(Exception):
     """
     Phone number given is invalid
     """
-    
+
     pass
 
 
