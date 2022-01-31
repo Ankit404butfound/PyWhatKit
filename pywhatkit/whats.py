@@ -22,9 +22,9 @@ def sendwhatmsg_instantly(
 
     if not core.check_number(number=phone_no):
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
-    
+
     phone_no = phone_no.replace(" ", "")
-    if not fullmatch(r"^\+?[0-9]{2,4}[0-9]{10}$", phone_no):
+    if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{10}$", phone_no):
         raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     web.open(f"https://web.whatsapp.com/send?phone={phone_no}&text={quote(message)}")
@@ -49,7 +49,7 @@ def sendwhatmsg(
     """Send a WhatsApp Message at a Certain Time"""
     if not core.check_number(number=phone_no):
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
-    
+
     phone_no = phone_no.replace(" ", "")
     if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{10}$", phone_no):
         raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
@@ -153,9 +153,7 @@ def sendwhats_image(
     core.send_image(
         path=img_path, caption=caption, receiver=receiver, wait_time=wait_time
     )
-    log.log_image(
-        _time=current_time, path=img_path, receiver=receiver, caption=caption
-    )
+    log.log_image(_time=current_time, path=img_path, receiver=receiver, caption=caption)
     if tab_close:
         core.close_tab(wait_time=close_time)
 
