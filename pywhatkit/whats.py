@@ -1,10 +1,12 @@
-from datetime import datetime
-import pyautogui as pg
-from pywhatkit.core import core, exceptions, log
-from re import fullmatch
 import time
-from urllib.parse import quote
 import webbrowser as web
+from datetime import datetime
+from re import fullmatch
+from urllib.parse import quote
+
+import pyautogui as pg
+
+from pywhatkit.core import core, exceptions, log
 
 pg.FAILSAFE = False
 
@@ -51,7 +53,7 @@ def sendwhatmsg(
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
 
     phone_no = phone_no.replace(" ", "")
-    if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{10}$", phone_no):
+    if not fullmatch(r"^\+?[0-9]{2,4}[0-9]{10}$", phone_no):
         raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     if time_hour not in range(25) or time_min not in range(60):
