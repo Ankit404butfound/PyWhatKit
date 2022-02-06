@@ -34,10 +34,12 @@ def close_tab(wait_time: int = 2) -> None:
 
 def findtextbox() -> None:
     """click on text box"""
+    global location
+    dir_path = os.path.dirname(os.path.realpath(__file__))
     try:
-        location = locateOnScreen(os.path.join('data', 'pywhatkit_smile1.png'))
-    except ImageNotFoundException:
-        location = locateOnScreen(os.path.join('data','pywhatkit_smile.png'))
+        location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile1.png")
+    except ImageNotFoundException or location[0] is None:
+        location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile.png")
     moveTo(location[0] + 150, location[1] + 5)
     click()
 
