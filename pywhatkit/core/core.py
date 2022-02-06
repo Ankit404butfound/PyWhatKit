@@ -47,7 +47,7 @@ def findtextbox() -> None:
     dir_path = os.path.dirname(os.path.realpath(__file__))
     try:
         location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile1.png")
-    except ImageNotFoundException or location[0] is None:
+    except ImageNotFoundException or location is None:
         location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile.png")
     moveTo(location[0] + 150, location[1] + 5)
     click()
