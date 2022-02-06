@@ -6,7 +6,7 @@ from urllib.parse import quote
 from webbrowser import open
 
 import requests
-from pyautogui import click, hotkey, press, size, typewrite
+from pyautogui import click, hotkey, press, size, typewrite, locateOnScreen, ImageNotFoundException, moveTo
 
 from pywhatkit.core.exceptions import InternetException
 
@@ -30,6 +30,16 @@ def close_tab(wait_time: int = 2) -> None:
     else:
         raise Warning(f"{system().lower()} not supported!")
     press("enter")
+
+
+def findtextbox() -> None:
+    """click on text box"""
+    try:
+        location = locateOnScreen(os.path.join('data', 'pywhatkit_smile1.png'))
+    except ImageNotFoundException:
+        location = locateOnScreen(os.path.join('data','pywhatkit_smile.png'))
+    moveTo(location[0] + 150, location[1] + 5)
+    click()
 
 
 def check_connection() -> None:
@@ -69,6 +79,7 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
                 hotkey("shift", "enter")
             else:
                 typewrite(char)
+    findtextbox()
     press("enter")
 
 
@@ -116,7 +127,6 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
     """Sends the Image to a Contact or a Group based on the Receiver"""
 
     _web(message=caption, receiver=receiver)
-
     time.sleep(7)
     click(WIDTH / 2, HEIGHT / 2)
     time.sleep(wait_time - 7)
@@ -134,4 +144,5 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
     else:
         hotkey("ctrl", "v")
     time.sleep(1)
+    findtextbox()
     press("enter")

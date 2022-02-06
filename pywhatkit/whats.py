@@ -1,7 +1,6 @@
 import time
 import webbrowser as web
 from datetime import datetime
-from typing import Optional
 from urllib.parse import quote
 
 import pyautogui as pg
@@ -29,6 +28,7 @@ def sendwhatmsg_instantly(
     time.sleep(4)
     pg.click(core.WIDTH / 2, core.HEIGHT / 2)
     time.sleep(wait_time - 4)
+    core.findtextbox()
     pg.press("enter")
     log.log_message(_time=time.localtime(), receiver=phone_no, message=message)
     if tab_close:
