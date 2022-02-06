@@ -6,7 +6,16 @@ from urllib.parse import quote
 from webbrowser import open
 
 import requests
-from pyautogui import click, hotkey, press, size, typewrite, locateOnScreen, ImageNotFoundException, moveTo
+from pyautogui import (
+    ImageNotFoundException,
+    click,
+    hotkey,
+    locateOnScreen,
+    moveTo,
+    press,
+    size,
+    typewrite,
+)
 
 from pywhatkit.core.exceptions import InternetException
 
