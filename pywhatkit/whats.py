@@ -1,7 +1,7 @@
 import time
 import webbrowser as web
 from datetime import datetime
-from typing import Optional
+from re import fullmatch
 from urllib.parse import quote
 
 import pyautogui as pg
@@ -25,6 +25,10 @@ def sendwhatmsg_instantly(
     if not core.check_number(number=phone_no):
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
 
+    phone_no = phone_no.replace(" ", "")
+    if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{10}$", phone_no):
+        raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
+
     web.open(f"https://web.whatsapp.com/send?phone={phone_no}&text={quote(message)}")
     time.sleep(4)
     pg.click(core.WIDTH / 2, core.HEIGHT / 2)
@@ -47,6 +51,10 @@ def sendwhatmsg(
     """Send a WhatsApp Message at a Certain Time"""
     if not core.check_number(number=phone_no):
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
+
+    phone_no = phone_no.replace(" ", "")
+    if not fullmatch(r"^\+?[0-9]{2,4}[0-9]{10}$", phone_no):
+        raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     if time_hour not in range(25) or time_min not in range(60):
         raise Warning("Invalid Time Format!")
