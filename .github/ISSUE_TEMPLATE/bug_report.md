@@ -2,7 +2,7 @@
 name: Bug Report
 about: Create a Report to help us Improve
 title: ''
-labels: ''
+labels: 'bug'
 assignees: ''
 
 ---
@@ -23,8 +23,8 @@ If applicable, add Screenshots to help explain your Problem
 
 - OS: [e.g. Windows 10]
 - Browser: [e.g. Microsoft Edge, Google Chrome]
-- Python: [e.g. 3.10.0]
-- PyWhatKit: [e.g. 5.2]
+- Python: [e.g. 3.10.1]
+- PyWhatKit: [e.g. 5.3]
 
 You can Check the PyWhatKit Version using
 
