@@ -22,6 +22,14 @@ class InternetException(Exception):
     pass
 
 
+class InvalidPhoneNumber(Exception):
+    """
+    Phone number given is invalid
+    """
+
+    pass
+
+
 class UnsupportedEmailProvider(Exception):
     """
     Email provider used to send the Email is not supported
