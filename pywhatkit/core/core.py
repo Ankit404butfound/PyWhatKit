@@ -47,10 +47,11 @@ def findtextbox() -> None:
     location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile1.png")
     try:
         moveTo(location[0] + 150, location[1] + 5)
+        click()
     except Exception:
         location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile.png")
         moveTo(location[0] + 150, location[1] + 5)
-    click()
+        click()
 
 
 def check_connection() -> None:
