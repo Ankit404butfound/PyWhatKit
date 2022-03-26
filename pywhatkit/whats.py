@@ -22,13 +22,7 @@ def sendwhatmsg_instantly(
 ) -> None:
     """Send WhatsApp Message Instantly"""
 
-    if not core.check_number(number=phone_no):
-        raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
-
-    phone_no = phone_no.replace(" ", "")
-    if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{10}$", phone_no):
-        raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
-
+    verify_phone_number(phone_no)
     web.open(f"https://web.whatsapp.com/send?phone={phone_no}&text={quote(message)}")
     time.sleep(4)
     pg.click(core.WIDTH / 2, core.HEIGHT / 2)
@@ -50,16 +44,9 @@ def sendwhatmsg(
     close_time: int = 3,
 ) -> None:
     """Send a WhatsApp Message at a Certain Time"""
-    if not core.check_number(number=phone_no):
-        raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
-
-    phone_no = phone_no.replace(" ", "")
-    if not fullmatch(r"^\+?[0-9]{2,4}[0-9]{10}$", phone_no):
-        raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
-
-    if time_hour not in range(25) or time_min not in range(60):
-        raise Warning("Invalid Time Format!")
-
+    verify_phone_number(phone_no)
+    verify_time_format(time_hour, time_min) 
+    
     current_time = time.localtime()
     left_time = datetime.strptime(
         f"{time_hour}:{time_min}:0", "%H:%M:%S"
@@ -95,8 +82,7 @@ def sendwhatmsg_to_group(
 ) -> None:
     """Send WhatsApp Message to a Group at a Certain Time"""
 
-    if time_hour not in range(25) or time_min not in range(60):
-        raise Warning("Invalid Time Format!")
+    verify_time_format(time_hour, time_min)
 
     current_time = time.localtime()
     left_time = datetime.strptime(
@@ -189,3 +175,16 @@ def open_web() -> bool:
         return False
     else:
         return True
+
+def verify_phone_number(phone_no: str) -> None:
+    if not core.check_number(number=phone_no):
+        raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
+
+    phone_no = phone_no.replace(" ", "")
+    if not fullmatch(r"^\+?[0-9]{2,4}[0-9]{10}$", phone_no):
+        raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
+
+
+def verify_time_format(time_hour, time_min):
+    if time_hour not in range(25) or time_min not in range(60):
+        raise Warning("Invalid Time Format!")
