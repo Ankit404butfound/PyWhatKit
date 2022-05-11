@@ -157,3 +157,43 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
     time.sleep(1)
     findtextbox()
     press("enter")
+
+
+def copy_video(path: str) -> None:
+    """Copy the Video to Clipboard based on the Platform"""
+
+    # if system().lower() == "linux":
+    #     if pathlib.Path(path).suffix in (".", ".png"):
+    #         os.system(f"copyq copy image/png - < {path}")
+    #     elif pathlib.Path(path).suffix in (".jpg", ".JPG", ".jpeg", ".JPEG"):
+    #         os.system(f"copyq copy image/jpeg - < {path}")
+    #     else:
+    #         raise Exception(
+    #             f"File Format {pathlib.Path(path).suffix} is not Supported!"
+    #         )
+    if system().lower() == "windows":
+        from io import BytesIO
+
+        import win32clipboard
+        from PIL import Image
+
+        image = Image.open(path)
+        output = BytesIO()
+        image.convert("RGB").save(output, "BMP")
+        data = output.getvalue()[14:]
+        output.close()
+        win32clipboard.OpenClipboard()
+        win32clipboard.EmptyClipboard()
+        win32clipboard.SetClipboardData(win32clipboard.CF_DIB, data)
+        win32clipboard.CloseClipboard()
+    elif system().lower() == "darwin":
+        if pathlib.Path(path).suffix in (".mp4", ".avi", ".mov", ".mkv"):
+            os.system(
+                f"osascript -e 'set the clipboard to (read (POSIX file \"{path}\") as JPEG picture)'"
+            )
+        else:
+            raise Exception(
+                f"File Format {pathlib.Path(path).suffix} is not Supported!"
+            )
+    else:
+        raise Exception(f"Unsupported System: {system().lower()}")
