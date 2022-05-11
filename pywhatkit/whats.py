@@ -1,6 +1,7 @@
 import time
 import webbrowser as web
 from datetime import datetime
+from re import fullmatch
 from urllib.parse import quote
 
 import pyautogui as pg
@@ -23,6 +24,10 @@ def sendwhatmsg_instantly(
 
     if not core.check_number(number=phone_no):
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
+
+    phone_no = phone_no.replace(" ", "")
+    if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{10}$", phone_no):
+        raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     web.open(f"https://web.whatsapp.com/send?phone={phone_no}&text={quote(message)}")
     time.sleep(4)
@@ -47,6 +52,10 @@ def sendwhatmsg(
     """Send a WhatsApp Message at a Certain Time"""
     if not core.check_number(number=phone_no):
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
+
+    phone_no = phone_no.replace(" ", "")
+    if not fullmatch(r"^\+?[0-9]{2,4}[0-9]{10}$", phone_no):
+        raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     if time_hour not in range(25) or time_min not in range(60):
         raise Warning("Invalid Time Format!")
@@ -133,6 +142,8 @@ def sendwhatmsg_to_group_instantly(
 def sendwhats_image(
     receiver: str,
     img_path: str,
+    time_hour: int,
+    time_min: int,
     caption: str = "",
     wait_time: int = 15,
     tab_close: bool = False,
@@ -144,6 +155,23 @@ def sendwhats_image(
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
 
     current_time = time.localtime()
+    left_time = datetime.strptime(
+        f"{time_hour}:{time_min}:0", "%H:%M:%S"
+    ) - datetime.strptime(
+        f"{current_time.tm_hour}:{current_time.tm_min}:{current_time.tm_sec}",
+        "%H:%M:%S",
+    )
+
+    if left_time.seconds < wait_time:
+        raise exceptions.CallTimeException(
+            "Call Time must be Greater than Wait Time as WhatsApp Web takes some Time to Load!"
+        )
+
+    sleep_time = left_time.seconds - wait_time
+    print(
+        f"In {sleep_time} Seconds WhatsApp will open and after {wait_time} Seconds Image will be Delivered!"
+    )
+    time.sleep(sleep_time)
     core.send_image(
         path=img_path, caption=caption, receiver=receiver, wait_time=wait_time
     )
