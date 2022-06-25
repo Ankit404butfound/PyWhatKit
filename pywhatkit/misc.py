@@ -3,6 +3,7 @@ import time
 import webbrowser as web
 from platform import system
 from typing import Optional
+import re
 
 import requests
 import wikipedia
@@ -82,23 +83,17 @@ def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> str:
                 "Unable to access pywhatkit api right now"
             )
     else:
-        url = f"https://www.youtube.com/results?q={topic}"
-        count = 0
-        cont = requests.get(url)
-        data = cont.content
-        data = str(data)
-        lst = data.split('"')
-        for i in lst:
-            count += 1
-            if i == "WEB_PAGE_TYPE_WATCH":
-                break
-        if lst[count - 5] == "/results":
+        cont = requests.get(f"https://www.youtube.com/results?q={topic}").text.strip()
+        id = re.findall("\"videoId\":\"(.*?)\"", cont)
+
+        if (id):
+            id = list(set(id))[0]
+        else:
             raise Exception("No Video Found for this Topic!")
 
         if open_video:
-            web.open(f"https://www.youtube.com{lst[count - 5]}")
-        return f"https://www.youtube.com{lst[count - 5]}"
-
+            web.open(f"https://www.youtube.com/watch?v={id}")
+        return f"https://www.youtube.com/watch?v={id}"
 
 def search(topic: str) -> None:
     """Searches About the Topic on Google"""
