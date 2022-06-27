@@ -10,7 +10,7 @@
 [![image](https://flat.badgen.net/github/release/Ankit404butfound/Pywhatkit)](https://github.com/Ankit404butfound/PyWhatKit/releases)
 <!-- ![logo](https://github.com/Ankit404butfound/PyWhatKit/raw/master/Images/logo.png?raw=true) -->
 
-[PyWhatKit](https://pypi.org/project/pywhatkit/) is a Python library with various helpful features. It's easy-to-use and does not require you to do any additional setup. Currently, it has about 400k+ downloads and counting. New updates are released frequently with new features and bug fixes.
+[PyWhatKit](https://pypi.org/project/pywhatkit/) is a Python library with various helpful features. It's easy-to-use and does not require you to do any additional setup. Currently, it is one of the most popular library for WhatsApp and YouTube automation. New updates are released frequently with new features and bug fixes.
 
 # Links
 
@@ -35,6 +35,10 @@ PyWhatKit officially supports Python 3.8+.
 
 ```bash
 git clone https://github.com/Ankit404butfound/PyWhatKit.git
+```
+## What's new in v5.4?
+```
+Fix Flask import error
 ```
 ## What's new in v5.3?
 ```py
