@@ -50,7 +50,8 @@ def findtextbox() -> None:
     except Exception:
         location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile.png")
         moveTo(location[0] + 150, location[1] + 5)
-    click()
+        click()
+        time.sleep(1)
 
 
 def check_connection() -> None:
