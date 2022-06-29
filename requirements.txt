@@ -2,3 +2,5 @@ Pillow
 pyautogui
 requests
 wikipedia
+PyPDF2
+pyttsx3
