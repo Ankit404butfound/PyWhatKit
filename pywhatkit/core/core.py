@@ -44,11 +44,11 @@ def close_tab(wait_time: int = 2) -> None:
 def findtextbox() -> None:
     """click on text box"""
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile1.png")
+    location = locateOnScreen(f"{dir_path}/data/pywhatkit_smile1.png")
     try:
         moveTo(location[0] + 150, location[1] + 5)
     except Exception:
-        location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile.png")
+        location = locateOnScreen(f"{dir_path}/data/pywhatkit_smile.png")
         moveTo(location[0] + 150, location[1] + 5)
     click()
 
