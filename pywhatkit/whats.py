@@ -3,6 +3,7 @@ import webbrowser as web
 from datetime import datetime
 from re import fullmatch
 from urllib.parse import quote
+import asyncio
 
 import pyautogui as pg
 
@@ -13,7 +14,7 @@ pg.FAILSAFE = False
 core.check_connection()
 
 
-def sendwhatmsg_instantly(
+async def sendwhatmsg_instantly(
     phone_no: str,
     message: str,
     wait_time: int = 15,
@@ -30,9 +31,9 @@ def sendwhatmsg_instantly(
         raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     web.open(f"https://web.whatsapp.com/send?phone={phone_no}&text={quote(message)}")
-    time.sleep(4)
+    await asyncio.sleep(4)
     pg.click(core.WIDTH / 2, core.HEIGHT / 2)
-    time.sleep(wait_time - 4)
+    await asyncio.sleep(wait_time - 4)
     core.findtextbox()
     pg.press("enter")
     log.log_message(_time=time.localtime(), receiver=phone_no, message=message)
@@ -40,7 +41,7 @@ def sendwhatmsg_instantly(
         core.close_tab(wait_time=close_time)
 
 
-def sendwhatmsg(
+async def sendwhatmsg(
     phone_no: str,
     message: str,
     time_hour: int,
@@ -77,14 +78,14 @@ def sendwhatmsg(
     print(
         f"In {sleep_time} Seconds WhatsApp will open and after {wait_time} Seconds Message will be Delivered!"
     )
-    time.sleep(sleep_time)
+    await asyncio.sleep(sleep_time)
     core.send_message(message=message, receiver=phone_no, wait_time=wait_time)
     log.log_message(_time=current_time, receiver=phone_no, message=message)
     if tab_close:
         core.close_tab(wait_time=close_time)
 
 
-def sendwhatmsg_to_group(
+async def sendwhatmsg_to_group(
     group_id: str,
     message: str,
     time_hour: int,
@@ -115,14 +116,14 @@ def sendwhatmsg_to_group(
     print(
         f"In {sleep_time} Seconds WhatsApp will open and after {wait_time} Seconds Message will be Delivered!"
     )
-    time.sleep(sleep_time)
+    await asyncio.sleep(sleep_time)
     core.send_message(message=message, receiver=group_id, wait_time=wait_time)
     log.log_message(_time=current_time, receiver=group_id, message=message)
     if tab_close:
         core.close_tab(wait_time=close_time)
 
 
-def sendwhatmsg_to_group_instantly(
+async def sendwhatmsg_to_group_instantly(
     group_id: str,
     message: str,
     wait_time: int = 15,
@@ -132,14 +133,14 @@ def sendwhatmsg_to_group_instantly(
     """Send WhatsApp Message to a Group Instantly"""
 
     current_time = time.localtime()
-    time.sleep(4)
+    await asnycio.sleep(4)
     core.send_message(message=message, receiver=group_id, wait_time=wait_time)
     log.log_message(_time=current_time, receiver=group_id, message=message)
     if tab_close:
         core.close_tab(wait_time=close_time)
 
 
-def sendwhats_image(
+async def sendwhats_image(
     receiver: str,
     img_path: str,
     time_hour: int,
@@ -171,7 +172,7 @@ def sendwhats_image(
     print(
         f"In {sleep_time} Seconds WhatsApp will open and after {wait_time} Seconds Image will be Delivered!"
     )
-    time.sleep(sleep_time)
+    await asyncio.sleep(sleep_time)
     core.send_image(
         path=img_path, caption=caption, receiver=receiver, wait_time=wait_time
     )

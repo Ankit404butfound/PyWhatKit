@@ -17,7 +17,7 @@ if system().lower() in ("windows", "darwin"):
     ) -> None:
         """Take Screenshot of the Screen"""
 
-        time.sleep(delay)
+        asyncio.sleep(delay)
         screen = ImageGrab.grab()
         if show:
             screen.show(title=file_name)

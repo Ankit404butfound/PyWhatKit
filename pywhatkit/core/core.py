@@ -4,6 +4,7 @@ import time
 from platform import system
 from urllib.parse import quote
 from webbrowser import open
+import asyncio
 
 import requests
 from pyautogui import (
@@ -28,10 +29,10 @@ def check_number(number: str) -> bool:
     return "+" in number or "_" in number
 
 
-def close_tab(wait_time: int = 2) -> None:
+async def close_tab(wait_time: int = 2) -> None:
     """Closes the Currently Opened Browser Tab"""
 
-    time.sleep(wait_time)
+    await asyncio.sleep(wait_time)
     if system().lower() in ("windows", "linux"):
         hotkey("ctrl", "w")
     elif system().lower() == "darwin":
@@ -77,13 +78,13 @@ def _web(receiver: str, message: str) -> None:
         open("https://web.whatsapp.com/accept?code=" + receiver)
 
 
-def send_message(message: str, receiver: str, wait_time: int) -> None:
+async def send_message(message: str, receiver: str, wait_time: int) -> None:
     """Parses and Sends the Message"""
 
     _web(receiver=receiver, message=message)
-    time.sleep(7)
+    await asyncio.sleep(7)
     click(WIDTH / 2, HEIGHT / 2)
-    time.sleep(wait_time - 7)
+    await asyncio.sleep(wait_time - 7)
     if not check_number(number=receiver):
         for char in message:
             if char == "\n":
@@ -134,13 +135,13 @@ def copy_image(path: str) -> None:
         raise Exception(f"Unsupported System: {system().lower()}")
 
 
-def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
+async def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
     """Sends the Image to a Contact or a Group based on the Receiver"""
 
     _web(message=caption, receiver=receiver)
-    time.sleep(7)
+    await asyncio.sleep(7)
     click(WIDTH / 2, HEIGHT / 2)
-    time.sleep(wait_time - 7)
+    await asyncio.sleep(wait_time - 7)
     copy_image(path=path)
     if not check_number(number=receiver):
         for char in caption:
@@ -154,6 +155,6 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
         hotkey("command", "v")
     else:
         hotkey("ctrl", "v")
-    time.sleep(1)
+    await asyncio.sleep(1)
     findtextbox()
     press("enter")
