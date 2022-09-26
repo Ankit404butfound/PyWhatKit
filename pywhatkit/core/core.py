@@ -6,16 +6,7 @@ from urllib.parse import quote
 from webbrowser import open
 
 import requests
-from pyautogui import (
-    ImageNotFoundException,
-    click,
-    hotkey,
-    locateOnScreen,
-    moveTo,
-    press,
-    size,
-    typewrite,
-)
+from pyautogui import click, hotkey, press, size, typewrite
 
 from pywhatkit.core.exceptions import InternetException
 
@@ -39,18 +30,6 @@ def close_tab(wait_time: int = 2) -> None:
     else:
         raise Warning(f"{system().lower()} not supported!")
     press("enter")
-
-
-def findtextbox() -> None:
-    """click on text box"""
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile1.png")
-    try:
-        moveTo(location[0] + 150, location[1] + 5)
-    except Exception:
-        location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile.png")
-        moveTo(location[0] + 150, location[1] + 5)
-    click()
 
 
 def check_connection() -> None:
@@ -90,7 +69,6 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
                 hotkey("shift", "enter")
             else:
                 typewrite(char)
-    findtextbox()
     press("enter")
 
 
@@ -134,12 +112,14 @@ def copy_image(path: str) -> None:
         raise Exception(f"Unsupported System: {system().lower()}")
 
 
-def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
+def send_image(path: str, caption: str, receiver: str, wait_time: int, only_image: bool) -> None:
     """Sends the Image to a Contact or a Group based on the Receiver"""
 
-    _web(message=caption, receiver=receiver)
+    if(only_image):
+        _web(message=caption, receiver=receiver)
+
     time.sleep(7)
-    click(WIDTH / 2, HEIGHT / 2)
+    #click(WIDTH / 2, HEIGHT / 2)
     time.sleep(wait_time - 7)
     copy_image(path=path)
     if not check_number(number=receiver):
@@ -155,5 +135,4 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
     else:
         hotkey("ctrl", "v")
     time.sleep(1)
-    findtextbox()
     press("enter")
