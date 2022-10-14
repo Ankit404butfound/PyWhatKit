@@ -17,6 +17,7 @@ from pywhatkit.whats import (
     open_web,
     sendwhatmsg,
     sendwhatmsg_instantly,
+    sendmultiwhatmsg_instantly,
     sendwhatmsg_to_group,
     sendwhatmsg_to_group_instantly,
     sendwhats_image,

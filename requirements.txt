@@ -2,3 +2,6 @@ Pillow
 pyautogui
 requests
 wikipedia
+requests
+shutil
+pynput

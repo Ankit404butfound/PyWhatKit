@@ -1,9 +1,12 @@
+# -*- coding: utf-8 -*-
 import time
 import webbrowser as web
 from datetime import datetime
-from re import fullmatch
+from typing import Optional
+import requests
+import shutil
 from urllib.parse import quote
-
+from pynput.keyboard import Controller
 import pyautogui as pg
 
 from pywhatkit.core import core, exceptions, log
@@ -12,6 +15,46 @@ pg.FAILSAFE = False
 
 core.check_connection()
 
+
+def save_image(url):
+    response = requests.get(url, stream=True)
+    with open('tmp.jpg', 'wb') as out_file:
+        shutil.copyfileobj(response.raw, out_file)
+    del response
+
+def sendmultiwhatmsg_instantly(
+    phone_no: str,
+    messages: list,
+    delay: int = 3,
+    wait_time: int = 15,
+    tab_close: bool = False,
+    close_time: int = 3,
+) -> None:
+    """Send WhatsApp Message Instantly"""
+
+    if not core.check_number(number=phone_no):
+        raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
+
+    web.open(f"https://web.whatsapp.com/send?phone={phone_no}")
+    time.sleep(4)
+    #pg.click(core.WIDTH / 2, core.HEIGHT / 2)
+    time.sleep(wait_time - 4)
+    for message in messages:
+
+        if("https://" in message):
+            save_image(message)
+            # image saved as temp.png
+            core.send_image(
+                path="tmp.jpg", caption="", receiver=phone_no, wait_time=wait_time, only_image=False
+            )
+            log.log_image(_time=time.localtime(), path=message, receiver=phone_no, caption="")
+        else:
+            Controller().type(message)
+            pg.press("enter")
+            log.log_message(_time=time.localtime(), receiver=phone_no, message=message)
+        time.sleep(delay)
+    if tab_close:
+        core.close_tab(wait_time=close_time)
 
 def sendwhatmsg_instantly(
     phone_no: str,
@@ -25,15 +68,10 @@ def sendwhatmsg_instantly(
     if not core.check_number(number=phone_no):
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
 
-    phone_no = phone_no.replace(" ", "")
-    if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{10}$", phone_no):
-        raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
-
     web.open(f"https://web.whatsapp.com/send?phone={phone_no}&text={quote(message)}")
     time.sleep(4)
-    pg.click(core.WIDTH / 2, core.HEIGHT / 2)
+    #pg.click(core.WIDTH / 2, core.HEIGHT / 2)
     time.sleep(wait_time - 4)
-    core.findtextbox()
     pg.press("enter")
     log.log_message(_time=time.localtime(), receiver=phone_no, message=message)
     if tab_close:
@@ -50,12 +88,9 @@ def sendwhatmsg(
     close_time: int = 3,
 ) -> None:
     """Send a WhatsApp Message at a Certain Time"""
+
     if not core.check_number(number=phone_no):
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
-
-    phone_no = phone_no.replace(" ", "")
-    if not fullmatch(r"^\+?[0-9]{2,4}[0-9]{10}$", phone_no):
-        raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     if time_hour not in range(25) or time_min not in range(60):
         raise Warning("Invalid Time Format!")
@@ -132,7 +167,8 @@ def sendwhatmsg_to_group_instantly(
     """Send WhatsApp Message to a Group Instantly"""
 
     current_time = time.localtime()
-    time.sleep(4)
+
+    time.sleep(wait_time)
     core.send_message(message=message, receiver=group_id, wait_time=wait_time)
     log.log_message(_time=current_time, receiver=group_id, message=message)
     if tab_close:
@@ -142,8 +178,6 @@ def sendwhatmsg_to_group_instantly(
 def sendwhats_image(
     receiver: str,
     img_path: str,
-    time_hour: int,
-    time_min: int,
     caption: str = "",
     wait_time: int = 15,
     tab_close: bool = False,
@@ -155,25 +189,8 @@ def sendwhats_image(
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
 
     current_time = time.localtime()
-    left_time = datetime.strptime(
-        f"{time_hour}:{time_min}:0", "%H:%M:%S"
-    ) - datetime.strptime(
-        f"{current_time.tm_hour}:{current_time.tm_min}:{current_time.tm_sec}",
-        "%H:%M:%S",
-    )
-
-    if left_time.seconds < wait_time:
-        raise exceptions.CallTimeException(
-            "Call Time must be Greater than Wait Time as WhatsApp Web takes some Time to Load!"
-        )
-
-    sleep_time = left_time.seconds - wait_time
-    print(
-        f"In {sleep_time} Seconds WhatsApp will open and after {wait_time} Seconds Image will be Delivered!"
-    )
-    time.sleep(sleep_time)
     core.send_image(
-        path=img_path, caption=caption, receiver=receiver, wait_time=wait_time
+        path=img_path, caption=caption, receiver=receiver, wait_time=wait_time, only_image=True
     )
     log.log_image(_time=current_time, path=img_path, receiver=receiver, caption=caption)
     if tab_close:
