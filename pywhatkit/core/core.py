@@ -7,7 +7,6 @@ from webbrowser import open
 
 import requests
 from pyautogui import (
-    ImageNotFoundException,
     click,
     hotkey,
     locateOnScreen,
@@ -109,7 +108,7 @@ def copy_image(path: str) -> None:
     elif system().lower() == "windows":
         from io import BytesIO
 
-        import win32clipboard
+        import win32clipboard # pip install pywin32
         from PIL import Image
 
         image = Image.open(path)
