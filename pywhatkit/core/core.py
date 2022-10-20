@@ -23,13 +23,13 @@ def close_tab(wait_time: int = 2) -> None:
     """Closes the Currently Opened Browser Tab"""
 
     time.sleep(wait_time)
-    system_ = system().lower()
-    if system_ in ("windows", "linux"):
+    _system = system().lower()
+    if _system in ("windows", "linux"):
         hotkey("ctrl", "w")
-    elif system_ == "darwin":
+    elif _system == "darwin":
         hotkey("command", "w")
     else:
-        raise Warning(f"{system_} not supported!")
+        raise Warning(f"{_system} not supported!")
     press("enter")
 
 
@@ -89,8 +89,8 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
 def copy_image(path: str) -> None:
     """Copy the Image to Clipboard based on the Platform"""
 
-    system_ = system().lower()
-    if system_ == "linux":
+    _system = system().lower()
+    if _system == "linux":
         if pathlib.Path(path).suffix in (".PNG", ".png"):
             os.system(f"copyq copy image/png - < {path}")
         elif pathlib.Path(path).suffix in (".jpg", ".JPG", ".jpeg", ".JPEG"):
@@ -99,7 +99,7 @@ def copy_image(path: str) -> None:
             raise Exception(
                 f"File Format {pathlib.Path(path).suffix} is not Supported!"
             )
-    elif system_ == "windows":
+    elif _system == "windows":
         from io import BytesIO
 
         import win32clipboard  # pip install pywin32
@@ -114,7 +114,7 @@ def copy_image(path: str) -> None:
         win32clipboard.EmptyClipboard()
         win32clipboard.SetClipboardData(win32clipboard.CF_DIB, data)
         win32clipboard.CloseClipboard()
-    elif system_ == "darwin":
+    elif _system == "darwin":
         if pathlib.Path(path).suffix in (".jpg", ".jpeg", ".JPG", ".JPEG"):
             os.system(
                 f"osascript -e 'set the clipboard to (read (POSIX file \"{path}\") as JPEG picture)'"
@@ -124,7 +124,7 @@ def copy_image(path: str) -> None:
                 f"File Format {pathlib.Path(path).suffix} is not Supported!"
             )
     else:
-        raise Exception(f"Unsupported System: {system_}")
+        raise Exception(f"Unsupported System: {_system}")
 
 
 def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
