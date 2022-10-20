@@ -2,6 +2,7 @@ import time
 import webbrowser as web
 from datetime import datetime
 from re import fullmatch
+from typing import List
 from urllib.parse import quote
 
 import pyautogui as pg
@@ -137,6 +138,21 @@ def sendwhatmsg_to_group_instantly(
     log.log_message(_time=current_time, receiver=group_id, message=message)
     if tab_close:
         core.close_tab(wait_time=close_time)
+
+
+def sendwhatsmsg_to_all(
+    phone_nos: List[str],
+    message: str,
+    time_hour: int,
+    time_min: int,
+    wait_time: int = 15,
+    tab_close: bool = False,
+    close_time: int = 3,
+):
+    for phone_no in phone_nos:
+        sendwhatmsg(
+            phone_no, message, time_hour, time_min, wait_time, tab_close, close_time
+        )
 
 
 def sendwhats_image(
