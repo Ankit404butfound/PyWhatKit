@@ -39,10 +39,11 @@ def findtextbox() -> None:
     location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile1.png")
     try:
         moveTo(location[0] + 150, location[1] + 5)
+        click()
     except Exception:
         location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile.png")
         moveTo(location[0] + 150, location[1] + 5)
-    click()
+        click()
 
 
 def check_connection() -> None:
@@ -74,7 +75,7 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
 
     _web(receiver=receiver, message=message)
     time.sleep(7)
-    click(WIDTH / 2, HEIGHT / 2)
+    click(WIDTH / 2, HEIGHT / 2 + 15)
     time.sleep(wait_time - 7)
     if not check_number(number=receiver):
         for char in message:
@@ -132,7 +133,7 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
 
     _web(message=caption, receiver=receiver)
     time.sleep(7)
-    click(WIDTH / 2, HEIGHT / 2)
+    click(WIDTH / 2, HEIGHT / 2 + 15)
     time.sleep(wait_time - 7)
     copy_image(path=path)
     if not check_number(number=receiver):
