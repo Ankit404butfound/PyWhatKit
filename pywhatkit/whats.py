@@ -27,7 +27,7 @@ def sendwhatmsg_instantly(
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
 
     phone_no = phone_no.replace(" ", "")
-    if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{9,15}", phone_no):
+    if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{9,15}$", phone_no):
         raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     web.open(f"https://web.whatsapp.com/send?phone={phone_no}&text={quote(message)}")
@@ -55,7 +55,7 @@ def sendwhatmsg(
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
 
     phone_no = phone_no.replace(" ", "")
-    if not fullmatch(r'^\+?[0-9]{2,4}\s?[0-9]{9,15}', phone_no):
+    if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{9,15}$", phone_no):
         raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     if time_hour not in range(25) or time_min not in range(60):
