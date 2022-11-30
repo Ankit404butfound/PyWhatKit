@@ -7,16 +7,7 @@ from webbrowser import open
 import asyncio
 
 import requests
-from pyautogui import (
-    ImageNotFoundException,
-    click,
-    hotkey,
-    locateOnScreen,
-    moveTo,
-    press,
-    size,
-    typewrite,
-)
+from pyautogui import click, hotkey, locateOnScreen, moveTo, press, size, typewrite
 
 from pywhatkit.core.exceptions import InternetException
 
@@ -31,14 +22,14 @@ def check_number(number: str) -> bool:
 
 async def close_tab(wait_time: int = 2) -> None:
     """Closes the Currently Opened Browser Tab"""
-
     await asyncio.sleep(wait_time)
-    if system().lower() in ("windows", "linux"):
+    _system = system().lower()
+    if _system in ("windows", "linux"):
         hotkey("ctrl", "w")
-    elif system().lower() == "darwin":
+    elif _system == "darwin":
         hotkey("command", "w")
     else:
-        raise Warning(f"{system().lower()} not supported!")
+        raise Warning(f"{_system} not supported!")
     press("enter")
 
 
@@ -48,10 +39,11 @@ def findtextbox() -> None:
     location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile1.png")
     try:
         moveTo(location[0] + 150, location[1] + 5)
+        click()
     except Exception:
         location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile.png")
         moveTo(location[0] + 150, location[1] + 5)
-    click()
+        click()
 
 
 def check_connection() -> None:
@@ -83,7 +75,7 @@ async def send_message(message: str, receiver: str, wait_time: int) -> None:
 
     _web(receiver=receiver, message=message)
     await asyncio.sleep(7)
-    click(WIDTH / 2, HEIGHT / 2)
+    click(WIDTH / 2, HEIGHT / 2 + 15)
     await asyncio.sleep(wait_time - 7)
     if not check_number(number=receiver):
         for char in message:
@@ -98,7 +90,8 @@ async def send_message(message: str, receiver: str, wait_time: int) -> None:
 def copy_image(path: str) -> None:
     """Copy the Image to Clipboard based on the Platform"""
 
-    if system().lower() == "linux":
+    _system = system().lower()
+    if _system == "linux":
         if pathlib.Path(path).suffix in (".PNG", ".png"):
             os.system(f"copyq copy image/png - < {path}")
         elif pathlib.Path(path).suffix in (".jpg", ".JPG", ".jpeg", ".JPEG"):
@@ -107,10 +100,10 @@ def copy_image(path: str) -> None:
             raise Exception(
                 f"File Format {pathlib.Path(path).suffix} is not Supported!"
             )
-    elif system().lower() == "windows":
+    elif _system == "windows":
         from io import BytesIO
 
-        import win32clipboard
+        import win32clipboard  # pip install pywin32
         from PIL import Image
 
         image = Image.open(path)
@@ -122,7 +115,7 @@ def copy_image(path: str) -> None:
         win32clipboard.EmptyClipboard()
         win32clipboard.SetClipboardData(win32clipboard.CF_DIB, data)
         win32clipboard.CloseClipboard()
-    elif system().lower() == "darwin":
+    elif _system == "darwin":
         if pathlib.Path(path).suffix in (".jpg", ".jpeg", ".JPG", ".JPEG"):
             os.system(
                 f"osascript -e 'set the clipboard to (read (POSIX file \"{path}\") as JPEG picture)'"
@@ -132,7 +125,7 @@ def copy_image(path: str) -> None:
                 f"File Format {pathlib.Path(path).suffix} is not Supported!"
             )
     else:
-        raise Exception(f"Unsupported System: {system().lower()}")
+        raise Exception(f"Unsupported System: {_system}")
 
 
 async def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
@@ -140,7 +133,7 @@ async def send_image(path: str, caption: str, receiver: str, wait_time: int) -> 
 
     _web(message=caption, receiver=receiver)
     await asyncio.sleep(7)
-    click(WIDTH / 2, HEIGHT / 2)
+    click(WIDTH / 2, HEIGHT / 2 + 15)
     await asyncio.sleep(wait_time - 7)
     copy_image(path=path)
     if not check_number(number=receiver):

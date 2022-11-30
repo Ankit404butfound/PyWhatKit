@@ -11,7 +11,7 @@ from platform import system
 from pywhatkit.ascii_art import image_to_ascii_art
 from pywhatkit.handwriting import text_to_handwriting
 from pywhatkit.mail import send_hmail, send_mail
-from pywhatkit.misc import info, playonyt, search, show_history, web_screenshot
+from pywhatkit.misc import info, playonyt, search, show_history, take_screenshot
 from pywhatkit.sc import cancel_shutdown, shutdown
 from pywhatkit.whats import (
     open_web,
@@ -22,8 +22,9 @@ from pywhatkit.whats import (
     sendwhats_image,
 )
 
-if system().lower() in ("darwin", "windows"):
+_system = system().lower()
+if _system in ("darwin", "windows"):
     from pywhatkit.misc import take_screenshot
 
-if system().lower() == "windows":
+if _system == "windows":
     from pywhatkit.remotekit import start_server

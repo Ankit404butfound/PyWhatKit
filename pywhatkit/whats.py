@@ -2,6 +2,7 @@ import time
 import webbrowser as web
 from datetime import datetime
 from re import fullmatch
+from typing import List
 from urllib.parse import quote
 import asyncio
 
@@ -27,12 +28,12 @@ async def sendwhatmsg_instantly(
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
 
     phone_no = phone_no.replace(" ", "")
-    if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{10}$", phone_no):
+    if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{9,15}", phone_no):
         raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     web.open(f"https://web.whatsapp.com/send?phone={phone_no}&text={quote(message)}")
     await asyncio.sleep(4)
-    pg.click(core.WIDTH / 2, core.HEIGHT / 2)
+    pg.click(core.WIDTH / 2, core.HEIGHT / 2 + 15)
     await asyncio.sleep(wait_time - 4)
     core.findtextbox()
     pg.press("enter")
@@ -55,7 +56,7 @@ async def sendwhatmsg(
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
 
     phone_no = phone_no.replace(" ", "")
-    if not fullmatch(r"^\+?[0-9]{2,4}[0-9]{10}$", phone_no):
+    if not fullmatch(r'^\+?[0-9]{2,4}\s?[0-9]{9,15}', phone_no):
         raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     if time_hour not in range(25) or time_min not in range(60):
@@ -138,6 +139,21 @@ async def sendwhatmsg_to_group_instantly(
     log.log_message(_time=current_time, receiver=group_id, message=message)
     if tab_close:
         core.close_tab(wait_time=close_time)
+
+
+def sendwhatsmsg_to_all(
+    phone_nos: List[str],
+    message: str,
+    time_hour: int,
+    time_min: int,
+    wait_time: int = 15,
+    tab_close: bool = False,
+    close_time: int = 3,
+):
+    for phone_no in phone_nos:
+        sendwhatmsg(
+            phone_no, message, time_hour, time_min, wait_time, tab_close, close_time
+        )
 
 
 async def sendwhats_image(
