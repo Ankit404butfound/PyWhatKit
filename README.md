@@ -10,7 +10,7 @@
 [![image](https://flat.badgen.net/github/release/Ankit404butfound/Pywhatkit)](https://github.com/Ankit404butfound/PyWhatKit/releases)
 <!-- ![logo](https://github.com/Ankit404butfound/PyWhatKit/raw/master/Images/logo.png?raw=true) -->
 
-###### I am a bit busy these days and not able to maintain this project properly, if you are passionate about programming and knows a bit about the internal workings of this library and is willing to contribute and improve the project, contact me on Discord or Email, I will give you push access to the repo and release access to the PyPi project. Beginners are always welcomed as long as you don't break the new release 😂😅.
+
 
 [PyWhatKit](https://pypi.org/project/pywhatkit/) is a Python library with various helpful features. It's easy-to-use and does not require you to do any additional setup. Currently, it is one of the most popular library for WhatsApp and YouTube automation. New updates are released frequently with new features and bug fixes.
 
