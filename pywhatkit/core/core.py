@@ -75,7 +75,6 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
 
     _web(receiver=receiver, message=message)
     time.sleep(7)
-    click(WIDTH / 2, HEIGHT / 2 + 15)
     time.sleep(wait_time - 7)
     if not check_number(number=receiver):
         for char in message:
