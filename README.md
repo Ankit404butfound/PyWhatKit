@@ -16,7 +16,7 @@
 
 # Links
 
-- **Join our discord server - https://discord.gg/62Yf5mushu**
+- **Join our discord server - [https://discord.gg/62Yf5mushu](https://discord.gg/zYYfbPqJ)**
 - **Documentation - [Wiki](https://github.com/Ankit404butfound/PyWhatKit/wiki)**
 
 ## Installation and Supported Versions
