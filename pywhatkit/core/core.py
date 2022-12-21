@@ -4,7 +4,8 @@ import time
 from platform import system
 from urllib.parse import quote
 from webbrowser import open
-
+import pyperclip
+import platform
 import requests
 from pyautogui import click, hotkey, locateOnScreen, moveTo, press, size, typewrite
 
@@ -102,11 +103,12 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
     _web(receiver=receiver, message=message)
     time.sleep(wait_time)
     if not check_number(number=receiver):
-        for char in message:
-            if char == "\n":
-                hotkey("shift", "enter")
-            else:
-                typewrite(char)
+        pyperclip.copy(message)
+        if platform.system() == "Darwin":
+            hotkey("command", "v")
+        else:
+            hotkey("ctrl", "v")
+        time.sleep(1)
     findtextbox()
     press("enter")
 
