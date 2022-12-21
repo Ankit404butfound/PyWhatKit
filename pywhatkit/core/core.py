@@ -109,7 +109,6 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
         else:
             hotkey("ctrl", "v")
         time.sleep(1)
-    findtextbox()
     press("enter")
 
 
