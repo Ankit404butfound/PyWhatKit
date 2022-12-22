@@ -96,7 +96,7 @@ def sendwhatmsg_to_group(
 ) -> None:
     """Send WhatsApp Message to a Group at a Certain Time"""
 
-    if time_hour not in range(25) or time_min not in range(60):
+    if time_hour not in range(24) or time_min not in range(60):
         raise Warning("Invalid Time Format!")
 
     current_time = time.localtime()
