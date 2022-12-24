@@ -20,6 +20,7 @@ from pywhatkit.whats import (
     sendwhatmsg_to_group,
     sendwhatmsg_to_group_instantly,
     sendwhats_image,
+    sendwhatdoc_immediately
 )
 
 _system = system().lower()
