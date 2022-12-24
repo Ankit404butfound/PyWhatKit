@@ -42,7 +42,7 @@ def sendwhatmsg_instantly(
     if tab_close:
         core.close_tab(wait_time=close_time)
 
-def sendwhatdoc_immediately(
+def sendwhatimg_immediately(
     phone_no: str,
     path: str,
     wait_time: int = 15,
@@ -66,6 +66,45 @@ def sendwhatdoc_immediately(
     as_y = ps_y / 1080
     pg.click(671 * as_x, 964 * as_y)
     pg.click(675 * as_x, 878 * as_y)
+    pyperclip.copy(os.path.abspath(path))
+    print("Copied")
+    time.sleep(1)
+    keyboard.press("ctrl")
+    keyboard.press("v")
+    keyboard.release("v")
+    keyboard.release("ctrl")
+    time.sleep(1)
+    keyboard.press("enter")
+    keyboard.release("enter")
+    time.sleep(1)
+    keyboard.press("enter")
+    keyboard.release("enter")
+    if tab_close:
+        core.close_tab(wait_time=close_time)
+def sendwhatdoc_immediately(
+    phone_no: str,
+    path: str,
+    wait_time: int = 15,
+    tab_close: bool = False,
+    close_time: int = 3,
+) -> None:
+    """Send WhatsApp Message Instantly"""
+
+    if not core.check_number(number=phone_no):
+        raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
+
+    phone_no = phone_no.replace(" ", "")
+    if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{9,15}", phone_no):
+        raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
+
+    web.open(f"https://web.whatsapp.com/send?phone={phone_no}")
+    time.sleep(4)
+    time.sleep(wait_time - 4)
+    (ps_x, ps_y) = pg.size()
+    as_x = ps_x / 1920
+    as_y = ps_y / 1080
+    pg.click(671 * as_x, 964 * as_y)
+    pg.click(677 * as_x, 625 * as_y)
     pyperclip.copy(os.path.abspath(path))
     print("Copied")
     time.sleep(1)
