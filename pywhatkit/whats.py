@@ -17,11 +17,11 @@ core.check_connection()
 
 
 def sendwhatmsg_instantly(
-    phone_no: str,
-    message: str,
-    wait_time: int = 15,
-    tab_close: bool = False,
-    close_time: int = 3,
+        phone_no: str,
+        message: str,
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
 ) -> None:
     """Send WhatsApp Message Instantly"""
 
@@ -42,12 +42,13 @@ def sendwhatmsg_instantly(
     if tab_close:
         core.close_tab(wait_time=close_time)
 
-def sendwhatimg_immediately(
-    phone_no: str,
-    path: str,
-    wait_time: int = 15,
-    tab_close: bool = False,
-    close_time: int = 3,
+
+def sendimg_or_video_immediately(
+        phone_no: str,
+        path: str,
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
 ) -> None:
     """Send WhatsApp Message Instantly"""
 
@@ -59,13 +60,11 @@ def sendwhatimg_immediately(
         raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     web.open(f"https://web.whatsapp.com/send?phone={phone_no}")
-    time.sleep(4)
-    time.sleep(wait_time - 4)
-    (ps_x, ps_y) = pg.size()
-    as_x = ps_x / 1920
-    as_y = ps_y / 1080
-    pg.click(671 * as_x, 964 * as_y)
-    pg.click(675 * as_x, 878 * as_y)
+    time.sleep(wait_time)
+    core.find_link()
+    time.sleep(1)
+    core.find_photo_or_video()
+
     pyperclip.copy(os.path.abspath(path))
     print("Copied")
     time.sleep(1)
@@ -81,12 +80,13 @@ def sendwhatimg_immediately(
     keyboard.release("enter")
     if tab_close:
         core.close_tab(wait_time=close_time)
+
 def sendwhatdoc_immediately(
-    phone_no: str,
-    path: str,
-    wait_time: int = 15,
-    tab_close: bool = False,
-    close_time: int = 3,
+        phone_no: str,
+        path: str,
+        wait_time: int = 15,
+        tab_close: bool = True,
+        close_time: int = 3,
 ) -> None:
     """Send WhatsApp Message Instantly"""
 
@@ -98,13 +98,10 @@ def sendwhatdoc_immediately(
         raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     web.open(f"https://web.whatsapp.com/send?phone={phone_no}")
-    time.sleep(4)
-    time.sleep(wait_time - 4)
-    (ps_x, ps_y) = pg.size()
-    as_x = ps_x / 1920
-    as_y = ps_y / 1080
-    pg.click(671 * as_x, 964 * as_y)
-    pg.click(677 * as_x, 625 * as_y)
+    time.sleep(wait_time)
+    core.find_link()
+    time.sleep(1)
+    core.find_document()
     pyperclip.copy(os.path.abspath(path))
     print("Copied")
     time.sleep(1)
@@ -120,15 +117,16 @@ def sendwhatdoc_immediately(
     keyboard.release("enter")
     if tab_close:
         core.close_tab(wait_time=close_time)
+
 
 def sendwhatmsg(
-    phone_no: str,
-    message: str,
-    time_hour: int,
-    time_min: int,
-    wait_time: int = 15,
-    tab_close: bool = False,
-    close_time: int = 3,
+        phone_no: str,
+        message: str,
+        time_hour: int,
+        time_min: int,
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
 ) -> None:
     """Send a WhatsApp Message at a Certain Time"""
     if not core.check_number(number=phone_no):
@@ -166,13 +164,13 @@ def sendwhatmsg(
 
 
 def sendwhatmsg_to_group(
-    group_id: str,
-    message: str,
-    time_hour: int,
-    time_min: int,
-    wait_time: int = 15,
-    tab_close: bool = False,
-    close_time: int = 3,
+        group_id: str,
+        message: str,
+        time_hour: int,
+        time_min: int,
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
 ) -> None:
     """Send WhatsApp Message to a Group at a Certain Time"""
 
@@ -204,11 +202,11 @@ def sendwhatmsg_to_group(
 
 
 def sendwhatmsg_to_group_instantly(
-    group_id: str,
-    message: str,
-    wait_time: int = 15,
-    tab_close: bool = False,
-    close_time: int = 3,
+        group_id: str,
+        message: str,
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
 ) -> None:
     """Send WhatsApp Message to a Group Instantly"""
 
@@ -221,13 +219,13 @@ def sendwhatmsg_to_group_instantly(
 
 
 def sendwhatsmsg_to_all(
-    phone_nos: List[str],
-    message: str,
-    time_hour: int,
-    time_min: int,
-    wait_time: int = 15,
-    tab_close: bool = False,
-    close_time: int = 3,
+        phone_nos: List[str],
+        message: str,
+        time_hour: int,
+        time_min: int,
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
 ):
     for phone_no in phone_nos:
         sendwhatmsg(
@@ -236,14 +234,14 @@ def sendwhatsmsg_to_all(
 
 
 def sendwhats_image(
-    receiver: str,
-    img_path: str,
-    time_hour: int,
-    time_min: int,
-    caption: str = "",
-    wait_time: int = 15,
-    tab_close: bool = False,
-    close_time: int = 3,
+        receiver: str,
+        img_path: str,
+        time_hour: int,
+        time_min: int,
+        caption: str = "",
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
 ) -> None:
     """Send Image to a WhatsApp Contact or Group at a Certain Time"""
 

@@ -46,6 +46,32 @@ def findtextbox() -> None:
         click()
 
 
+def find_link():
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    location = locateOnScreen(f"{dir_path}\\data\\link.png")
+    print(location)
+    try:
+        moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
+        click()
+    except Exception:
+        location = locateOnScreen(f"{dir_path}\\data\\link2.png")
+        moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
+        print(location)
+        click()
+def find_document():
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    location = locateOnScreen(f"{dir_path}\\data\\document.png")
+    print(location)
+    moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
+    click()
+
+def find_photo_or_video():
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    location = locateOnScreen(f"{dir_path}\\data\\photo_or_video.png")
+    print(location)
+    moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
+    click()
+
 def check_connection() -> None:
     """Check the Internet connection of the Host Machine"""
 
