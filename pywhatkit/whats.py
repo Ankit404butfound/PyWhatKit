@@ -60,11 +60,7 @@ def sendimg_or_video_immediately(
         raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     web.open(f"https://web.whatsapp.com/send?phone={phone_no}")
-    time.sleep(4)
-    time.sleep(wait_time - 4)
-    (ps_x, ps_y) = pg.size()
-    as_x = ps_x / 1920
-    as_y = ps_y / 1080
+    time.sleep(wait_time)
     core.find_link()
     time.sleep(1)
     core.find_photo_or_video()
@@ -102,11 +98,7 @@ def sendwhatdoc_immediately(
         raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     web.open(f"https://web.whatsapp.com/send?phone={phone_no}")
-    time.sleep(4)
-    time.sleep(wait_time - 4)
-    (ps_x, ps_y) = pg.size()
-    as_x = ps_x / 1920
-    as_y = ps_y / 1080
+    time.sleep(wait_time)
     core.find_link()
     time.sleep(1)
     core.find_document()
