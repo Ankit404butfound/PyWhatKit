@@ -1,4 +1,10 @@
-Pillow
-pyautogui
-requests
-wikipedia
+Pillow~=9.3.0
+pyautogui~=0.9.53
+requests~=2.28.1
+wikipedia~=1.4.0
+paperclip~=2.6.1
+flask~=2.2.2
+
+setuptools~=62.1.0
+pyperclip~=1.8.2
+keyboard~=0.13.5
