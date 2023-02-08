@@ -19,7 +19,7 @@ core.check_connection()
 def sendwhatmsg_instantly(
         phone_no: str,
         message: str,
-        wait_time: int = 15,
+        wait_time: int = 30,
         tab_close: bool = False,
         close_time: int = 3,
 ) -> None:
@@ -46,7 +46,7 @@ def sendwhatmsg_instantly(
 def sendimg_or_video_immediately(
         phone_no: str,
         path: str,
-        wait_time: int = 15,
+        wait_time: int = 30,
         tab_close: bool = False,
         close_time: int = 3,
 ) -> None:
@@ -84,7 +84,7 @@ def sendimg_or_video_immediately(
 def sendwhatdoc_immediately(
         phone_no: str,
         path: str,
-        wait_time: int = 15,
+        wait_time: int = 30,
         tab_close: bool = True,
         close_time: int = 3,
 ) -> None:
@@ -124,7 +124,7 @@ def sendwhatmsg(
         message: str,
         time_hour: int,
         time_min: int,
-        wait_time: int = 15,
+        wait_time: int = 30,
         tab_close: bool = False,
         close_time: int = 3,
 ) -> None:
@@ -168,7 +168,7 @@ def sendwhatmsg_to_group(
         message: str,
         time_hour: int,
         time_min: int,
-        wait_time: int = 15,
+        wait_time: int = 30,
         tab_close: bool = False,
         close_time: int = 3,
 ) -> None:
@@ -204,7 +204,7 @@ def sendwhatmsg_to_group(
 def sendwhatmsg_to_group_instantly(
         group_id: str,
         message: str,
-        wait_time: int = 15,
+        wait_time: int = 30,
         tab_close: bool = False,
         close_time: int = 3,
 ) -> None:
@@ -223,7 +223,7 @@ def sendwhatsmsg_to_all(
         message: str,
         time_hour: int,
         time_min: int,
-        wait_time: int = 15,
+        wait_time: int = 30,
         tab_close: bool = False,
         close_time: int = 3,
 ):
@@ -239,7 +239,7 @@ def sendwhats_image(
         time_hour: int,
         time_min: int,
         caption: str = "",
-        wait_time: int = 15,
+        wait_time: int = 30,
         tab_close: bool = False,
         close_time: int = 3,
 ) -> None:

@@ -100,9 +100,7 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
     """Parses and Sends the Message"""
 
     _web(receiver=receiver, message=message)
-    time.sleep(7)
-    click(WIDTH / 2, HEIGHT / 2 + 15)
-    time.sleep(wait_time - 7)
+    time.sleep(wait_time)
     if not check_number(number=receiver):
         for char in message:
             if char == "\n":
