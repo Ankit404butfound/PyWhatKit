@@ -90,6 +90,10 @@ pywhatkit.sendwhatmsg_to_group_instantly("AB123CDEFGHijklmn", "Hey All!")
 
 # Play a Video on YouTube
 pywhatkit.playonyt("PyWhatKit")
+
+# Converting image to ASCII Art
+  ascii_art = pywhatkit.image_to_ascii_art("image path")
+  print(ascii_art)
 ```
 
 For more Examples and Functions, have a look at the [Wiki](https://github.com/Ankit404butfound/PyWhatKit/wiki).
