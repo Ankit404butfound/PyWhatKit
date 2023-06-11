@@ -10,6 +10,7 @@ import pyautogui as pg
 import pyperclip
 import keyboard
 from pywhatkit.core import core, exceptions, log
+from typing import Union
 
 pg.FAILSAFE = False
 
@@ -81,6 +82,7 @@ def sendimg_or_video_immediately(
     if tab_close:
         core.close_tab(wait_time=close_time)
 
+
 def sendwhatdoc_immediately(
         phone_no: str,
         path: str,
@@ -121,7 +123,7 @@ def sendwhatdoc_immediately(
 
 def sendwhatmsg(
         phone_no: str,
-        message: str,
+        message: Union[list, str],
         time_hour: int,
         time_min: int,
         wait_time: int = 15,
@@ -157,8 +159,12 @@ def sendwhatmsg(
         f"In {sleep_time} Seconds WhatsApp will open and after {wait_time} Seconds Message will be Delivered!"
     )
     time.sleep(sleep_time)
-    core.send_message(message=message, receiver=phone_no, wait_time=wait_time)
-    log.log_message(_time=current_time, receiver=phone_no, message=message)
+    if isinstance(message, list):
+        core.send_message_list(message=message, receiver=phone_no, wait_time=wait_time)
+    else:
+        core.send_message(message=message, receiver=phone_no, wait_time=wait_time)
+        log.log_message(_time=current_time, receiver=phone_no, message=message)
+
     if tab_close:
         core.close_tab(wait_time=close_time)
 
