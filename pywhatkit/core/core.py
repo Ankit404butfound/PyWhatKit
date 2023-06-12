@@ -58,6 +58,8 @@ def find_link():
         moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
         print(location)
         click()
+
+
 def find_document():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     location = locateOnScreen(f"{dir_path}\\data\\document.png")
@@ -65,12 +67,14 @@ def find_document():
     moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
     click()
 
+
 def find_photo_or_video():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     location = locateOnScreen(f"{dir_path}\\data\\photo_or_video.png")
     print(location)
     moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
     click()
+
 
 def check_connection() -> None:
     """Check the Internet connection of the Host Machine"""
@@ -111,6 +115,18 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
                 typewrite(char)
     findtextbox()
     press("enter")
+
+
+def send_message_list(message: list, receiver: str, wait_time: int) -> None:
+    """Parse and send multiple messages to a number"""
+
+    _web(receiver=receiver, message='')
+    time.sleep(7)
+    click(WIDTH / 2, HEIGHT / 2 + 15)
+    time.sleep(wait_time - 7)
+    for msg in message:
+        typewrite(msg)
+        press("enter")
 
 
 def copy_image(path: str) -> None:
