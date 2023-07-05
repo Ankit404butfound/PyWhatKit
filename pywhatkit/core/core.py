@@ -205,4 +205,4 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
 
 def char_is_emoji(character) -> bool:
     """Determines if a char is a emoji or not"""
-    return is_emoji(character)  
+    return is_emoji(character)

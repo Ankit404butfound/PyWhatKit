@@ -177,6 +177,7 @@ def sendwhatmsg_to_group(
         wait_time: int = 15,
         tab_close: bool = False,
         close_time: int = 3,
+        use_copy_paste=False,
 ) -> None:
     """Send WhatsApp Message to a Group at a Certain Time"""
 
@@ -201,7 +202,7 @@ def sendwhatmsg_to_group(
         f"In {sleep_time} Seconds WhatsApp will open and after {wait_time} Seconds Message will be Delivered!"
     )
     time.sleep(sleep_time)
-    core.send_message(message=message, receiver=group_id, wait_time=wait_time)
+    core.send_message(message=message, receiver=group_id, wait_time=wait_time, use_copy_paste=use_copy_paste)
     log.log_message(_time=current_time, receiver=group_id, message=message)
     if tab_close:
         core.close_tab(wait_time=close_time)
@@ -213,12 +214,13 @@ def sendwhatmsg_to_group_instantly(
         wait_time: int = 15,
         tab_close: bool = False,
         close_time: int = 3,
+        use_copy_paste=False,
 ) -> None:
     """Send WhatsApp Message to a Group Instantly"""
 
     current_time = time.localtime()
     time.sleep(4)
-    core.send_message(message=message, receiver=group_id, wait_time=wait_time)
+    core.send_message(message=message, receiver=group_id, wait_time=wait_time, use_copy_paste=use_copy_paste)
     log.log_message(_time=current_time, receiver=group_id, message=message)
     if tab_close:
         core.close_tab(wait_time=close_time)
