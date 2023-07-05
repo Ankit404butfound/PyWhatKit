@@ -10,6 +10,9 @@ from pyautogui import click, hotkey, locateOnScreen, moveTo, press, size, typewr
 
 from pywhatkit.core.exceptions import InternetException
 
+import pyperclip
+from emoji.core import is_emoji
+
 WIDTH, HEIGHT = size()
 
 
@@ -100,20 +103,26 @@ def _web(receiver: str, message: str) -> None:
         open("https://web.whatsapp.com/accept?code=" + receiver)
 
 
-def send_message(message: str, receiver: str, wait_time: int) -> None:
+def send_message(message: str, receiver: str, wait_time: int, use_copy_paste=False) -> None:
     """Parses and Sends the Message"""
 
     _web(receiver=receiver, message=message)
     time.sleep(7)
-    click(WIDTH / 2, HEIGHT / 2 + 15)
+    click(WIDTH / 2, HEIGHT / 2)
     time.sleep(wait_time - 7)
     if not check_number(number=receiver):
-        for char in message:
-            if char == "\n":
-                hotkey("shift", "enter")
-            else:
-                typewrite(char)
-    findtextbox()
+        if not use_copy_paste:
+            for char in message:
+                if char == "\n":
+                    hotkey("shift", "enter")
+                elif char_is_emoji(char):
+                    pyperclip.copy(char)
+                    hotkey("ctrl","v")
+                else:
+                    typewrite(char)
+        else:
+            pyperclip.copy(message)
+            hotkey("ctrl","v")
     press("enter")
 
 
@@ -193,3 +202,7 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
     time.sleep(1)
     findtextbox()
     press("enter")
+
+def char_is_emoji(character) -> bool:
+    """Determines if a char is a emoji or not"""
+    return is_emoji(character)  
