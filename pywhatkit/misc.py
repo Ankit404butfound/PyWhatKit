@@ -53,7 +53,7 @@ def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> str:
 
     if use_api:
         response = requests.get(
-            f"https://pywhatkit.herokuapp.com/playonyt?topic={topic}"
+            f"https://pywhatkit.herokuapp.com/playonyt?topic={topic}", timeout=5
         )
         status_code = response.status_code
         if status_code == 200:
@@ -67,7 +67,7 @@ def playonyt(topic: str, use_api: bool = False, open_video: bool = True) -> str:
     else:
         url = f"https://www.youtube.com/results?q={topic}"
         count = 0
-        cont = requests.get(url)
+        cont = requests.get(url, timeout=5)
         data = cont.content
         data = str(data)
         lst = data.split('"')
