@@ -9,7 +9,7 @@ def text_to_handwriting(
     """Convert the given String to Handwritten Characters"""
 
     data = requests.get(
-        f"https://pywhatkit.herokuapp.com/handwriting?text={string}&rgb={rgb[0]},{rgb[1]},{rgb[2]}"
+        f"https://pywhatkit.herokuapp.com/handwriting?text={string}&rgb={rgb[0]},{rgb[1]},{rgb[2]}", timeout=5
     )
     status_code = (
         data.status_code

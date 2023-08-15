@@ -80,7 +80,7 @@ def check_connection() -> None:
     """Check the Internet connection of the Host Machine"""
 
     try:
-        requests.get("https://google.com")
+        requests.get("https://google.com", timeout=5)
     except requests.RequestException:
         raise InternetException(
             "Error while connecting to the Internet. Make sure you are connected to the Internet!"
