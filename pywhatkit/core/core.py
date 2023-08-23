@@ -108,11 +108,27 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
     click(WIDTH / 2, HEIGHT / 2 + 15)
     time.sleep(wait_time - 7)
     if not check_number(number=receiver):
-        for char in message:
-            if char == "\n":
+        index = 0
+        length = len(message)
+        while index < length:
+            letter = message[index]
+            typewrite(letter)
+            print(index, letter)
+            if letter == ":":
+                index += 1
+                while index < length:
+                    letter = message[index]
+                    print(index, letter)
+                    if letter == ":":
+                        press("enter")
+                        break
+                    typewrite(letter)
+                    index += 1
+            elif letter == "\n":
                 hotkey("shift", "enter")
-            else:
-                typewrite(char)
+            index += 1
+        press("enter")
+        
     findtextbox()
     press("enter")
 
