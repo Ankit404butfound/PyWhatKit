@@ -33,10 +33,25 @@ def sendwhatmsg_instantly(
     if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{9,15}", phone_no):
         raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
-    web.open(f"https://web.whatsapp.com/send?phone={phone_no}&text={quote(message)}")
-    time.sleep(4)
-    pg.click(core.WIDTH / 2, core.HEIGHT / 2 + 15)
-    time.sleep(wait_time - 4)
+    web.open(f"https://web.whatsapp.com/send?phone={phone_no}")
+    time.sleep(wait_time)
+    index = 0
+    length = len(message)
+    while index < length:
+        letter = message[index]
+        pg.write(letter)
+        print(index, letter)
+        if letter == ":":
+            index += 1
+            while index < length:
+                letter = message[index]
+                print(index, letter)
+                if letter == ":":
+                    pg.press("enter")
+                    break
+                pg.write(letter)
+                index += 1
+        index += 1
     pg.press("enter")
     log.log_message(_time=time.localtime(), receiver=phone_no, message=message)
     if tab_close:
