@@ -112,8 +112,8 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
         length = len(message)
         while index < length:
             letter = message[index]
-            typewrite(letter)
-            if letter == ":":
+            if letter == ":":    
+                typewrite(letter)
                 index += 1
                 while index < length:
                     letter = message[index]
@@ -124,6 +124,8 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
                     index += 1
             elif letter == "\n":
                 hotkey("shift", "enter")
+            else:
+                typewrite(letter)
             index += 1
         press("enter")
         
