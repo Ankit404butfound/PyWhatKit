@@ -113,12 +113,10 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
         while index < length:
             letter = message[index]
             typewrite(letter)
-            print(index, letter)
             if letter == ":":
                 index += 1
                 while index < length:
                     letter = message[index]
-                    print(index, letter)
                     if letter == ":":
                         press("enter")
                         break
