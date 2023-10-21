@@ -3,7 +3,6 @@ import time
 
 from pywhatkit.core.core import check_number
 
-
 def format_message(message: str) -> str:
     """Formats the Message to remove redundant Spaces and Newline chars"""
     msg_l = message.split(" ")
@@ -18,17 +17,25 @@ def format_message(message: str) -> str:
 
     return " ".join(new)
 
+log_path = "PyWhatKit_DB.txt"
+
+def set_log_path(directory: str) -> None:
+    """Allows the User to Set an Absolute Path for the Log File"""
+    global log_path
+    if directory[directory.len() - 1] != '\\':
+        directory = directory + '\\'
+    log_path = directory + "PyWhatKit_DB.txt"
 
 def log_message(_time: time.struct_time, receiver: str, message: str) -> None:
     """Logs the Message Information after it is Sent"""
 
-    if not os.path.exists("PyWhatKit_DB.txt"):
-        file = open("PyWhatKit_DB.txt", "w+")
+    if not os.path.exists(log_path):
+        file = open(log_path, "w+")
         file.close()
 
     message = format_message(message)
 
-    with open("PyWhatKit_DB.txt", "a", encoding="utf-8") as file:
+    with open(log_path, "a", encoding="utf-8") as file:
         if check_number(receiver):
             file.write(
                 f"Date: {_time.tm_mday}/{_time.tm_mon}/{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\n"
@@ -46,13 +53,13 @@ def log_message(_time: time.struct_time, receiver: str, message: str) -> None:
 def log_image(_time: time.struct_time, path: str, receiver: str, caption: str) -> None:
     """Logs the Image Information after it is Sent"""
 
-    if not os.path.exists("PyWhatKit_DB.txt"):
-        file = open("PyWhatKit_DB.txt", "w+")
+    if not os.path.exists(log_path):
+        file = open(log_path, "w+")
         file.close()
 
     caption = format_message(caption)
 
-    with open("PyWhatKit_DB.txt", "a", encoding="utf-8") as file:
+    with open(log_path, "a", encoding="utf-8") as file:
         if check_number(number=receiver):
             file.write(
                 f"Date: {_time.tm_mday}/{_time.tm_mon}/{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\n"

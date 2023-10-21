@@ -13,6 +13,7 @@ from pywhatkit.handwriting import text_to_handwriting
 from pywhatkit.mail import send_hmail, send_mail
 from pywhatkit.misc import info, playonyt, search, show_history
 from pywhatkit.sc import cancel_shutdown, shutdown
+from pywhatkit.core.log import set_log_path
 from pywhatkit.whats import (
     open_web,
     sendwhatmsg,
