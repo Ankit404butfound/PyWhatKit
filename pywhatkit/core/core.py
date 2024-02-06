@@ -202,10 +202,12 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
                 typewrite(char)
     else:
         typewrite(" ")
+
+    click(WIDTH / 2, HEIGHT / 2 + 15)
     if system().lower() == "darwin":
         hotkey("command", "v")
     else:
         hotkey("ctrl", "v")
     time.sleep(1)
-    findtextbox()
+
     press("enter")
