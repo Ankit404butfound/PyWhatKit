@@ -24,6 +24,7 @@ from pywhatkit.whats import (
     sendwhatdoc_immediately,
     sendimg_or_video_immediately
 )
+from pywhatkit.playonyt_stream import playonyt_stream
 
 _system = system().lower()
 if _system in ("darwin", "windows"):
