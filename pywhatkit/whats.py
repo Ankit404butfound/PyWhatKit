@@ -1,3 +1,6 @@
+#Vidit
+import subprocess
+import win32gui
 import os
 import time
 import webbrowser as web
@@ -15,6 +18,47 @@ from typing import Union
 pg.FAILSAFE = False
 
 core.check_connection()
+
+def get_default_browser():
+    command = 'powershell -Command "$defaultBrowser = (Get-ItemProperty \'HKCU:\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\').ProgId; echo $defaultBrowser"'
+    result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, text=True)
+    
+    if result.returncode != 0:
+        print("Error executing PowerShell command:")
+        print(result.stderr.strip())
+        return None
+    
+    output = result.stdout.strip()
+    return output
+
+def set_frontmost_process(browser_name):
+    if browser_name.lower() == 'microsoft edge':
+        # For Microsoft Edge, let's try a different approach to bring it to the foreground
+        subprocess.run('start microsoft-edge:', shell=True)
+        return
+    
+    # Find the window handle of the application
+    handle = win32gui.FindWindow(None, browser_name)
+    
+    if handle == 0:
+        print(f"Error: {browser_name} window not found.")
+        return
+    
+    # Bring the window to the foreground
+    win32gui.SetForegroundWindow(handle)
+
+# Test the function
+default_browser = get_default_browser()
+if default_browser:
+    browser_mapping = {
+        'FirefoxURL': 'Firefox',
+        'ChromeHTML': 'Google Chrome',
+        'MSEdgeHTM': 'Microsoft Edge'
+    }
+    browser_name = browser_mapping.get(default_browser, 'Unknown')
+    print(f"The default browser is: {browser_name}")
+    set_frontmost_process(browser_name)
+
 
 
 def sendwhatmsg_instantly(
@@ -50,7 +94,16 @@ def sendwhatmsg_instantly(
                 pg.write(letter)
                 index += 1
         index += 1
-    pg.press("enter")
+    default_browser= get_default_browser()
+    time.sleep(5)
+    if default_browser != "Unknown":
+
+    # Set the frontmost process to the default browser
+        set_frontmost_process(default_browser)
+    else:
+        print("set your default browser to chrome or firefox or microsoft egde to use this feature.")
+    get_default_browser()
+    pg.press('enter')
     log.log_message(_time=time.localtime(), receiver=phone_no, message=message)
     if tab_close:
         core.close_tab(wait_time=close_time)
@@ -301,3 +354,5 @@ def open_web() -> bool:
         return False
     else:
         return True
+    
+
