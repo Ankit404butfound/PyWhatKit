@@ -1,4 +1,4 @@
-![image](https://media.discordapp.net/attachments/842794167134453820/882227960613048350/unknown.png?width=1440&height=420)
+![image](https://github.com/Ankit404butfound/PyWhatKit/blob/master/Images/icon.png?raw=true)
 
 [![image](https://flat.badgen.net/github/stars/Ankit404butfound/Pywhatkit)](https://github.com/Ankit404butfound/PyWhatKit/stargazers)
 [![image](https://flat.badgen.net/github/forks/Ankit404butfound/Pywhatkit)](https://github.com/Ankit404butfound/PyWhatKit/network/members)
