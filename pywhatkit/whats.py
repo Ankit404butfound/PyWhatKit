@@ -13,14 +13,14 @@ import pyautogui as pg
 import pyperclip
 import keyboard
 from pywhatkit.core import core, exceptions, log
-from typing import Union
+from typing import *
 
 pg.FAILSAFE = False
 
 core.check_connection()
 
 
-def get_default_browser():
+def get_default_browser() -> Union[str, None]:
     command = "powershell -Command \"$defaultBrowser = (Get-ItemProperty 'HKCU:\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice').ProgId; echo $defaultBrowser\""
     result = subprocess.run(
         command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, text=True
@@ -35,7 +35,7 @@ def get_default_browser():
     return output
 
 
-def set_frontmost_process(browser_name):
+def set_frontmost_process(browser_name) -> None:
     if browser_name.lower() == "microsoft edge":
         # For Microsoft Edge, let's try a different approach to bring it to the foreground
         subprocess.run("start microsoft-edge:", shell=True)
