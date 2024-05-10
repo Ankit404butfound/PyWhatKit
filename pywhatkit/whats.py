@@ -66,11 +66,11 @@ if default_browser:
 
 
 def sendwhatmsg_instantly(
-    phone_no: str,
-    message: str,
-    wait_time: int = 15,
-    tab_close: bool = False,
-    close_time: int = 3,
+        phone_no: str,
+        message: str,
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
 ) -> None:
     """Send WhatsApp Message Instantly"""
 
@@ -116,11 +116,11 @@ def sendwhatmsg_instantly(
 
 
 def sendimg_or_video_immediately(
-    phone_no: str,
-    path: str,
-    wait_time: int = 15,
-    tab_close: bool = False,
-    close_time: int = 3,
+        phone_no: str,
+        path: str,
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
 ) -> None:
     """Send WhatsApp Message Instantly"""
 
@@ -193,13 +193,13 @@ def sendimg_or_video_immediately(
 
 
 def sendwhatmsg(
-    phone_no: str,
-    message: Union[list, str],
-    time_hour: int,
-    time_min: int,
-    wait_time: int = 15,
-    tab_close: bool = False,
-    close_time: int = 3,
+        phone_no: str,
+        message: Union[list, str],
+        time_hour: int,
+        time_min: int,
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
 ) -> None:
     """Send a WhatsApp Message at a Certain Time"""
     if not core.check_number(number=phone_no):
@@ -241,13 +241,13 @@ def sendwhatmsg(
 
 
 def sendwhatmsg_to_group(
-    group_id: str,
-    message: str,
-    time_hour: int,
-    time_min: int,
-    wait_time: int = 15,
-    tab_close: bool = False,
-    close_time: int = 3,
+        group_id: str,
+        message: str,
+        time_hour: int,
+        time_min: int,
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
 ) -> None:
     """Send WhatsApp Message to a Group at a Certain Time"""
 
@@ -279,11 +279,11 @@ def sendwhatmsg_to_group(
 
 
 def sendwhatmsg_to_group_instantly(
-    group_id: str,
-    message: str,
-    wait_time: int = 15,
-    tab_close: bool = False,
-    close_time: int = 3,
+        group_id: str,
+        message: str,
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
 ) -> None:
     """Send WhatsApp Message to a Group Instantly"""
 
@@ -296,13 +296,13 @@ def sendwhatmsg_to_group_instantly(
 
 
 def sendwhatsmsg_to_all(
-    phone_nos: List[str],
-    message: str,
-    time_hour: int,
-    time_min: int,
-    wait_time: int = 15,
-    tab_close: bool = False,
-    close_time: int = 3,
+        phone_nos: List[str],
+        message: str,
+        time_hour: int,
+        time_min: int,
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
 ):
     for phone_no in phone_nos:
         sendwhatmsg(
@@ -311,14 +311,14 @@ def sendwhatsmsg_to_all(
 
 
 def sendwhats_image(
-    receiver: str,
-    img_path: str,
-    time_hour: int,
-    time_min: int,
-    caption: str = "",
-    wait_time: int = 15,
-    tab_close: bool = False,
-    close_time: int = 3,
+        receiver: str,
+        img_path: str,
+        time_hour: int,
+        time_min: int,
+        caption: str = "",
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
 ) -> None:
     """Send Image to a WhatsApp Contact or Group at a Certain Time"""
 

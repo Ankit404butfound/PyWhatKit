@@ -10,9 +10,12 @@
 [![image](https://flat.badgen.net/github/release/Ankit404butfound/Pywhatkit)](https://github.com/Ankit404butfound/PyWhatKit/releases)
 <!-- ![logo](https://github.com/Ankit404butfound/PyWhatKit/raw/master/Images/logo.png?raw=true) -->
 
-> I am a bit busy and not able to keep up with the issues, I am looking for active collaborators, please contact me if you are interested.
+> I am a bit busy and not able to keep up with the issues, I am looking for active collaborators, please contact me if
+> you are interested.
 
-[PyWhatKit](https://pypi.org/project/pywhatkit/) is a Python library with various helpful features. It's easy-to-use and does not require you to do any additional setup. Currently, it is one of the most popular library for WhatsApp and YouTube automation. New updates are released frequently with new features and bug fixes.
+[PyWhatKit](https://pypi.org/project/pywhatkit/) is a Python library with various helpful features. It's easy-to-use and
+does not require you to do any additional setup. Currently, it is one of the most popular library for WhatsApp and
+YouTube automation. New updates are released frequently with new features and bug fixes.
 
 # Links
 
@@ -38,19 +41,28 @@ PyWhatKit officially supports Python 3.8+.
 ```bash
 git clone https://github.com/Ankit404butfound/PyWhatKit.git
 ```
+
 ## What's new in v5.4?
+
 ```
 Fix Flask import error
 ```
+
 ## What's new in v5.3?
+
 ```py
 import pywhatkit
+
 pywhatkit.start_server()
 ```
+
 ### This method can be used to remotely control your PC using your phone (Windows only)
-- Make sure your PC and your phone are on same network, on your PC, Open Network and Internet Settings > Properties > Network Profile, make sure it's set to Private.
+
+- Make sure your PC and your phone are on same network, on your PC, Open Network and Internet Settings > Properties >
+  Network Profile, make sure it's set to Private.
 - Run the above code and then open command prompt and type `ipconfig`.
-- Search for `IPv4 Address` and on your phone's browser type this address and append `:8000` at the end, example `192.168.0.1:8000`.
+- Search for `IPv4 Address` and on your phone's browser type this address and append `:8000` at the end,
+  example `192.168.0.1:8000`.
 - Try moving you finger and you should notice your cursor moving too.
 - You can also type and scroll too, enjoy.
 - More information here https://pywhatkit.herokuapp.com/remote-kit with the raw code.
@@ -92,8 +104,8 @@ pywhatkit.sendwhatmsg_to_group_instantly("AB123CDEFGHijklmn", "Hey All!")
 pywhatkit.playonyt("PyWhatKit")
 
 # Converting image to ASCII Art
-  ascii_art = pywhatkit.image_to_ascii_art("image path")
-  print(ascii_art)
+ascii_art = pywhatkit.image_to_ascii_art("image path")
+print(ascii_art)
 ```
 
 For more Examples and Functions, have a look at the [Wiki](https://github.com/Ankit404butfound/PyWhatKit/wiki).
@@ -101,7 +113,8 @@ For more Examples and Functions, have a look at the [Wiki](https://github.com/An
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-Be sure to read the [Guidelines](https://github.com/Ankit404butfound/PyWhatKit/blob/master/CONTRIBUTING.md) before Contributing.
+Be sure to read the [Guidelines](https://github.com/Ankit404butfound/PyWhatKit/blob/master/CONTRIBUTING.md) before
+Contributing.
 
 ## License
 

@@ -8,11 +8,11 @@ from pywhatkit.core.exceptions import UnsupportedEmailProvider
 
 
 def send_mail(
-    email_sender: str,
-    password: str,
-    subject: str,
-    message: Union[str, MIMEText],
-    email_receiver: str,
+        email_sender: str,
+        password: str,
+        subject: str,
+        message: Union[str, MIMEText],
+        email_receiver: str,
 ) -> None:
     """Send an Email"""
 
@@ -48,7 +48,7 @@ def send_mail(
 
 
 def send_hmail(
-    email_sender: str, password: str, subject: str, html_code: str, email_receiver: str
+        email_sender: str, password: str, subject: str, html_code: str, email_receiver: str
 ) -> None:
     """Send an Email with HTML Code"""
 

@@ -4,7 +4,7 @@ from pywhatkit.core import exceptions
 
 
 def text_to_handwriting(
-    string: str, save_to: str = "pywhatkit.png", rgb: tuple = (0, 0, 0)
+        string: str, save_to: str = "pywhatkit.png", rgb: tuple = (0, 0, 0)
 ) -> None:
     """Convert the given String to Handwritten Characters"""
 

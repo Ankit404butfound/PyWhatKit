@@ -1,14 +1,14 @@
 # TODO: Implement Caching
 name: Lint
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.9]
+        python-version: [ 3.9 ]
 
     steps:
       - uses: actions/checkout@v2

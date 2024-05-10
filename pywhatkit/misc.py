@@ -12,8 +12,9 @@ from pywhatkit.core import exceptions
 if system().lower() in ("windows", "darwin"):
     from PIL import ImageGrab
 
+
     def take_screenshot(
-        file_name: str = "pywhatkit_screenshot", delay: int = 2, show: bool = True
+            file_name: str = "pywhatkit_screenshot", delay: int = 2, show: bool = True
     ) -> None:
         """Take Screenshot of the Screen"""
 
