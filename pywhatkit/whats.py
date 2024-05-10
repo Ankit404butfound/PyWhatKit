@@ -154,42 +154,42 @@ def sendimg_or_video_immediately(
         core.close_tab(wait_time=close_time)
 
 
-def sendwhatdoc_immediately(
-    phone_no: str,
-    path: str,
-    wait_time: int = 15,
-    tab_close: bool = True,
-    close_time: int = 3,
-) -> None:
-    """Send WhatsApp Message Instantly"""
-
-    if not core.check_number(number=phone_no):
-        raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
-
-    phone_no = phone_no.replace(" ", "")
-    if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{9,15}", phone_no):
-        raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
-
-    web.open(f"https://web.whatsapp.com/send?phone={phone_no}")
-    time.sleep(wait_time)
-    core.find_link()
-    time.sleep(1)
-    core.find_document()
-    pyperclip.copy(os.path.abspath(path))
-    print("Copied")
-    time.sleep(1)
-    keyboard.press("ctrl")
-    keyboard.press("v")
-    keyboard.release("v")
-    keyboard.release("ctrl")
-    time.sleep(1)
-    keyboard.press("enter")
-    keyboard.release("enter")
-    time.sleep(1)
-    keyboard.press("enter")
-    keyboard.release("enter")
-    if tab_close:
-        core.close_tab(wait_time=close_time)
+# def sendwhatdoc_immediately(
+#     phone_no: str,
+#     path: str,
+#     wait_time: int = 15,
+#     tab_close: bool = True,
+#     close_time: int = 3,
+# ) -> None:
+#     """Send WhatsApp Message Instantly"""
+#
+#     if not core.check_number(number=phone_no):
+#         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
+#
+#     phone_no = phone_no.replace(" ", "")
+#     if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{9,15}", phone_no):
+#         raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
+#
+#     web.open(f"https://web.whatsapp.com/send?phone={phone_no}")
+#     time.sleep(wait_time)
+#     core.find_link()
+#     time.sleep(1)
+#     core.find_document()
+#     pyperclip.copy(os.path.abspath(path))
+#     print("Copied")
+#     time.sleep(1)
+#     keyboard.press("ctrl")
+#     keyboard.press("v")
+#     keyboard.release("v")
+#     keyboard.release("ctrl")
+#     time.sleep(1)
+#     keyboard.press("enter")
+#     keyboard.release("enter")
+#     time.sleep(1)
+#     keyboard.press("enter")
+#     keyboard.release("enter")
+#     if tab_close:
+#         core.close_tab(wait_time=close_time)
 
 
 def sendwhatmsg(
