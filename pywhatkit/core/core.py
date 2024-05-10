@@ -51,11 +51,11 @@ def find_link():
     location = locateOnScreen(f"{dir_path}\\data\\link.png")
     print(location)
     try:
-        moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
+        moveTo(location[0] + location[2] / 2, location[1] + location[3] / 2)
         click()
     except Exception:
         location = locateOnScreen(f"{dir_path}\\data\\link2.png")
-        moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
+        moveTo(location[0] + location[2] / 2, location[1] + location[3] / 2)
         print(location)
         click()
 
@@ -64,7 +64,7 @@ def find_document():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     location = locateOnScreen(f"{dir_path}\\data\\document.png")
     print(location)
-    moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
+    moveTo(location[0] + location[2] / 2, location[1] + location[3] / 2)
     click()
 
 
@@ -72,7 +72,7 @@ def find_photo_or_video():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     location = locateOnScreen(f"{dir_path}\\data\\photo_or_video.png")
     print(location)
-    moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
+    moveTo(location[0] + location[2] / 2, location[1] + location[3] / 2)
     click()
 
 
@@ -112,7 +112,7 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
         length = len(message)
         while index < length:
             letter = message[index]
-            if letter == ":":    
+            if letter == ":":
                 typewrite(letter)
                 index += 1
                 while index < length:
@@ -128,7 +128,7 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
                 typewrite(letter)
             index += 1
         press("enter")
-        
+
     findtextbox()
     press("enter")
 
@@ -136,7 +136,7 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
 def send_message_list(message: list, receiver: str, wait_time: int) -> None:
     """Parse and send multiple messages to a number"""
 
-    _web(receiver=receiver, message='')
+    _web(receiver=receiver, message="")
     time.sleep(7)
     click(WIDTH / 2, HEIGHT / 2 + 15)
     time.sleep(wait_time - 7)

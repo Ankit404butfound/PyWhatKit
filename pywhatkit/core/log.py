@@ -3,6 +3,7 @@ import time
 
 from pywhatkit.core.core import check_number
 
+
 def format_message(message: str) -> str:
     """Formats the Message to remove redundant Spaces and Newline chars"""
     msg_l = message.split(" ")
@@ -17,14 +18,17 @@ def format_message(message: str) -> str:
 
     return " ".join(new)
 
+
 log_path = "PyWhatKit_DB.txt"
+
 
 def set_log_path(directory: str) -> None:
     """Allows the User to Set an Absolute Path for the Log File"""
     global log_path
-    if directory[directory.len() - 1] != '\\':
-        directory = directory + '\\'
+    if directory[directory.len() - 1] != "\\":
+        directory = directory + "\\"
     log_path = directory + "PyWhatKit_DB.txt"
+
 
 def log_message(_time: time.struct_time, receiver: str, message: str) -> None:
     """Logs the Message Information after it is Sent"""

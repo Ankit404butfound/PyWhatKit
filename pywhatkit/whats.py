@@ -1,4 +1,4 @@
-#Vidit
+# Vidit
 import subprocess
 import win32gui
 import os
@@ -19,54 +19,58 @@ pg.FAILSAFE = False
 
 core.check_connection()
 
+
 def get_default_browser():
-    command = 'powershell -Command "$defaultBrowser = (Get-ItemProperty \'HKCU:\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\').ProgId; echo $defaultBrowser"'
-    result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, text=True)
-    
+    command = "powershell -Command \"$defaultBrowser = (Get-ItemProperty 'HKCU:\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice').ProgId; echo $defaultBrowser\""
+    result = subprocess.run(
+        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, text=True
+    )
+
     if result.returncode != 0:
         print("Error executing PowerShell command:")
         print(result.stderr.strip())
         return None
-    
+
     output = result.stdout.strip()
     return output
 
+
 def set_frontmost_process(browser_name):
-    if browser_name.lower() == 'microsoft edge':
+    if browser_name.lower() == "microsoft edge":
         # For Microsoft Edge, let's try a different approach to bring it to the foreground
-        subprocess.run('start microsoft-edge:', shell=True)
+        subprocess.run("start microsoft-edge:", shell=True)
         return
-    
+
     # Find the window handle of the application
     handle = win32gui.FindWindow(None, browser_name)
-    
+
     if handle == 0:
         print(f"Error: {browser_name} window not found.")
         return
-    
+
     # Bring the window to the foreground
     win32gui.SetForegroundWindow(handle)
+
 
 # Test the function
 default_browser = get_default_browser()
 if default_browser:
     browser_mapping = {
-        'FirefoxURL': 'Firefox',
-        'ChromeHTML': 'Google Chrome',
-        'MSEdgeHTM': 'Microsoft Edge'
+        "FirefoxURL": "Firefox",
+        "ChromeHTML": "Google Chrome",
+        "MSEdgeHTM": "Microsoft Edge",
     }
-    browser_name = browser_mapping.get(default_browser, 'Unknown')
+    browser_name = browser_mapping.get(default_browser, "Unknown")
     print(f"The default browser is: {browser_name}")
     set_frontmost_process(browser_name)
 
 
-
 def sendwhatmsg_instantly(
-        phone_no: str,
-        message: str,
-        wait_time: int = 15,
-        tab_close: bool = False,
-        close_time: int = 3,
+    phone_no: str,
+    message: str,
+    wait_time: int = 15,
+    tab_close: bool = False,
+    close_time: int = 3,
 ) -> None:
     """Send WhatsApp Message Instantly"""
 
@@ -94,27 +98,29 @@ def sendwhatmsg_instantly(
                 pg.write(letter)
                 index += 1
         index += 1
-    default_browser= get_default_browser()
+    default_browser = get_default_browser()
     time.sleep(5)
     if default_browser != "Unknown":
 
-    # Set the frontmost process to the default browser
+        # Set the frontmost process to the default browser
         set_frontmost_process(default_browser)
     else:
-        print("set your default browser to chrome or firefox or microsoft egde to use this feature.")
+        print(
+            "set your default browser to chrome or firefox or microsoft egde to use this feature."
+        )
     get_default_browser()
-    pg.press('enter')
+    pg.press("enter")
     log.log_message(_time=time.localtime(), receiver=phone_no, message=message)
     if tab_close:
         core.close_tab(wait_time=close_time)
 
 
 def sendimg_or_video_immediately(
-        phone_no: str,
-        path: str,
-        wait_time: int = 15,
-        tab_close: bool = False,
-        close_time: int = 3,
+    phone_no: str,
+    path: str,
+    wait_time: int = 15,
+    tab_close: bool = False,
+    close_time: int = 3,
 ) -> None:
     """Send WhatsApp Message Instantly"""
 
@@ -149,11 +155,11 @@ def sendimg_or_video_immediately(
 
 
 def sendwhatdoc_immediately(
-        phone_no: str,
-        path: str,
-        wait_time: int = 15,
-        tab_close: bool = True,
-        close_time: int = 3,
+    phone_no: str,
+    path: str,
+    wait_time: int = 15,
+    tab_close: bool = True,
+    close_time: int = 3,
 ) -> None:
     """Send WhatsApp Message Instantly"""
 
@@ -187,20 +193,20 @@ def sendwhatdoc_immediately(
 
 
 def sendwhatmsg(
-        phone_no: str,
-        message: Union[list, str],
-        time_hour: int,
-        time_min: int,
-        wait_time: int = 15,
-        tab_close: bool = False,
-        close_time: int = 3,
+    phone_no: str,
+    message: Union[list, str],
+    time_hour: int,
+    time_min: int,
+    wait_time: int = 15,
+    tab_close: bool = False,
+    close_time: int = 3,
 ) -> None:
     """Send a WhatsApp Message at a Certain Time"""
     if not core.check_number(number=phone_no):
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
 
     phone_no = phone_no.replace(" ", "")
-    if not fullmatch(r'^\+?[0-9]{2,4}\s?[0-9]{9,15}', phone_no):
+    if not fullmatch(r"^\+?[0-9]{2,4}\s?[0-9]{9,15}", phone_no):
         raise exceptions.InvalidPhoneNumber("Invalid Phone Number.")
 
     if time_hour not in range(25) or time_min not in range(60):
@@ -235,13 +241,13 @@ def sendwhatmsg(
 
 
 def sendwhatmsg_to_group(
-        group_id: str,
-        message: str,
-        time_hour: int,
-        time_min: int,
-        wait_time: int = 15,
-        tab_close: bool = False,
-        close_time: int = 3,
+    group_id: str,
+    message: str,
+    time_hour: int,
+    time_min: int,
+    wait_time: int = 15,
+    tab_close: bool = False,
+    close_time: int = 3,
 ) -> None:
     """Send WhatsApp Message to a Group at a Certain Time"""
 
@@ -273,11 +279,11 @@ def sendwhatmsg_to_group(
 
 
 def sendwhatmsg_to_group_instantly(
-        group_id: str,
-        message: str,
-        wait_time: int = 15,
-        tab_close: bool = False,
-        close_time: int = 3,
+    group_id: str,
+    message: str,
+    wait_time: int = 15,
+    tab_close: bool = False,
+    close_time: int = 3,
 ) -> None:
     """Send WhatsApp Message to a Group Instantly"""
 
@@ -290,13 +296,13 @@ def sendwhatmsg_to_group_instantly(
 
 
 def sendwhatsmsg_to_all(
-        phone_nos: List[str],
-        message: str,
-        time_hour: int,
-        time_min: int,
-        wait_time: int = 15,
-        tab_close: bool = False,
-        close_time: int = 3,
+    phone_nos: List[str],
+    message: str,
+    time_hour: int,
+    time_min: int,
+    wait_time: int = 15,
+    tab_close: bool = False,
+    close_time: int = 3,
 ):
     for phone_no in phone_nos:
         sendwhatmsg(
@@ -305,14 +311,14 @@ def sendwhatsmsg_to_all(
 
 
 def sendwhats_image(
-        receiver: str,
-        img_path: str,
-        time_hour: int,
-        time_min: int,
-        caption: str = "",
-        wait_time: int = 15,
-        tab_close: bool = False,
-        close_time: int = 3,
+    receiver: str,
+    img_path: str,
+    time_hour: int,
+    time_min: int,
+    caption: str = "",
+    wait_time: int = 15,
+    tab_close: bool = False,
+    close_time: int = 3,
 ) -> None:
     """Send Image to a WhatsApp Contact or Group at a Certain Time"""
 
@@ -354,5 +360,3 @@ def open_web() -> bool:
         return False
     else:
         return True
-    
-
