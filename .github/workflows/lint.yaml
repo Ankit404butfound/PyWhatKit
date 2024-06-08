@@ -24,5 +24,6 @@ jobs:
           python -m pip install --upgrade pre-commit
           python -m pip install --upgrade isort
           python -m pip install --upgrade poetry
+          poetry install
       - name: Lint
         run: pre-commit run --all-files --show-diff-on-failure
