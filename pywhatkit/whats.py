@@ -89,7 +89,7 @@ def sendwhatmsg_instantly(
             while index < length:
                 letter = message[index]
                 if letter == ":":
-                    pg.press("enter")
+                    pg.press("return")
                     break
                 pg.write(letter)
                 index += 1
