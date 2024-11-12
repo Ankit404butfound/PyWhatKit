@@ -12,7 +12,7 @@
 
 > I am a bit busy and not able to keep up with the issues, I am looking for active collaborators, please contact me if you are interested.
 
-> For commercial purposes please contact ankitrajmahapatra<at>gmail<dot>com
+> For commercial purposes please contact ankitrajmahapatra\<at\>gmail\<dot\>com
 
 [PyWhatKit](https://pypi.org/project/pywhatkit/) is a Python library with various helpful features. It's easy-to-use and does not require you to do any additional setup. Currently, it is one of the most popular library for WhatsApp and YouTube automation. New updates are released frequently with new features and bug fixes.
 
