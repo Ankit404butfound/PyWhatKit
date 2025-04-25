@@ -14,6 +14,8 @@
 
 > For commercial purposes please contact ankitrajmahapatra\<at\>gmail\<dot\>com
 
+> [Buy me a coffee](https://buymeacoffee.com/ankitrajma)
+
 [PyWhatKit](https://pypi.org/project/pywhatkit/) is a Python library with various helpful features. It's easy-to-use and does not require you to do any additional setup. Currently, it is one of the most popular library for WhatsApp and YouTube automation. New updates are released frequently with new features and bug fixes.
 
 # Links
